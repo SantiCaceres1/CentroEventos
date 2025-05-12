@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\1cace\\.nuget\\packages\\": {}
+    "C:\\Users\\Santi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1cace\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\Santi\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
       "projectName": "CentroEventos.Aplicacion",
-      "projectPath": "C:\\Users\\1cace\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\1cace\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1cace\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
+      "projectPath": "C:\\Users\\Santi\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\Santi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Santi\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\1cace\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Santi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
