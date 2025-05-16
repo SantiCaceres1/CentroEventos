@@ -5,9 +5,9 @@ namespace CentroEventos.Aplicacion.Repositorios;
 
 public interface IRepositorioEventoDeportivo
 {
-    void Agregar(EventoDeportivo evento);
-    void Modificar(EventoDeportivo evento);
-    void Eliminar(EventoDeportivo evento);
+    void Agregar(EventoDeportivo eventoDeportivo);
+    void Modificar(EventoDeportivo eventoDeportivo);
+    void Eliminar(int  idEvento);
 
     EventoDeportivo? ObtenerPorId(int id);
     

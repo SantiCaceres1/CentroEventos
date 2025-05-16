@@ -7,14 +7,16 @@ namespace CentroEventos.Aplicacion.Validadores;
 
 public class ValidadorEventoDeportivo
 {
+    private readonly IRepositorioEventoDeportivo _repoEvento;
     private readonly IRepositorioPersona _repoPersona;
 
-    public ValidadorEventoDeportivo(IRepositorioPersona repoPersona)
+    public ValidadorEventoDeportivo(IRepositorioEventoDeportivo repoEvento, IRepositorioPersona repoPersona)
     {
-        _repoPersona= repoPersona;
+        _repoEvento = repoEvento;
+        _repoPersona = repoPersona;
     }
 
-    public void validar(EventoDeportivo evento)
+    public void Validar(EventoDeportivo evento)
     {
         if(string.IsNullOrWhiteSpace(evento.Nombre))
             throw new ValidacionException("El nombre del evento no puede estar vacio.");
