@@ -4,19 +4,33 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class EventoDeportivo
 {
-    private int _id {get; set;}
+    private int _id;
 
-    private string _nombre {get; set;}= string.Empty;
+    private string? _nombre;
 
-    private string _descripcion {get; set;}= string.Empty;
+    private string? _descripcion;
 
-    private DateTime _fechaInicio {get; set;}
+    private DateTime _fechaInicio ;
 
-    private double _duracionHoras {get; set;}
+    private double _duracionHoras ;
 
-    private int _cupoMaximo {get; set;}
+    private int _cupoMaximo ;
 
-    private int _idResponsable {get;set;}
+    private int _idResponsable ;
+
+    public int Id => _id;
+
+    public string? Nombre => _nombre;
+
+    public string? Descripcion => _descripcion;
+
+    public DateTime  FechaInicio => _fechaInicio;
+
+    public double DuracionHoras => _duracionHoras;
+
+    public int CupoMaximo => _cupoMaximo;
+
+    public int IdResponsable => _idResponsable;
 
     public override string ToString()
     {

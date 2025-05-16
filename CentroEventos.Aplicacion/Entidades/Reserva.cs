@@ -4,11 +4,21 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Reserva
 {
-    private int _id {get; set;}
-    private int _idPersona {get; set;}
-    private int _idEventoDeportivo {get;set;}
-    private DateTime _fechaAltaReserva {get;set;}
-    private EstadoAsistencia _estadoAsistencia {get;set;}=EstadoAsistencia.Pendiente;
+    private int _id ;
+    private int _idPersona ;
+    private int _idEventoDeportivo ;
+    private DateTime _fechaAltaReserva ;
+    private EstadoAsistencia _estadoAsistencia;
+
+    public int Id => _id;
+
+    public int IdPersona => _idPersona;
+
+    public int IdEventoDeportivo => _idEventoDeportivo;
+
+    public DateTime FechaAltaReserva => _fechaAltaReserva;
+
+    public EstadoAsistencia EStadoAsistencia => _estadoAsistencia;
 
     public override string ToString()
     {
