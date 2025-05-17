@@ -1,4 +1,3 @@
-using System;
 
 namespace CentroEventos.Aplicacion.Entidades;
 
@@ -18,8 +17,16 @@ public class Reserva
 
     public DateTime FechaAltaReserva => _fechaAltaReserva;
 
-    public EstadoAsistencia EStadoAsistencia => _estadoAsistencia;
+    public EstadoAsistencia EstadoAsistencia => _estadoAsistencia;
 
+    public void AsignarFechaDeAlta(DateTime fecha)
+    {
+        _fechaAltaReserva = fecha;
+    }
+    public void AsignarEstadoAsistencia(EstadoAsistencia estado)
+    {
+        _estadoAsistencia = estado;
+    }
     public override string ToString()
     {
         return $"[{_id}]  Persona: {_idPersona} - Evento: {_idEventoDeportivo} - Estado: {_estadoAsistencia}";

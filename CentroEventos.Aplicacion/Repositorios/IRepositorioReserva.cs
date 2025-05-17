@@ -1,4 +1,4 @@
-using System;
+
 using CentroEventos.Aplicacion.Entidades;
 
 namespace CentroEventos.Aplicacion.Repositorios;
@@ -11,6 +11,7 @@ public interface IRepositorioReserva
 
     Reserva? ObtenerPorId(int id);
     List<Reserva> ListarTodas();
-    bool ExisteResercaDuplicada(int IdPersona,int IdEventoDeportivo);
+    bool ExisteReserva(int idReserva);
+    bool ExisteReservaDuplicada(int IdPersona,int IdEventoDeportivo);
     int ContarReservaParaEvento(int IdEventoDeportivo);
 }

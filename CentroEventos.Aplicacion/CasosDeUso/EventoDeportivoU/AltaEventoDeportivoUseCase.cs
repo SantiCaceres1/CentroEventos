@@ -1,4 +1,3 @@
-
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -11,20 +10,20 @@ public class AltaEventoDeportivoUseCase
 {
     private readonly IRepositorioEventoDeportivo _repositorioEvento;
     private readonly IRepositorioPersona _repositorioPersona;
-    private readonly IServicioAutorizacion _servicioAutorizacion;
+    private readonly IServicioAutorizacion _autorizacion;
     private readonly ValidadorEventoDeportivo _validador;
 
-    public AltaEventoDeportivoUseCase(IRepositorioEventoDeportivo repositorioEvento, IRepositorioPersona repositorioPersona, IServicioAutorizacion servicioAutorizacion)
+    public AltaEventoDeportivoUseCase(IRepositorioEventoDeportivo repositorioEvento, IRepositorioPersona repositorioPersona, IServicioAutorizacion autorizacion)
     {
         _repositorioEvento = repositorioEvento;
         _repositorioPersona = repositorioPersona;
-        _servicioAutorizacion = servicioAutorizacion;
+        _autorizacion = autorizacion;
         _validador = new ValidadorEventoDeportivo(repositorioEvento, repositorioPersona);
     }
 
     public void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
     {
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta))
+        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta))
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta personas.");
 
         

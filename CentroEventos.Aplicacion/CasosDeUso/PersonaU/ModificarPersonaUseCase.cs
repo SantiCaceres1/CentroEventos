@@ -1,4 +1,4 @@
-using System;
+
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;

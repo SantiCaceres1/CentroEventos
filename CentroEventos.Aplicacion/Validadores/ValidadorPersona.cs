@@ -1,4 +1,4 @@
-using System;
+
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -7,11 +7,11 @@ namespace CentroEventos.Aplicacion.Validadores;
 
 public class ValidadorPersona
 {
-     private readonly IRepositorioPersona _reporsitorio;
+     private readonly IRepositorioPersona _repositorio;
 
     public ValidadorPersona(IRepositorioPersona repositorio)
     {
-        _reporsitorio = repositorio;
+        _repositorio = repositorio;
     }
 
     public void Validar(Persona persona)
@@ -28,11 +28,11 @@ public class ValidadorPersona
         if(string.IsNullOrWhiteSpace(persona.Email))
             throw new ValidacionException("El email no puede estar vacio.");
 
-        if(_reporsitorio.ExisteDni(persona.Dni))
+        if(_repositorio.ExisteDni(persona.Dni))
             throw new DuplicadoException("Ya existe una persona con el mismo DNI.");
 
-        if(_reporsitorio.ExisteEmail(persona.Email))
-            throw new DuplicadoException("Ya existe unapersona con el mismo email.");
+        if(_repositorio.ExisteEmail(persona.Email))
+            throw new DuplicadoException("Ya existe una persona con el mismo email.");
         
     }
 }

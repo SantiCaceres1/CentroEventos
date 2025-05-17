@@ -1,4 +1,4 @@
-using System;
+
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -30,12 +30,12 @@ public class ValidadorReserva
         if(!_repoEvento.ExisteId(reserva.IdEventoDeportivo))
             throw new EntidadNotFoundException("No existe el evento indicado.");
 
-        if(_repoReserva.ExisteResercaDuplicada(reserva.IdPersona,reserva.IdEventoDeportivo))
+        if(_repoReserva.ExisteReservaDuplicada(reserva.IdPersona,reserva.IdEventoDeportivo))
             throw new DuplicadoException("La persona ya tiene una reserva para ese evento.");
 
         var cupoDisponible = _repoEvento.HayCupoDisponible(reserva.IdEventoDeportivo);
         if(!cupoDisponible)
-            throw new CupoExcedidoException("No hay cupo disponible para ese evento");
+            throw new CupoExcedidoException("No hay cupo disponible para ese evento.");
     }
 
 }

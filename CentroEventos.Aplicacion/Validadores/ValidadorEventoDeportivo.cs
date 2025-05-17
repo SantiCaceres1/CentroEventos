@@ -1,4 +1,4 @@
-using System;
+
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -25,16 +25,16 @@ public class ValidadorEventoDeportivo
             throw new ValidacionException("La descripcion del evento no puede estar vacia.");
         
         if(evento.CupoMaximo <=0)
-            throw new ValidacionException("El cupo maximo debe ser mayor que 0");
+            throw new ValidacionException("El cupo maximo debe ser mayor que 0.");
 
         if(evento.DuracionHoras<=0)
             throw new ValidacionException("La duracion debe ser mayor que cero.");
 
         if(evento.FechaInicio < DateTime.Now)
-            throw new ValidacionException("La fecha del evento debe ser futura o actual");
+            throw new ValidacionException("La fecha del evento debe ser futura o actual.");
 
         if(! _repoPersona.ExisteId(evento.IdResponsable))
-            throw new EntidadNotFoundException("No existe la persona responsable indicada");
+            throw new EntidadNotFoundException("No existe la persona responsable indicada.");
         
     }
 }
