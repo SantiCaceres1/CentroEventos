@@ -25,14 +25,23 @@ Gestionar personas, eventos deportivos, reservas e historial de asistencia. Perm
 ## 🧱 Estructura del proyecto Aplicacion
 
 CentroEventos.Aplicacion/
+
 ├── CasosDeUso/
+
 │ ├── Persona/
+
 │ ├── EventoDeportivoU/
+
 │ └── ReservaU/
+
 ├── Entidades/
+
 ├── Excepciones/
+
 ├── Repositorios/
+
 ├── Servicios/
+
 └── Validadores/
 
 ---

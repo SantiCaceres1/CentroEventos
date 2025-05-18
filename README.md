@@ -78,9 +78,13 @@ El sistema controla el acceso a las operaciones según el permiso del usuario:
 ## 📁 Organización interna
 
 CentroEventos/
+
 ├── .sln (solución)
+
 ├── CentroEventos.Aplicacion/ # Entidades, casos de uso, validadores, excepciones
+
 ├── CentroEventos.Repositorios/ # Implementaciones de persistencia
+
 └── CentroEventos.Consola/ # Entrada de pruebas (Program.cs)
 
 

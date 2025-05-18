@@ -46,6 +46,10 @@ public class Reserva
     {
         _estadoAsistencia = estado;
     }
+    public void AsignarId(int id)
+    {
+        _id = id;
+    }
     public override string ToString()
     {
         return $"[{_id}]  Persona: {_idPersona} - Evento: {_idEventoDeportivo} - Estado: {_estadoAsistencia}";

@@ -21,6 +21,12 @@ while (continuar)
     Console.WriteLine("3. Alta de Reserva");
     Console.WriteLine("4. Listar eventos con cupo disponible");
     Console.WriteLine("5. Listar asistencia a evento");
+    Console.WriteLine("6. Baja de Persona");
+    Console.WriteLine("7. Baja de Evento Deportivo");
+    Console.WriteLine("8. Baja de Reserva");
+    Console.WriteLine("9. Modificar Persona");
+    Console.WriteLine("10. Modificar Evento Deportivo");
+    Console.WriteLine("11. Modificar Reserva");
     Console.WriteLine("0. Salir");
     Console.WriteLine("Seleccione una opción: ");
 
@@ -88,11 +94,81 @@ while (continuar)
                 Console.WriteLine("Presione cualquier tecla para continuar.....");
                 Console.ReadKey();
                 break;
-
-            case "0":
-                Console.WriteLine("Saliendo del programa.....");
-                continuar = false;
+            case "6":
+                Console.Write("Ingrese ID de la persona a eliminar: ");
+                string ? idbaja = Console.ReadLine();
+                if (int.TryParse(idbaja, out int id))
+                {
+                    // id contiene el valor convertido
+                }
+                else
+                {
+                    Console.WriteLine("El valor ingresado no es un número válido.");
+                }
+                var bajaPersona = new EliminarPersonaUseCase(repoPersonas,repoEventos,repoReservas, servicioAuth);
+                bajaPersona.Ejecutar(id, idAdmin);
+                Console.WriteLine("Persona eliminada correctamente.");
                 break;
+
+            case "7":
+                Console.Write("Ingrese ID del evento a eliminar: ");
+                int idEventoBaja = int.Parse(Console.ReadLine() ?? "0");
+                var bajaEvento = new EliminarEventoDeportivoUseCase(repoEventos,repoReservas, servicioAuth);
+                bajaEvento.Ejecutar(idEventoBaja, idAdmin);
+                Console.WriteLine("Evento eliminado correctamente.");
+                break;
+
+            case "8":
+                Console.Write("Ingrese ID de la reserva a eliminar: ");
+                int idReservaBaja = int.Parse(Console.ReadLine() ?? "0");
+                var bajaReserva = new EliminarReservaUseCase(repoReservas, servicioAuth);
+                bajaReserva.Ejecutar(idReservaBaja, idAdmin);
+                Console.WriteLine("Reserva eliminada correctamente.");
+                break;
+            case "9":
+                Console.Write("Ingrese DNI de la persona a modificar: ");
+                string? dniMod = Console.ReadLine();
+                while (dniMod == null)
+                {
+                   Console.Write("Ingrese DNI de la persona a modificar: ");
+                   dniMod = Console.ReadLine(); 
+                }
+            string ? nuevoNombre = "Pepe";
+            string? nuevoApellido = "Argento";
+            string? nuevoEmail = "Pargento@mail.com";
+            string? nuevoTelefono = "22133423";
+            var personaMod = new Persona(dniMod, nuevoNombre,nuevoApellido,nuevoEmail,nuevoTelefono);
+            var modificarPersona = new ModificarPersonaUseCase(repoPersonas, servicioAuth);
+            modificarPersona.Ejecutar(personaMod, idAdmin);
+            Console.WriteLine("Persona modificada correctamente.");
+            break;
+
+        case "10":
+            Console.Write("Ingrese ID del evento a modificar: ");
+            int idEventoMod = int.Parse(Console.ReadLine() ?? "0");
+            var eventoMod = new EventoDeportivo("Nuevo Evento", "Descripción actualizada", DateTime.Now.AddDays(2), 2.0, 15, 1);
+            eventoMod.AsignarId(idEventoMod);
+            var modificarEvento = new ModificarEventoDeportivoUseCase(repoEventos,repoPersonas, servicioAuth);
+            modificarEvento.Ejecutar(eventoMod, idAdmin);
+            Console.WriteLine("Evento modificado correctamente.");
+            break;
+
+        case "11":
+            Console.Write("Ingrese ID de la reserva a modificar: ");
+            int idReservaMod = int.Parse(Console.ReadLine() ?? "0");
+                DateTime fecha = DateTime.Now;
+            var reservaMod = new Reserva(1, 1,fecha);
+            reservaMod.AsignarId(idReservaMod);
+            var modificarReserva = new ModificarReservaUseCase(repoReservas, servicioAuth);
+            modificarReserva.Ejecutar(reservaMod, idAdmin);
+            Console.WriteLine("Reserva modificada correctamente.");
+            break;
+
+
+        case "0":
+            Console.WriteLine("Saliendo del programa.....");
+            continuar = false;
+            break;
 
 
             default:

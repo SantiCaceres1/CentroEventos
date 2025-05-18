@@ -54,6 +54,11 @@ public class EventoDeportivo
 
     public int IdResponsable => _idResponsable;
 
+    public void AsignarId(int id)
+    {
+        _id = id;
+    }
+
     public override string ToString()
     {
         return $"[{_id}] {_nombre} {_fechaInicio} - {_duracionHoras}HS - Cupo: {_cupoMaximo}";
