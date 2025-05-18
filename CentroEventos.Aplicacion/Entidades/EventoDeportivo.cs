@@ -17,6 +17,29 @@ public class EventoDeportivo
 
     private int _idResponsable ;
 
+    //Constructor sin id
+    public EventoDeportivo(string nombre, string descripcion, DateTime fechaHoraInicio, double duracion, int cupoMax, int idResponsable)
+    {
+        _nombre = nombre;
+        _descripcion = descripcion;
+        _fechaInicio = fechaHoraInicio;
+        _duracionHoras = DuracionHoras;
+        _cupoMaximo = cupoMax;
+        _idResponsable = idResponsable;
+    }
+    //Constructor con id
+    public EventoDeportivo(int id,string nombre, string descripcion, DateTime fechaHoraInicio, double duracion, int cupoMax, int idResponsable)
+    {
+        _id = id;
+        _nombre = nombre;
+        _descripcion = descripcion;
+        _fechaInicio = fechaHoraInicio;
+        _duracionHoras = DuracionHoras;
+        _cupoMaximo = cupoMax;
+        _idResponsable = idResponsable;
+    }
+
+    //Getters publicos
     public int Id => _id;
 
     public string? Nombre => _nombre;

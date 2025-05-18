@@ -9,6 +9,25 @@ public class Reserva
     private DateTime _fechaAltaReserva ;
     private EstadoAsistencia _estadoAsistencia;
 
+    //constructor sin id
+    public Reserva(int idPersona, int idEvento, DateTime fechaAltaReserva)
+    {
+        _idPersona = idPersona;
+        _idEventoDeportivo = idEvento;
+        _fechaAltaReserva = fechaAltaReserva;
+        _estadoAsistencia = EstadoAsistencia.Pendiente;
+    }
+
+    //constructor con id
+    public Reserva(int id, int idPersona, int idEvento, DateTime fechaAltaReserva)
+    {
+        _id = id;
+        _idPersona = idPersona;
+        _idEventoDeportivo = idEvento;
+        _fechaAltaReserva = fechaAltaReserva;
+        _estadoAsistencia = EstadoAsistencia.Pendiente;
+    }
+    //Getters publicos
     public int Id => _id;
 
     public int IdPersona => _idPersona;
