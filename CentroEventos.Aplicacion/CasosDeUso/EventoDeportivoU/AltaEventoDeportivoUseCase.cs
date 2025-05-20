@@ -24,7 +24,7 @@ public class AltaEventoDeportivoUseCase
     public void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta))
-            throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta personas.");
+            throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta eventos.");
 
         
         _validador.Validar(eventoDeportivo);

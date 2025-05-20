@@ -9,8 +9,11 @@ Proyecto desarrollado en .NET 8 con arquitectura limpia, para la gestión de eve
 Se sigue el modelo de **Arquitectura Limpia (Clean Architecture)**, dividiendo responsabilidades en capas bien separadas:
 
 CentroEventos/
+
 ├── CentroEventos.Aplicacion # Lógica de negocio pura
+
 ├── CentroEventos.Repositorios # Persistencia (archivos de texto)
+
 └── CentroEventos.Consola # Interfaz de pruebas por consola
 
 
