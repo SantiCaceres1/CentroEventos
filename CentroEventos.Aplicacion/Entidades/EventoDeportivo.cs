@@ -23,7 +23,7 @@ public class EventoDeportivo
         _nombre = nombre;
         _descripcion = descripcion;
         _fechaInicio = fechaHoraInicio;
-        _duracionHoras = DuracionHoras;
+        _duracionHoras = duracion;
         _cupoMaximo = cupoMax;
         _idResponsable = idResponsable;
     }
@@ -34,7 +34,7 @@ public class EventoDeportivo
         _nombre = nombre;
         _descripcion = descripcion;
         _fechaInicio = fechaHoraInicio;
-        _duracionHoras = DuracionHoras;
+        _duracionHoras = duracion;
         _cupoMaximo = cupoMax;
         _idResponsable = idResponsable;
     }
