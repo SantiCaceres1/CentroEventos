@@ -126,6 +126,47 @@ namespace CentroEventos.Repositorios.Repositorios
             }
             return lista;
         }
+        public bool ExisteId(int id)
+        {
+            if (this.ObtenerPorId(id) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool HayCupoDisponible(int id)
+        {
+            EventoDeportivo? evento = this.ObtenerPorId(id);
+            if (evento == null)
+                return false;
+            int contador = 0;
+            if (File.Exists("reservas.csv"))
+            {
+                using var sr = new StreamReader("reservas.csv");
+                sr.ReadLine();
+                while (!sr.EndOfStream)
+                {
+                    var linea = sr.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(linea))
+                    {
+                        var campos = linea.Split(";");
+                        if (campos.Length >= 3)
+                        {
+                            int idEventoReserva = int.Parse(campos[2]);
+                            if (idEventoReserva == id)
+                            {
+                                contador++;
+                            }
+                        }
+                    }
+                }
+            }
+            return contador < evento.CupoMaximo;
+        }
 
         private List<string> LeerLineasDeEventos()
         {
