@@ -1,0 +1,124 @@
+using System.IO;
+using System.Collections.Generic;
+using CentroEventos.Repositorios.Entidades;
+using CentroEventos.Repositorios.Interfaz;
+
+namespace CentroEventos.Repositorios.Repositorios
+{
+    public class RepositorioReserva : IRepositorioReserva
+    {
+        public void Agregar(Reserva? reserva)
+        {
+            int id;
+            if (!File.Exists("reservas_ID.csv"))
+            {
+                id = 1;
+                File.WriteAllText("reservas_ID.csv", id.ToString());
+            }
+            else
+            {
+                id = int.Parse(File.ReadAllText("reservas_ID.csv"));
+                File.WriteAllText("reservas_ID.csv", (id + 1).ToString());
+            }
+            reserva.AsignarId(id);
+            if (!File.Exists("reservas.csv") || new FileInfo("reservas.csv").Length == 0)
+            {
+                File.AppendAllText("reservas.csv", "id;idPersona;idEvento;fechaReserva\n");
+            }
+            string linea = $"{reserva.id};{reserva.idPersona};{reserva.idEvento};{reserva.fechaAltaReserva}";
+            File.AppendAllText("reservas.csv", linea + "\n");
+        }
+
+        public void Modificar(Reserva? reserva)
+        {
+            List<string> lineas = new List<string>();
+            lineas.Add("id;idPersona;idEvento;fechaReserva");
+            foreach (var linea in this.LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(";");
+                int id_reserva = int.Parse(campos[0]);
+                if (id_reserva == reserva.id)
+                {
+                    linea = $"{id_reserva};{reserva.idPersona};{reserva.idEvento};{reserva.fechaAltaReserva}";
+                    lineas.Add(linea);
+                }
+                else
+                {
+                    lineas.Add(linea);
+                }
+            }
+            File.WriteAllLines("reservas.csv", lineas);
+        }
+
+        public void Eliminar(int id)
+        {
+            List<string> lineas = new List<string>();
+            lineas.Add("id;idPersona;idEvento;fechaReserva");
+            foreach (var linea in this.LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(";");
+                int id_reserva = int.Parse(campos[0]);
+                if (id_reserva != id)
+                {
+                    int id_persona = int.Parse(campos[1]);
+                    int id_evento = int.Parse(campos[2]);
+                    DateTime fechaAlta = DateTime.Parse(campos[3]);
+                    linea = $"{id_reserva};{id_persona};{id_evento};{fechaAlta}";
+                    lineas.Add(linea);
+                }
+            }
+            File.WriteAllLines("reservas.csv", lineas);
+        }
+
+        public Reserva? ObtenerPorId(int id)
+        {
+            foreach (var linea in this.LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(';');
+                if (campos.Length != 4) continue;
+                int id_reserva = int.Parse(campos[0]);
+                if (id_reserva == id)
+                {
+                    int id_persona = int.Parse(campos[1]);
+                    int id_evento = int.Parse(campos[2]);
+                    DateTime fechaAlta = DateTime.Parse(campos[3]);
+                    var reserva = new Reserva(id_reserva, id_persona, id_evento, fechaAlta);
+                    return reserva;
+                }
+            }
+            return null;
+        }
+
+        public List<Reserva> ListarTodas()
+        {
+            List<Reserva> lineas = new List<Reserva>();
+            foreach (var linea in LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(";");
+                int id = int.Parse(campos[0]);
+                int id_persona = int.Parse(campos[1]);
+                int id_evento = int.Parse(campos[2]);
+                DateTime fechaAlta = DateTime.Parse(campos[3]);
+                var reserva = new Reserva(id, id_persona, id_evento, fechaAlta);
+                lineas.Add(reserva);
+            }
+            return lineas;
+        }
+
+        private List<string> LeerLineasDeReservas()
+        {
+            List<string> lineas = new List<string>();
+            if (System.IO.File.Exists("reservas.csv")) {
+                using var sr = new StreamReader("reservas.csv");
+                sr.ReadLine();
+                while (!sr.EndOfStream)
+                {
+                    var linea = sr.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(linea))
+                    lineas.Add(linea);
+                }
+            }
+            return lineas;
+        }
+    }
+}
