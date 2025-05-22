@@ -1,12 +1,16 @@
-using System.IO;
-using System.Collections.Generic;
-using CentroEventos.Repositorios.Entidades;
-using CentroEventos.Repositorios.Interfaz;
 
-namespace CentroEventos.Aplicacion.Repositorios
+using System.Collections.Generic;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Repositorios;
+
+namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo
     {
+        public RepositorioEventoDeportivo(string str)
+        {
+            File.WriteAllText("eventos.csv", str);
+        }
         public void Agregar(EventoDeportivo? evento)
         {
             int id;
@@ -24,7 +28,7 @@ namespace CentroEventos.Aplicacion.Repositorios
             {
                 File.AppendAllText("eventos.csv", "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable\n");
             }
-            string linea = $"{id};{evento.nombre};{evento.descripcion};{evento.fechaHoraInicio};{evento.duracion};{evento.cupoMax};{evento.id_Responsable}";
+            string linea = $"{id};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
             File.AppendAllText("eventos.csv", linea + "\n");
         }
 
@@ -42,9 +46,9 @@ namespace CentroEventos.Aplicacion.Repositorios
                         continue;
                     }
                     int id_evento = int.Parse(campos[0]);
-                    if (id_evento == evento.id)
+                    if (id_evento == evento.Id)
                     {
-                        string nuevaLinea = $"{id_evento};{evento.nombre};{evento.descripcion};{evento.fechaInicio};{evento.horas};{evento.cupoMax};{evento.idResponsable}";
+                        string nuevaLinea = $"{id_evento};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
                         lineas.Add(nuevaLinea);
                     }
                     else
@@ -103,7 +107,7 @@ namespace CentroEventos.Aplicacion.Repositorios
             return null;
         }
 
-        public List<EventoDeportivo> ListarTodas()
+        public List<EventoDeportivo> ListarTodos()
         {
             List<EventoDeportivo> lista = new List<EventoDeportivo>();
             foreach (var linea in this.LeerLineasDeEventos())

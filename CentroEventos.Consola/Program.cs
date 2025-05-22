@@ -1,13 +1,18 @@
-﻿using CentroEventos.Aplicacion.Entidades;
+﻿
+using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.CasosDeUso.PersonaU;
 using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU; 
 using CentroEventos.Aplicacion.CasosDeUso.ReservaU;
+using CentroEventos.Aplicacion;
+using CentroEventos.Repositorios.Repositorios;
 
-var repoPersonas = new RepositorioPersonaTXT("personas.txt");
-var repoEventos = new RepositorioEventoDeportivoTXT("eventos.txt");
-var repoReservas = new RepositorioReservaTXT("reservas.txt"); 
+
+
+var repoPersonas =  new RepositorioPersona ("personas.csv");
+var repoEventos = new RepositorioEventoDeportivo("eventos.csv");
+var repoReservas = new RepositorioReserva("reservas.csv"); 
 IServicioAutorizacion servicioAuth = new ServicioAutorizacionProvisorio();
 
 int idAdmin = 1;
@@ -139,5 +144,4 @@ while (continuar) {
     catch (CupoExcedidoException ex) { Console.WriteLine("Error: No hay cupo disponible para este evento. " + ex.Message); }
     catch (FalloAutorizacionException ex) { Console.WriteLine("Error: No tenés permisos para realizar esta acción. " + ex.Message); }
     catch (Exception ex) { Console.WriteLine("Error inesperado: " + ex.Message); }
-
 }

@@ -1,4 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+<!--
+  <ItemGroup>
+    <Compile Remove="Repositorios\RepositorioEventoDeportivo.cs" />
+    <Compile Remove="Repositorios\RepositorioPersona.cs" />
+    <Compile Remove="Repositorios\RepositorioReserva.cs" />
+  </ItemGroup>
+-->
+  <ItemGroup>
+    <None Include="Repositorios\RepositorioEventoDeportivo.cs" />
+    <None Include="Repositorios\RepositorioPersona.cs" />
+    <None Include="Repositorios\RepositorioReserva.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CentroEventos.Aplicacion\CentroEventos.Aplicacion.csproj" />

@@ -1,12 +1,17 @@
 using System.IO;
 using System.Collections.Generic;
-using CentroEventos.Repositorios.Entidades;
-using CentroEventos.Repositorios.Interfaz;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Repositorios;
+
 
 namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioReserva : IRepositorioReserva
     {
+        public RepositorioReserva(string str)
+        {
+            File.WriteAllText("reservas.csv",str);
+        }
         public void Agregar(Reserva? reserva)
         {
             int id;
@@ -25,7 +30,7 @@ namespace CentroEventos.Repositorios.Repositorios
             {
                 File.AppendAllText("reservas.csv", "id;idPersona;idEvento;fechaReserva\n");
             }
-            string linea = $"{reserva.id};{reserva.idPersona};{reserva.idEvento};{reserva.fechaAltaReserva}";
+            string linea = $"{reserva.Id};{reserva.IdPersona};{reserva.IdEventoDeportivo};{reserva.FechaAltaReserva}";
             File.AppendAllText("reservas.csv", linea + "\n");
         }
 
@@ -35,12 +40,14 @@ namespace CentroEventos.Repositorios.Repositorios
             lineas.Add("id;idPersona;idEvento;fechaReserva");
             foreach (var linea in this.LeerLineasDeReservas())
             {
+                
                 string[] campos = linea.Split(";");
                 int id_reserva = int.Parse(campos[0]);
-                if (id_reserva == reserva.id)
+                if (id_reserva  == reserva.Id)
                 {
-                    linea = $"{id_reserva};{reserva.idPersona};{reserva.idEvento};{reserva.fechaAltaReserva}";
-                    lineas.Add(linea);
+                    string ? aux;
+                    aux = $"{id_reserva};{reserva.IdPersona};{reserva.IdEventoDeportivo};{reserva.FechaAltaReserva}";
+                    lineas.Add(aux);
                 }
                 else
                 {
@@ -60,11 +67,12 @@ namespace CentroEventos.Repositorios.Repositorios
                 int id_reserva = int.Parse(campos[0]);
                 if (id_reserva != id)
                 {
+                    string ? aux; 
                     int id_persona = int.Parse(campos[1]);
                     int id_evento = int.Parse(campos[2]);
                     DateTime fechaAlta = DateTime.Parse(campos[3]);
-                    linea = $"{id_reserva};{id_persona};{id_evento};{fechaAlta}";
-                    lineas.Add(linea);
+                    aux = $"{id_reserva};{id_persona};{id_evento};{fechaAlta}";
+                    lineas.Add(aux);
                 }
             }
             File.WriteAllLines("reservas.csv", lineas);

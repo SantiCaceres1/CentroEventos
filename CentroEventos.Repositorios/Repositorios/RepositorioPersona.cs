@@ -1,15 +1,20 @@
 using System.IO;
 using System.Collections.Generic;
-using CentroEventos.Repositorios.Entidades;
-using CentroEventos.Repositorios.Interfaz;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Repositorios;
 
-namespace CentroEventos.Aplicacion.Repositorios
+
+namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioPersona : IRepositorioPersona
     {
+        public RepositorioPersona(string str)
+        {
+            File.WriteAllText("personas.csv",str);
+        }
         public void Agregar(Persona? persona)
         {
-            if (!this.ExisteDni(persona.dni) && !this.ExisteEmail(persona.email))
+            if (!this.ExisteDni(persona.Dni) && !this.ExisteEmail(persona.Email))
             {
                 int id;
                 if (!File.Exists("personas_ID.csv"))
@@ -26,7 +31,7 @@ namespace CentroEventos.Aplicacion.Repositorios
                 {
                     File.AppendAllText("personas.csv", "id;dni;nombre;apellido;email;telefono\n");
                 }
-                string linea = $"{id};{persona.dni};{persona.nombre};{persona.apellido};{persona.email};{persona.telefono}";
+                string linea = $"{id};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
                 File.AppendAllText("personas.csv", linea + "\n");
             }
         }
@@ -39,14 +44,14 @@ namespace CentroEventos.Aplicacion.Repositorios
                 string[] campos = linea.Split(";");
                 if (campos.Length != 6) continue;
                 int id_persona = int.Parse(campos[0]);
-                if (id_persona == persona.id)
+                if (id_persona == persona.Id)
                 {
-                    string dni = persona.dni;
-                    string nombre = persona.nombre;
-                    string apellido = persona.apellido;
-                    string email = persona.email;
-                    long telefono = persona.telefono;
-                    var lineaModificada = $"{id_persona};{persona.dni};{persona.nombre};{persona.apellido};{persona.email};{persona.telefono}";
+                    string? dni =  persona.Dni;
+                    string? nombre = persona.Nombre;
+                    string?  apellido = persona.Apellido;
+                    string? email = persona.Email;
+                    string telefono =  persona.Telefono;
+                    var lineaModificada = $"{id_persona};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
                     nuevasLineas.Add(lineaModificada);
                 }
                 else
@@ -88,7 +93,7 @@ namespace CentroEventos.Aplicacion.Repositorios
                     string nombre = campos[2];
                     string apellido = campos[3];
                     string email = campos[4];
-                    long telefono = long.Parse(campos[5]);
+                    string telefono = campos[5];
                     Persona persona = new Persona(id_persona, nombre, apellido, dni, email, telefono);
                     return persona;
                 }
@@ -109,7 +114,7 @@ namespace CentroEventos.Aplicacion.Repositorios
                     string nombre = campos[2];
                     string apellido = campos[3];
                     string email = campos[4];
-                    long telefono = long.Parse(campos[5]);
+                    string telefono = campos[5];
                     Persona persona = new Persona(id, nombre, apellido, dni_persona, email, telefono);
                     return persona;
                 }
@@ -130,7 +135,7 @@ namespace CentroEventos.Aplicacion.Repositorios
                 string email_persona = campos[4];
                 if (email_persona == email)
                 {
-                    long telefono = long.Parse(campos[5]);
+                    string telefono = campos[5];
                     Persona persona = new Persona(id, nombre, apellido, dni, email_persona, telefono);
                     return persona;
                 }
@@ -150,7 +155,7 @@ namespace CentroEventos.Aplicacion.Repositorios
                 string nombre = campos[2];
                 string apellido = campos[3];
                 string email = campos[4];
-                long telefono = long.Parse(campos[5]);
+                string telefono = campos[5];
                 Persona persona = new Persona(id, nombre, apellido, dni, email, telefono);
                 lista.Add(persona);
             }

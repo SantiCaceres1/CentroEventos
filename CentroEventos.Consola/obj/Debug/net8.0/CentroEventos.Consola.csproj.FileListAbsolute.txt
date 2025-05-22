@@ -1,0 +1,6 @@
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.csproj.AssemblyReference.cache
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.AssemblyInfoInputs.cache
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.AssemblyInfo.cs
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.csproj.CoreCompileInputs.cache
+C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Consola\obj\Debug\net8.0\CentroEventos.Consola.sourcelink.json
