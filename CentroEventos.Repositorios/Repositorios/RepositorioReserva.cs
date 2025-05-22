@@ -112,18 +112,58 @@ namespace CentroEventos.Repositorios.Repositorios
             }
             return lineas;
         }
+        public bool ExisteReserva(int idReserva)
+        {
+            if (this.ObtenerPorId(idReserva) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool ExisteReservaDuplicada(int idPersona, int idEventoDeportivo)
+        {
+            foreach (var linea in LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(";");
+                int id_persona = int.Parse(campos[1]);
+                int id_evento = int.Parse(campos[2]);
+                if ((id_persona == idPersona) && (id_evento == idEventoDeportivo))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int ContarReservaParaEvento(int idEventoDeportivo)
+        {
+            int contador = 0;
+            foreach (var linea in LeerLineasDeReservas())
+            {
+                string[] campos = linea.Split(";");
+                int id_evento = int.Parse(campos[2]);
+                if ((id_evento == idEventoDeportivo))
+                    contador++;
+            }
+            return contador;
+        }
 
         private List<string> LeerLineasDeReservas()
         {
             List<string> lineas = new List<string>();
-            if (System.IO.File.Exists("reservas.csv")) {
+            if (System.IO.File.Exists("reservas.csv"))
+            {
                 using var sr = new StreamReader("reservas.csv");
                 sr.ReadLine();
                 while (!sr.EndOfStream)
                 {
                     var linea = sr.ReadLine();
                     if (!string.IsNullOrWhiteSpace(linea))
-                    lineas.Add(linea);
+                        lineas.Add(linea);
                 }
             }
             return lineas;
