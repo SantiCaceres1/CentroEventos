@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.Aplicacion", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.Repositorios", "CentroEventos.Repositorios\CentroEventos.Repositorios.csproj", "{8680E561-D710-4A42-85F0-81346DE46CBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.UI", "CentroEventos.UI\CentroEventos.UI.csproj", "{BD92B1AD-7C9E-4256-847E-B6D5A4508731}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD92B1AD-7C9E-4256-847E-B6D5A4508731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD92B1AD-7C9E-4256-847E-B6D5A4508731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD92B1AD-7C9E-4256-847E-B6D5A4508731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD92B1AD-7C9E-4256-847E-B6D5A4508731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
