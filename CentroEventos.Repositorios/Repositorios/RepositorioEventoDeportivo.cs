@@ -1,4 +1,5 @@
 
+using System.IO;
 using System.Collections.Generic;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Repositorios;
@@ -7,101 +8,72 @@ namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo
     {
-        public RepositorioEventoDeportivo(string str)
+        private const string ArchivoEventos = "eventos.csv";
+        private const string ArchivoId = "eventos_ID.csv";
+
+        public RepositorioEventoDeportivo()
         {
-            File.WriteAllText("eventos.csv", str);
-        }
-        public void Agregar(EventoDeportivo? evento)
-        {
-            int id;
-            if (!File.Exists("eventos_ID.csv"))
-            {
-                id = 1;
-                File.WriteAllText("eventos_ID.csv", id.ToString());
-            }
-            else
-            {
-                id = int.Parse(File.ReadAllText("eventos_ID.csv"));
-                File.WriteAllText("eventos_ID.csv", (id + 1).ToString());
-            }
-            if (!File.Exists("eventos.csv") || new FileInfo("eventos.csv").Length == 0)
-            {
-                File.AppendAllText("eventos.csv", "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable\n");
-            }
-            string linea = $"{id};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
-            File.AppendAllText("eventos.csv", linea + "\n");
+            if (!File.Exists(ArchivoEventos))
+                File.WriteAllText(ArchivoEventos, "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable\n");
+
+            if (!File.Exists(ArchivoId))
+                File.WriteAllText(ArchivoId, "1");
         }
 
-        public void Modificar(EventoDeportivo? evento)
+        public void Agregar(EventoDeportivo evento)
         {
-            List<string> lineas = new List<string>();
-            if (File.Exists("eventos.csv"))
+            int id = int.Parse(File.ReadAllText(ArchivoId));
+            File.WriteAllText(ArchivoId, (id + 1).ToString());
+
+            string linea = $"{id};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
+            File.AppendAllText(ArchivoEventos, linea + "\n");
+        }
+
+        public void Modificar(EventoDeportivo evento)
+        {
+            var nuevasLineas = new List<string> { "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable" };
+
+            foreach (var linea in LeerLineasDeEventos())
             {
-                foreach (var linea in this.LeerLineasDeEventos())
+                var campos = linea.Split(";");
+                int id = int.Parse(campos[0]);
+                if (id == evento.Id)
                 {
-                    string[] campos = linea.Split(";");
-                    if (campos.Length != 7)
-                    {
-                        lineas.Add(linea);
-                        continue;
-                    }
-                    int id_evento = int.Parse(campos[0]);
-                    if (id_evento == evento.Id)
-                    {
-                        string nuevaLinea = $"{id_evento};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
-                        lineas.Add(nuevaLinea);
-                    }
-                    else
-                    {
-                        lineas.Add(linea);
-                    }
+                    string modificado = $"{evento.Id};{evento.Nombre};{evento.Descripcion};{evento.FechaInicio};{evento.DuracionHoras};{evento.CupoMaximo};{evento.IdResponsable}";
+                    nuevasLineas.Add(modificado);
                 }
-                File.WriteAllText("eventos.csv", "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable\n");
-                File.AppendAllLines("eventos.csv", lineas);
+                else
+                {
+                    nuevasLineas.Add(linea);
+                }
             }
+
+            File.WriteAllLines(ArchivoEventos, nuevasLineas);
         }
 
         public void Eliminar(int id)
         {
-            List<string> lineas = new List<string>();
-            if (File.Exists("eventos.csv"))
+            var nuevasLineas = new List<string> { "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable" };
+
+            foreach (var linea in LeerLineasDeEventos())
             {
-                foreach (var linea in this.LeerLineasDeEventos())
-                {
-                    string[] campos = linea.Split(";");
-                    if (campos.Length != 7)
-                    {
-                        lineas.Add(linea);
-                        continue;
-                    }
-                    int id_evento = int.Parse(campos[0]);
-                    if (id_evento != id)
-                    {
-                        lineas.Add(linea);
-                    }
-                }
+                var campos = linea.Split(";");
+                if (int.Parse(campos[0]) != id)
+                    nuevasLineas.Add(linea);
             }
-            File.WriteAllText("eventos.csv", "id;nombre;descripcion;fechaInicio;duracionHoras;cupoMaximo;idResponsable\n");
-            File.AppendAllLines("eventos.csv", lineas);
+
+            File.WriteAllLines(ArchivoEventos, nuevasLineas);
         }
 
         public EventoDeportivo? ObtenerPorId(int id)
         {
-            foreach (var linea in this.LeerLineasDeEventos())
+            foreach (var linea in LeerLineasDeEventos())
             {
-                string[] campos = linea.Split(";");
-                if (campos.Length != 7) continue;
-                int id_evento = int.Parse(campos[0]);
-                if (id_evento == id)
+                var campos = linea.Split(";");
+                if (int.Parse(campos[0]) == id)
                 {
-                    string nombre = campos[1];
-                    string descripcion = campos[2];
-                    DateTime fechaInicio = DateTime.Parse(campos[3]);
-                    double horas = double.Parse(campos[4]);
-                    int cupo = int.Parse(campos[5]);
-                    int id_Responsable = int.Parse(campos[6]);
-                    EventoDeportivo evento = new EventoDeportivo(id_evento, nombre, descripcion, fechaInicio, horas, cupo, id_Responsable);
-                    return evento;
+                    return new EventoDeportivo(id, campos[1], campos[2], DateTime.Parse(campos[3]),
+                        double.Parse(campos[4]), int.Parse(campos[5]), int.Parse(campos[6]));
                 }
             }
             return null;
@@ -109,40 +81,26 @@ namespace CentroEventos.Repositorios.Repositorios
 
         public List<EventoDeportivo> ListarTodos()
         {
-            List<EventoDeportivo> lista = new List<EventoDeportivo>();
-            foreach (var linea in this.LeerLineasDeEventos())
+            var lista = new List<EventoDeportivo>();
+            foreach (var linea in LeerLineasDeEventos())
             {
-                string[] campos = linea.Split(";");
-                if (campos.Length != 7) continue;
-                int id = int.Parse(campos[0]);
-                string nombre = campos[1];
-                string descripcion = campos[2];
-                DateTime fechaInicio = DateTime.Parse(campos[3]);
-                double horas = double.Parse(campos[4]);
-                int cupo = int.Parse(campos[5]);
-                int id_Responsable = int.Parse(campos[6]);
-                EventoDeportivo evento = new EventoDeportivo(id, nombre, descripcion, fechaInicio, horas, cupo, id_Responsable);
-                lista.Add(evento);
+                var campos = linea.Split(";");
+                lista.Add(new EventoDeportivo(int.Parse(campos[0]), campos[1], campos[2], DateTime.Parse(campos[3]),
+                    double.Parse(campos[4]), int.Parse(campos[5]), int.Parse(campos[6])));
             }
             return lista;
         }
+
         public bool ExisteId(int id)
         {
-            if (this.ObtenerPorId(id) != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return ObtenerPorId(id) != null;
         }
 
         public bool HayCupoDisponible(int id)
         {
-            EventoDeportivo? evento = this.ObtenerPorId(id);
-            if (evento == null)
-                return false;
+            var evento = ObtenerPorId(id);
+            if (evento == null) return false;
+
             int contador = 0;
             if (File.Exists("reservas.csv"))
             {
@@ -154,42 +112,29 @@ namespace CentroEventos.Repositorios.Repositorios
                     if (!string.IsNullOrWhiteSpace(linea))
                     {
                         var campos = linea.Split(";");
-                        if (campos.Length >= 3)
-                        {
-                            int idEventoReserva = int.Parse(campos[2]);
-                            if (idEventoReserva == id)
-                            {
-                                contador++;
-                            }
-                        }
+                        if (int.Parse(campos[2]) == id)
+                            contador++;
                     }
                 }
             }
+
             return contador < evento.CupoMaximo;
         }
 
         private List<string> LeerLineasDeEventos()
         {
-            List<string> lineas = new List<string>();
-            if (!System.IO.File.Exists("eventos.csv"))
+            var lineas = new List<string>();
+            if (!File.Exists(ArchivoEventos)) return lineas;
+
+            using var sr = new StreamReader(ArchivoEventos);
+            sr.ReadLine(); // skip header
+            while (!sr.EndOfStream)
             {
-                return lineas;
+                var linea = sr.ReadLine();
+                if (!string.IsNullOrWhiteSpace(linea))
+                    lineas.Add(linea);
             }
-            else
-            {
-                var sr = new StreamReader("eventos.csv");
-                sr.ReadLine();
-                while (!sr.EndOfStream)
-                {
-                    var linea = sr.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(linea))
-                    {
-                        lineas.Add(linea);
-                    }
-                }
-                sr.Close();
-                return lineas;
-            }
+            return lineas;
         }
     }
 }

@@ -1,102 +1,80 @@
+
 using System.IO;
 using System.Collections.Generic;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Repositorios;
 
-
 namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioPersona : IRepositorioPersona
     {
-        public RepositorioPersona(string str)
+        private const string ArchivoPersonas = "personas.csv";
+        private const string ArchivoId = "personas_ID.csv";
+
+        public RepositorioPersona()
         {
-            File.WriteAllText("personas.csv",str);
-        }
-        public void Agregar(Persona? persona)
-        {
-            if (!this.ExisteDni(persona.Dni) && !this.ExisteEmail(persona.Email))
-            {
-                int id;
-                if (!File.Exists("personas_ID.csv"))
-                {
-                    id = 1;
-                    File.WriteAllText("personas_ID.csv", id.ToString());
-                }
-                else
-                {
-                    id = int.Parse(File.ReadAllText("personas_ID.csv"));
-                    File.WriteAllText("personas_ID.csv", (id + 1).ToString());
-                }
-                if (!File.Exists("personas.csv") || new FileInfo("personas.csv").Length == 0)
-                {
-                    File.AppendAllText("personas.csv", "id;dni;nombre;apellido;email;telefono\n");
-                }
-                string linea = $"{id};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
-                File.AppendAllText("personas.csv", linea + "\n");
-            }
+            if (!File.Exists(ArchivoPersonas))
+                File.WriteAllText(ArchivoPersonas, "id;dni;nombre;apellido;email;telefono\n");
+
+            if (!File.Exists(ArchivoId))
+                File.WriteAllText(ArchivoId, "1");
         }
 
-        public void Modificar(Persona? persona)
+        public void Agregar(Persona persona)
+        {
+            if (ExisteDni(persona.Dni) || ExisteEmail(persona.Email))
+                return;
+
+            int id = int.Parse(File.ReadAllText(ArchivoId));
+            File.WriteAllText(ArchivoId, (id + 1).ToString());
+
+            string linea = $"{id};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
+            File.AppendAllText(ArchivoPersonas, linea + "\n");
+        }
+
+        public void Modificar(Persona persona)
         {
             var nuevasLineas = new List<string>();
+            nuevasLineas.Add("id;dni;nombre;apellido;email;telefono");
+
             foreach (var linea in LeerLineasDePersonas())
             {
                 string[] campos = linea.Split(";");
-                if (campos.Length != 6) continue;
-                int id_persona = int.Parse(campos[0]);
-                if (id_persona == persona.Id)
+                if (int.Parse(campos[0]) == persona.Id)
                 {
-                    string? dni =  persona.Dni;
-                    string? nombre = persona.Nombre;
-                    string?  apellido = persona.Apellido;
-                    string? email = persona.Email;
-                    string telefono =  persona.Telefono;
-                    var lineaModificada = $"{id_persona};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
-                    nuevasLineas.Add(lineaModificada);
+                    string modificado = $"{persona.Id};{persona.Dni};{persona.Nombre};{persona.Apellido};{persona.Email};{persona.Telefono}";
+                    nuevasLineas.Add(modificado);
                 }
                 else
                 {
                     nuevasLineas.Add(linea);
                 }
             }
-            nuevasLineas.Insert(0, "id;dni;nombre;apellido;email;telefono");
-            File.WriteAllLines("personas.csv", nuevasLineas);
+
+            File.WriteAllLines(ArchivoPersonas, nuevasLineas);
         }
 
         public void Eliminar(int idPersona)
         {
-            var nuevasLineas = new List<string>();
+            var nuevasLineas = new List<string> { "id;dni;nombre;apellido;email;telefono" };
+
             foreach (var linea in LeerLineasDePersonas())
             {
                 string[] campos = linea.Split(";");
-                if (campos.Length != 6) continue;
-                int id_persona = int.Parse(campos[0]);
-                if (id_persona != idPersona)
-                {
+                if (int.Parse(campos[0]) != idPersona)
                     nuevasLineas.Add(linea);
-                }
             }
-            nuevasLineas.Insert(0, "id;dni;nombre;apellido;email;telefono");
-            File.WriteAllLines("personas.csv", nuevasLineas);
+
+            File.WriteAllLines(ArchivoPersonas, nuevasLineas);
         }
 
         public Persona? ObtenerPorId(int id)
         {
             foreach (var linea in LeerLineasDePersonas())
             {
-                string[] campos = linea.Split(";");
-                if (campos.Length != 6) continue;
-                int id_persona = int.Parse(campos[0]);
-                if (id_persona == id)
-                {
-                    string dni = campos[1];
-                    string nombre = campos[2];
-                    string apellido = campos[3];
-                    string email = campos[4];
-                    string telefono = campos[5];
-                    Persona persona = new Persona(id_persona, nombre, apellido, dni, email, telefono);
-                    return persona;
-                }
+                var campos = linea.Split(";");
+                if (int.Parse(campos[0]) == id)
+                    return new Persona(id, campos[1], campos[2], campos[3], campos[4], campos[5]);
             }
             return null;
         }
@@ -105,19 +83,9 @@ namespace CentroEventos.Repositorios.Repositorios
         {
             foreach (var linea in LeerLineasDePersonas())
             {
-                string[] campos = linea.Split(";");
-                if (campos.Length != 6) continue;
-                int id = int.Parse(campos[0]);
-                string dni_persona = campos[1];
-                if (dni_persona == dni)
-                {
-                    string nombre = campos[2];
-                    string apellido = campos[3];
-                    string email = campos[4];
-                    string telefono = campos[5];
-                    Persona persona = new Persona(id, nombre, apellido, dni_persona, email, telefono);
-                    return persona;
-                }
+                var campos = linea.Split(";");
+                if (campos[1] == dni)
+                    return new Persona(int.Parse(campos[0]), campos[1], campos[2], campos[3], campos[4], campos[5]);
             }
             return null;
         }
@@ -126,38 +94,20 @@ namespace CentroEventos.Repositorios.Repositorios
         {
             foreach (var linea in LeerLineasDePersonas())
             {
-                string[] campos = linea.Split(";");
-                if (campos.Length != 6) continue;
-                int id = int.Parse(campos[0]);
-                string dni = campos[1];
-                string nombre = campos[2];
-                string apellido = campos[3];
-                string email_persona = campos[4];
-                if (email_persona == email)
-                {
-                    string telefono = campos[5];
-                    Persona persona = new Persona(id, nombre, apellido, dni, email_persona, telefono);
-                    return persona;
-                }
+                var campos = linea.Split(";");
+                if (campos[4] == email)
+                    return new Persona(int.Parse(campos[0]), campos[1], campos[2], campos[3], campos[4], campos[5]);
             }
             return null;
         }
 
         public List<Persona> ListarTodas()
         {
-            List<Persona> lista = new List<Persona>();
+            var lista = new List<Persona>();
             foreach (var linea in LeerLineasDePersonas())
             {
-                string[] campos = linea.Split(';');
-                if (campos.Length != 6) continue;
-                int id = int.Parse(campos[0]);
-                string dni = campos[1];
-                string nombre = campos[2];
-                string apellido = campos[3];
-                string email = campos[4];
-                string telefono = campos[5];
-                Persona persona = new Persona(id, nombre, apellido, dni, email, telefono);
-                lista.Add(persona);
+                var campos = linea.Split(";");
+                lista.Add(new Persona(int.Parse(campos[0]), campos[1], campos[2], campos[3], campos[4], campos[5]));
             }
             return lista;
         }
@@ -165,53 +115,39 @@ namespace CentroEventos.Repositorios.Repositorios
         public bool ExisteDni(string dni)
         {
             foreach (var linea in LeerLineasDePersonas())
-            {
-                string[] campos = linea.Split(';');
-                if (campos.Length != 6) continue;
-                if (campos[1] == dni)
+                if (linea.Split(";")[1] == dni)
                     return true;
-            }
             return false;
         }
 
         public bool ExisteEmail(string email)
         {
             foreach (var linea in LeerLineasDePersonas())
-            {
-                string[] campos = linea.Split(';');
-                if (campos.Length != 6) continue;
-                if (campos[4] == email)
+                if (linea.Split(";")[4] == email)
                     return true;
-            }
             return false;
         }
 
         public bool ExisteId(int id)
         {
             foreach (var linea in LeerLineasDePersonas())
-            {
-                string[] campos = linea.Split(';');
-                if (campos.Length != 6) continue;
-                if (int.TryParse(campos[0], out int idArchivo) && idArchivo == id)
+                if (int.Parse(linea.Split(";")[0]) == id)
                     return true;
-            }
             return false;
         }
 
         private List<string> LeerLineasDePersonas()
         {
-            List<string> lineas = new List<string>();
-            if (!System.IO.File.Exists("personas.csv"))
-                return lineas;
-            using var sr = new System.IO.StreamReader("personas.csv");
-            sr.ReadLine();
+            var lineas = new List<string>();
+            if (!File.Exists(ArchivoPersonas)) return lineas;
+
+            using var sr = new StreamReader(ArchivoPersonas);
+            sr.ReadLine(); // skip header
             while (!sr.EndOfStream)
             {
-                string? linea = sr.ReadLine();
+                var linea = sr.ReadLine();
                 if (!string.IsNullOrWhiteSpace(linea))
-                {
                     lineas.Add(linea);
-                }
             }
             return lineas;
         }

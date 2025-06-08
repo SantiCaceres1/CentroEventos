@@ -10,9 +10,9 @@ using CentroEventos.Repositorios.Repositorios;
 
 
 
-var repoPersonas =  new RepositorioPersona ("personas.csv");
-var repoEventos = new RepositorioEventoDeportivo("eventos.csv");
-var repoReservas = new RepositorioReserva("reservas.csv"); 
+var repoPersonas =  new RepositorioPersona ();
+var repoEventos = new RepositorioEventoDeportivo();
+var repoReservas = new RepositorioReserva(); 
 IServicioAutorizacion servicioAuth = new ServicioAutorizacionProvisorio();
 
 int idAdmin = 1;
