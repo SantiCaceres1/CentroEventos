@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CentroEventos.UI.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
+      "PackagePath": "staticwebassets\\img\\logo1.png"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo2.svg",
+      "PackagePath": "staticwebassets\\img\\logo2.svg"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo3.png",
+      "PackagePath": "staticwebassets\\img\\logo3.png"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo4.svg",
+      "PackagePath": "staticwebassets\\img\\logo4.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CentroEventos.UI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CentroEventos.UI.props",
+      "PackagePath": "build\\CentroEventos.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CentroEventos.UI.props",
+      "PackagePath": "buildMultiTargeting\\CentroEventos.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CentroEventos.UI.props",
+      "PackagePath": "buildTransitive\\CentroEventos.UI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
