@@ -21,6 +21,26 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs1.jpg",
+      "PackagePath": "staticwebassets\\img\\crs1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs2.jpg",
+      "PackagePath": "staticwebassets\\img\\crs2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs3.jpg",
+      "PackagePath": "staticwebassets\\img\\crs3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs4.jpg",
+      "PackagePath": "staticwebassets\\img\\crs4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs5.jpg",
+      "PackagePath": "staticwebassets\\img\\crs5.jpg"
+    },
+    {
       "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
       "PackagePath": "staticwebassets\\img\\logo1.png"
     },

@@ -2,6 +2,8 @@
     background-color: rgb(233, 233, 233);
     border-bottom: 1px solid #c1c1c1;
     padding: 1rem 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .container[b-uopeu9fc6a] {
