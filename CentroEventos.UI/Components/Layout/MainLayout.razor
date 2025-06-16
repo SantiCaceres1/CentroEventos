@@ -1,5 +1,5 @@
 ﻿@inherits LayoutComponentBase
-
+@inject UsuarioSesion Sesion
 
 
 <header class="navbar">
@@ -7,8 +7,24 @@
         <a class="logo" href="/"><img src="img\logo1.png" alt="CampusFit Logo" height="85"></a>
         <nav class="nav-links">
             <NavLink href="/" class="nav-link" Match="NavLinkMatch.All">Inicio</NavLink>
-            <NavLink href="/actividades" class="nav-link">Actividades</NavLink>
-            <NavLink href="/contact" class="nav-link">Conocenos</NavLink>
+            <NavLink href="/Actividades" class="nav-link">Actividades</NavLink>
+            <NavLink href="/Contact" class="nav-link">Conocenos</NavLink>
+            @if(!Sesion.EstaLogueado())
+            {
+                <NavLink href="/Login" class="nav-link">Iniciar Sesion</NavLink>
+            }
+            else if(Sesion.UsuarioEsAdmin)
+            {
+                <!-- #ADMIN  -->
+                <NavLink href="/Admin" class="nav-link">Admin</NavLink>
+                <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
+                <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
+                @if(Sesion.UsuarioEsAdmin())
+                {
+                    <NavLink href="/MisActividades" class="nav-link">Panel de Actividades</NavLink>
+                }
+                <button class="btn btn-outline" @onclick="Sesion.CerrarSesion">Cerrar Sesion</button>
+            }
 
         </nav>
         <div class="auth-buttons">

@@ -1,9 +1,46 @@
-@page "/actividades"
-<h3 class=" text-center" >Actividades Disponibles</h3>
-<p>Las siguientes actividades tienen cupo disponible:</p>
-<ul>
-    <!-- lista de actividades con cupo -->
-</ul>
+@page "/Actividades"
+@using CentroEventos.Aplicacion.CasosDeUso
+@using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU
+@using CentroEventos.Aplicacion.Entidades
+@inject ListarEventosConCupoDisponibleUseCase ListarEventosConCupoDisponibleUseCase
+<div class="text-center">
+    <h3 >Actividades con cupo</h3>
+</div>
 
-<button class="btn btn-secondary">Agregar Persona</button>
-<button class="btn btn-primary ms-2">Asignar a Actividad</button>
+<div class="text-center">
+@if (_eventos.Count == 0)
+{
+    <p>No hay eventos disponibles por el momento.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Días</th>
+                <th>Cupo disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var act in _eventos)
+            {
+                <tr>
+                    <td>@act.Nombre</td>
+                    <td>@string.Join(", ", act.FechaInicio)</td>
+                    <td>@(act.CupoMaximo - act.CupoMaximo)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+
+@code {
+    List<EventoDeportivo> _eventos = new();
+
+    protected override void OnInitialized()
+    {
+        _eventos = ListarEventosConCupoDisponibleUseCase.Ejecutar();
+}
+}
