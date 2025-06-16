@@ -1,3 +1,5 @@
+using CentroEventos.Aplicacion.Repositorios;
+using CentroEventos.Repositorios.Repositorios;
 using CentroEventos.UI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivo>();
 
 var app = builder.Build();
 

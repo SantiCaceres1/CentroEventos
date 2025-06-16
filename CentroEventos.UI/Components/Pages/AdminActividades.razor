@@ -1,0 +1,28 @@
+@page "/AdminActividades"
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+
+<h3>Panel de actividades</h3>
+@if (!Sesion.EstaLogueado || !EsAdmin())
+{
+    <p class="text-danger">Acceso no autorizado.</p>
+    @code {
+        protected override void OnInitialized() => Navigation.NavigateTo("/");
+    }
+}
+else
+{
+    <div class="admin-panel">
+        <h4>Bienvenido, @Sesion.Usuario.Nombre</h4>
+        <p>Selecciona una opción del menú para administrar las actividades.</p>
+
+        <ul>
+            <li><NavLink href="/AdminActividades/AgregarActividad">Agregar Actividad</NavLink></li>
+            <li><NavLink href="/AdminActividades/GestionarActividades">Gestionar Actividades</NavLink></li>
+            <li><NavLink href="/AdminActividades/EliminarActividad">Eliminar Actividad</NavLink></li>
+        </ul>
+    </div>
+}
+@code {
+    private bool EsAdmin() => Sesion.UsuarioEsAdmin;
+}
