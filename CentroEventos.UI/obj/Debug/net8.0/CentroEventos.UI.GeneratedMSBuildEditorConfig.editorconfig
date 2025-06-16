@@ -22,24 +22,32 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Actividades.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY3RpdmlkYWRlcy5yYXpvcg==
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/actividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/AdminActividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkFjdGl2aWRhZGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/adminUsuarios.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblVzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/MisActividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNaXNBY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xyZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Routes.razor]
@@ -54,14 +62,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-uopeu9fc6a
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Contact.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWN0LnJhem9y
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/contact.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xjb250YWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-kroq4i7slt
 
 [C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-gjcxcwux6z
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xsb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-2ib10wyder
