@@ -1,18 +1,15 @@
-
 using CentroEventos.Aplicacion.Entidades;
 
-namespace CentroEventos.Aplicacion.Repositorios;
-
-public interface IRepositorioEventoDeportivo
+namespace CentroEventos.Aplicacion.Repositorios
 {
-    void Agregar(EventoDeportivo eventoDeportivo);
-    void Modificar(EventoDeportivo eventoDeportivo);
-    void Eliminar(int  idEvento);
-
-    EventoDeportivo? ObtenerPorId(int id);
-    
-    List<EventoDeportivo> ListarTodos();
-    bool ExisteId(int id);
-    bool HayCupoDisponible(int id);
-
+    public interface IRepositorioEventoDeportivo
+    {
+        Task Agregar(EventoDeportivo evento);
+        Task Modificar(EventoDeportivo evento);
+        Task Eliminar(int id);
+        Task<EventoDeportivo?> ObtenerPorId(int id);
+        Task<List<EventoDeportivo>> ListarTodos();
+        Task<bool> ExisteId(int id);
+        Task<bool> HayCupoDisponible(int id);
+    }
 }
