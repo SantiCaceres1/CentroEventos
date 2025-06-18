@@ -1,17 +1,16 @@
-
 using CentroEventos.Aplicacion.Entidades;
 
-namespace CentroEventos.Aplicacion.Repositorios;
-
-public interface IRepositorioReserva
+namespace CentroEventos.Aplicacion.Repositorios
 {
-    void Agregar (Reserva reserva); 
-    void Modificar (Reserva reserva);
-    void Eliminar( int idReserva);
-
-    Reserva? ObtenerPorId(int id);
-    List<Reserva> ListarTodas();
-    bool ExisteReserva(int idReserva);
-    bool ExisteReservaDuplicada(int IdPersona,int IdEventoDeportivo);
-    int ContarReservaParaEvento(int IdEventoDeportivo);
+    public interface IRepositorioReserva
+    {
+        Task Agregar(Reserva reserva);
+        Task Modificar(Reserva reserva);
+        Task Eliminar(int id);
+        Task<Reserva?> ObtenerPorId(int id);
+        Task<List<Reserva>> ListarTodas();
+        Task<bool> ExisteReserva(int id);
+        Task<bool> ExisteReservaDuplicada(int personaId, int eventoId);
+        Task<int> ContarReservaParaEvento(int eventoId);
+    }
 }

@@ -1,18 +1,17 @@
-
 using CentroEventos.Aplicacion.Entidades;
 
-namespace CentroEventos.Aplicacion.Repositorios;
-
-public interface IRepositorioPersona
+namespace CentroEventos.Aplicacion.Repositorios
 {
-    void Agregar(Persona persona);
-    void Modificar(Persona persona);
-    void Eliminar (int  idPersona);
-    Persona? ObtenerPorId(int id);
-    Persona? ObtenerPorDni(string dni);
-    Persona? ObtenerPorEmail(string email);
-    List<Persona> ListarTodas();
-    bool ExisteId(int id);
-    bool ExisteDni(string dni);
-    bool ExisteEmail(string email);
+    public interface IRepositorioPersona
+    {
+        Task Agregar(Persona persona);
+        Task Modificar(Persona persona);
+        Task Eliminar(int id);
+        Task<Persona?> ObtenerPorId(int id);
+        Task<Persona?> ObtenerPorDni(string dni);
+        Task<Persona?> ObtenerPorEmail(string email);
+        Task<List<Persona>> ListarTodas();
+        Task<bool> ExisteDni(string dni);
+        Task<bool> ExisteEmail(string email);
+    }
 }
