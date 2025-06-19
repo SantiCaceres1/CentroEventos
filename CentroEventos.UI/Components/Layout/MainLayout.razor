@@ -11,9 +11,9 @@
             <NavLink href="/Contact" class="nav-link">Conocenos</NavLink>
             @if(!Sesion.EstaLogueado())
             {
-                <NavLink href="/Login" class="nav-link">Iniciar Sesion</NavLink>
+                
             }
-            else if(Sesion.UsuarioEsAdmin)
+            else if(Sesion.UsuarioEsAdmin())
             {
                 <!-- #ADMIN  -->
                 <NavLink href="/Admin" class="nav-link">Admin</NavLink>

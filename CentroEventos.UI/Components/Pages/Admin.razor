@@ -4,7 +4,7 @@
 
 <h3>Panel de Administracion</h3>
 
-@if(!Sesion.EstaLogueado || !EsAdmin())
+@if(!Sesion.EstaLogueado() || !EsAdmin())
 {
     <p class="text-danger">Acceso no autorizado.</p>
     @code{
