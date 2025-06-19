@@ -22,7 +22,8 @@ public class ModificarUsuarioUseCase
 
     public async Task Ejecutar(Usuario usuario, int idAdmin)
     {
-        if (!_autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioModificacion))
+        var permiso = await _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioModificacion);
+        if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para modificar personas.");
 
         if (!await _repositorio.ExisteID(usuario.ID))

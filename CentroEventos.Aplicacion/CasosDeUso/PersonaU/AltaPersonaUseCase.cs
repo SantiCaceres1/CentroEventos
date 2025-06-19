@@ -20,11 +20,12 @@ public class AltaPersonaUseCase
         _validador = new ValidadorPersona(repositorioPersona);
     }
 
-    public void Ejecutar(Persona persona, int idUsuario)
+    public async void Ejecutar(Persona persona, int idUsuario)
     {
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta))
+        var permiso = await _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
+        if (!permiso)
             throw new FalloAutorizacionException("El  usuario no tiene permiso para dar de alta personas.");
         _validador.Validar(persona);
-        _repositorioPersona.Agregar(persona);
+        await _repositorioPersona.Agregar(persona);
     }
 }

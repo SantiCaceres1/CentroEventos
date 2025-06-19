@@ -21,13 +21,14 @@ public class AltaEventoDeportivoUseCase
         _validador = new ValidadorEventoDeportivo(repositorioEvento, repositorioPersona);
     }
 
-    public void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
+    public async void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta);
+        if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta eventos.");
 
         
         _validador.Validar(eventoDeportivo);
-        _repositorioEvento.Agregar(eventoDeportivo);
+        await _repositorioEvento.Agregar(eventoDeportivo);
     }
 }

@@ -19,7 +19,8 @@ public class EliminarReservaUseCase
 
     public async Task Ejecutar(int idReserva, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Entidades.Permiso.ReservaBaja))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Entidades.Permiso.ReservaBaja);
+        if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar reservas");
         if (!await _repositorio.ExisteReserva(idReserva))
             throw new EntidadNotFoundException("La reserva no existe.");

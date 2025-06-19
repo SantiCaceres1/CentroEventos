@@ -21,7 +21,8 @@ public class EliminarEventoDeportivoUseCase
 
     public async Task Ejecutar(int idEvento, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja);
+        if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para eliminar eventos.");
         if (!await _repositorioEvento.ExisteId(idEvento))
             throw new EntidadNotFoundException("El evento no existe.");

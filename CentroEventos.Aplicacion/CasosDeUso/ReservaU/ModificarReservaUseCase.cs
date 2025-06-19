@@ -20,7 +20,8 @@ public class ModificarReservaUseCase
 
     public async Task Ejecutar(Reserva reserva, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion);
+        if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para modifcar reservas.");
             
         if (!await _repositorio.ExisteReserva(reserva.Id))

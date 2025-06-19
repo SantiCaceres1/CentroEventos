@@ -52,20 +52,20 @@ namespace CentroEventos.Aplicacion.Servicios
         public Usuario Usuario => UsuarioActual ?? throw new InvalidOperationException("No hay usuario logueado.");
         
         public bool RegistrarUsuario(string nombre, string correo, string contrasenia)
-{
-    if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contrasenia))
-        return false;
+        {
+            if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contrasenia))
+                return false;
 
-    // Validar que no exista un usuario con ese correo
-    var existente = _repositorio.ObtenerPorCorreoElectronico(correo);
-    if (existente != null)
-        return false;
+            // Validar que no exista un usuario con ese correo
+            var existente = _repositorio.ObtenerPorCorreoElectronico(correo);
+            if (existente != null)
+                return false;
 
-    // Crear nuevo usuario con hash
-    var nuevoUsuario = new Usuario(nombre, "", correo, contrasenia); // Apellido vacío por ahora
-    _repositorio.Agregar(nuevoUsuario);
+            // Crear nuevo usuario con hash
+            var nuevoUsuario = new Usuario(nombre, "", correo, contrasenia); // Apellido vacío por ahora
+            _repositorio.Agregar(nuevoUsuario);
 
-    return true;
-}
+            return true;
+        }
     }
 }

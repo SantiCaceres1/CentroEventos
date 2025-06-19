@@ -22,17 +22,18 @@ public class EliminarPersonaUseCase
 
     public async void Ejecutar(int idPersona, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioBaja))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioBaja);
+        if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar personas.");
 
-        if (!_repositorioPersona.ExisteId(idPersona))
+        if (_repositorioPersona.ObtenerPorId(idPersona) == null)
             throw new EntidadNotFoundException("La persona no existe.");
 
         var eventos = await _repositorioEventos.ListarTodos();
         if (eventos.Any(e => e.IdResponsable == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque es responsable de un evento.");
 
-        if (eventos.Any(r => r.IdPersona == idPersona))
+        if (eventos.Any(r => r.Id == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque tiene reservas asociadas.");
 
         await _repositorioPersona.Eliminar(idPersona);

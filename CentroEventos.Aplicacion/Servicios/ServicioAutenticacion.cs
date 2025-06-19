@@ -1,6 +1,6 @@
 namespace CentroEventos.Aplicacion.Servicios;
 
-public class ServicioAutenticacion // : IServicioAutemticacion
+public class ServicioAutenticacion
 {
     public bool VerificarContraseña(string contraseña, string _hashContraseña)
     {

@@ -24,9 +24,10 @@ public class AltaReservaUseCase
         _validador = new ValidadorReserva(repositorioReserva, repositorioPersona, repositorioEvento);
     }
 
-    public void Ejecutar(Reserva reserva, int idUsuario)
+    public async void Ejecutar(Reserva reserva, int idUsuario)
     {
-        if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaAlta))
+        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaAlta);
+        if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para registgar reservas.");
         _validador.Validar(reserva);
 
@@ -34,7 +35,7 @@ public class AltaReservaUseCase
 
         reserva.AsignarEstadoAsistencia(EstadoAsistencia.Pendiente);
 
-        _repositorioReserva.Agregar(reserva);
+        await _repositorioReserva.Agregar(reserva);
     }
 
 

@@ -11,10 +11,6 @@ public interface IRepositorioUsuario
     Task<Usuario?> ObtenerPorNombre(string nombreUsuario);
     Task<Usuario> ObtenerPorCorreoElectronico(string correoElectronico);
     Task<bool> ExisteUsuario(string nombreUsuario);
-
-
-
-    // NUEVOS REPOSITORIOS
     Task<Usuario> ObtenerPorId(int id);
     Task<List<Usuario>> ListarTodas();
     Task<bool> ExisteID(int id);

@@ -22,7 +22,8 @@ public class EliminarUsuarioUseCase
 
     public async Task Ejecutar(int idUsuario, int idAdmin)
     {
-        if (!_autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioBaja))
+        var permiso = await _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioBaja);
+        if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar personas.");
 
         if (!await _repositorioUsuario.ExisteID(idUsuario))
@@ -32,12 +33,11 @@ public class EliminarUsuarioUseCase
         if (eventos.Any(e => e.IdResponsable == idUsuario))
             throw new OperacionInvalidaException("No se puede eliminar el usuario porque es responsable de un evento.");
 
-/*
-    QUE ONDA ESTO??
-*/
-        // if (_repositorioReserva.ListarTodas().Any(r => r.IdPersona == idUsuario))
-        //     throw new OperacionInvalidaException("No se puede eliminar el usuario porque tiene reservas asociadas.");
+        var reservas = await _repositorioReserva.ListarTodas(); 
+        if (reservas.Any(r => r.IdPersona == idUsuario))
+            throw new OperacionInvalidaException("No se puede eliminar el usuario porque tiene reservas asociadas.");
 
-        // _repositorioUsuario.Eliminar(idUsuario);
+        var usuario = await _repositorioUsuario.ObtenerPorId(idUsuario);
+        await _repositorioUsuario.Eliminar(usuario);
     }
 }

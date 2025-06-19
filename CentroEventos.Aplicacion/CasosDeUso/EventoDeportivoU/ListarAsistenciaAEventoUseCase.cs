@@ -21,8 +21,7 @@ public class ListarAsistenciaAEventoUseCase
 
     public async Task<List<Reserva>> Ejecutar(int idEvento)
     {
-        var evento = await _repoEventos.ObtenerPorId(idEvento);
-        if (evento == null)
+        var evento = await _repoEventos.ObtenerPorId(idEvento) ??
             throw new EntidadNotFoundException("El evento no existe.");
 
         if (evento.FechaInicio > DateTime.Now)
