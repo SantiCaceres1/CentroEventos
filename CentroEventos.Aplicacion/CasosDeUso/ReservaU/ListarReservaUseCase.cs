@@ -13,7 +13,7 @@ public class ListarReservaUseCase
         _repositorio = repositorio;
     }
 
-    public List<Reserva> Ejecutar()
+    public Task<List<Reserva>> Ejecutar()
     {
         return _repositorio.ListarTodas();
     }

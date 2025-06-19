@@ -21,16 +21,16 @@ public class ModificarEventoDeportivoUseCase
         _validador = new ValidadorEventoDeportivo(repositorioEvento, repositorioPersona);
     }
 
-    public void Ejecutar(EventoDeportivo eventoModificado, int idUsuario)
+    public async Task Ejecutar(EventoDeportivo eventoModificado, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoModificacion))
             throw new FalloAutorizacionException("El usuario no tiene el permiso para modificar eventos.");
-        var eventoExistente = _repositorioEvento.ObtenerPorId(eventoModificado.Id);
+        var eventoExistente = await _repositorioEvento.ObtenerPorId(eventoModificado.Id);
         if (eventoExistente == null)
             throw new EntidadNotFoundException("El evento a modificar no existe.");
         if (eventoExistente.FechaInicio < DateTime.Now)
             throw new OperacionInvalidaException("No se puede modificar un evento que ya ocurrio.");
         _validador.Validar(eventoModificado);
-        _repositorioEvento.Modificar(eventoModificado);
+        await _repositorioEvento.Modificar(eventoModificado);
     }
 }

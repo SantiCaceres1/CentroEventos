@@ -17,13 +17,13 @@ public class ListarEventosConCupoDisponibleUseCase
         _repoReservas = repoReservas;
     }
 
-    public List<EventoDeportivo> Ejecutar()
+    public async Task<List<EventoDeportivo>> Ejecutar()
     {
-        var eventos = _repoEventos.ListarTodos()
+        var eventos = (await _repoEventos.ListarTodos())
             .Where(e => e.FechaInicio > DateTime.Now)
             .ToList();
 
-        var reservas = _repoReservas.ListarTodas();
+        var reservas = await _repoReservas.ListarTodas();
 
         return eventos
             .Where(e =>

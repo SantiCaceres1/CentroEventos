@@ -7,3 +7,8 @@ public interface IServicioAutorizacion
 {
     bool PoseeElPermiso(int idUsuario, Permiso permiso);
 }
+
+
+/*
+    ABRA QUE ELIMINARLO?
+*/

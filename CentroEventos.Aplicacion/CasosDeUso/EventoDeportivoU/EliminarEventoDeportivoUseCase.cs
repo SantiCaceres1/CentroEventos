@@ -19,16 +19,17 @@ public class EliminarEventoDeportivoUseCase
         _autorizacion = autorizacion;
     }
 
-    public void Ejecutar(int idEvento, int idUsuario)
+    public async Task Ejecutar(int idEvento, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja))
             throw new FalloAutorizacionException("El usuario no tiene permiso para eliminar eventos.");
-        if (!_repositorioEvento.ExisteId(idEvento))
+        if (!await _repositorioEvento.ExisteId(idEvento))
             throw new EntidadNotFoundException("El evento no existe.");
-        bool tieneReservas = _repositorioReserva.ListarTodas().Any(r => r.IdEventoDeportivo == idEvento);
+        var reservas = await _repositorioReserva.ListarTodas();
+        bool tieneReservas = reservas.Any(r => r.IdEventoDeportivo == idEvento);
         if (tieneReservas)
             throw new OperacionInvalidaException("No se puede eliminar el evento porque tiene reservas asociadas.");
-        _repositorioEvento.Eliminar(idEvento);
+        await _repositorioEvento.Eliminar(idEvento);
     }
 
 
