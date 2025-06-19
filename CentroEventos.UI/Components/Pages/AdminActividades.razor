@@ -3,7 +3,7 @@
 @inject NavigationManager Navigation
 
 <h3>Panel de actividades</h3>
-@if (!Sesion.EstaLogueado || !EsAdmin())
+@if (!Sesion.EstaLogueado() || !EsAdmin())
 {
     <p class="text-danger">Acceso no autorizado.</p>
     @code {
@@ -24,5 +24,5 @@ else
     </div>
 }
 @code {
-    private bool EsAdmin() => Sesion.UsuarioEsAdmin;
+    private bool EsAdmin() => Sesion.UsuarioEsAdmin();
 }

@@ -3,6 +3,7 @@
 @using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU
 @using CentroEventos.Aplicacion.Entidades
 @inject ListarEventosConCupoDisponibleUseCase ListarEventosConCupoDisponibleUseCase
+
 <div class="text-center">
     <h3 >Actividades con cupo</h3>
 </div>
@@ -28,7 +29,7 @@ else
                 <tr>
                     <td>@act.Nombre</td>
                     <td>@string.Join(", ", act.FechaInicio)</td>
-                    <td>@(act.CupoMaximo - act.CupoMaximo)</td>
+                    <td>@(act.CupoMaximo)</td>
                 </tr>
             }
         </tbody>
