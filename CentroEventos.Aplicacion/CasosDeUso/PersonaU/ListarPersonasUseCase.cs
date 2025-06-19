@@ -12,7 +12,7 @@ public class ListarPersonasUseCase
         _repositorio = repositorio;
     }
 
-    public List<Persona> Ejecutar()
+    public Task<List<Persona>> Ejecutar()
     {
         return _repositorio.ListarTodas();
     }

@@ -13,7 +13,7 @@ public class ListarEventoDeportivoUseCase
         _repositorio = repositorio;
     }
 
-    public List<EventoDeportivo> Ejecutar()
+    public Task<List<EventoDeportivo>> Ejecutar()
     {
         return _repositorio.ListarTodos();
     }

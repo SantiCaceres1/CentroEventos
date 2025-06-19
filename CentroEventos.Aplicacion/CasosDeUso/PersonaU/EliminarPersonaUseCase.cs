@@ -20,7 +20,7 @@ public class EliminarPersonaUseCase
         _autorizacion = autorizacion;
     }
 
-    public void Ejecutar(int idPersona, int idUsuario)
+    public async void Ejecutar(int idPersona, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioBaja))
             throw new FalloAutorizacionException("No tiene permiso para eliminar personas.");
@@ -28,12 +28,13 @@ public class EliminarPersonaUseCase
         if (!_repositorioPersona.ExisteId(idPersona))
             throw new EntidadNotFoundException("La persona no existe.");
 
-        if (_repositorioEventos.ListarTodos().Any(e => e.IdResponsable == idPersona))
+        var eventos = await _repositorioEventos.ListarTodos();
+        if (eventos.Any(e => e.IdResponsable == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque es responsable de un evento.");
 
-        if (_repositorioReserva.ListarTodas().Any(r => r.IdPersona == idPersona))
+        if (eventos.Any(r => r.IdPersona == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque tiene reservas asociadas.");
 
-        _repositorioPersona.Eliminar(idPersona);
+        await _repositorioPersona.Eliminar(idPersona);
     }
 }

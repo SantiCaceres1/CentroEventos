@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -18,16 +19,17 @@ public class ListarAsistenciaAEventoUseCase
         _repoReservas = repoReservas;
     }
 
-    public List<Reserva> Ejecutar(int idEvento)
+    public async Task<List<Reserva>> Ejecutar(int idEvento)
     {
-        var evento = _repoEventos.ObtenerPorId(idEvento);
+        var evento = await _repoEventos.ObtenerPorId(idEvento);
         if (evento == null)
             throw new EntidadNotFoundException("El evento no existe.");
 
         if (evento.FechaInicio > DateTime.Now)
             throw new OperacionInvalidaException("Solo se puede listar asistencia para eventos que ya ocurrieron.");
 
-        return _repoReservas.ListarTodas()
+        var reservas = await _repoReservas.ListarTodas();
+        return reservas
             .Where(r => r.IdEventoDeportivo == idEvento)
             .ToList();
     }

@@ -2,12 +2,13 @@ using CentroEventos.Aplicacion.Servicios;
 
 namespace CentroEventos.Aplicacion.Entidades;
 
-    public class Usuario
-    {
-        private string ? _nombre { get; set; }
-        private string ? _apellido { get; set; }
-        private string ? _correoElectronico { get; set; }
-        private string ? _hashContraseña { get; set; }
+public class Usuario
+{
+    private int _id;
+    private string? _nombre;
+    private string? _apellido;
+    private string? _correoElectronico;
+    private string? _hashContraseña;
 
     // Constructor
     public Usuario(string nombre, string apellido, string correoElectronico, string hashContraseña)
@@ -18,6 +19,23 @@ namespace CentroEventos.Aplicacion.Entidades;
         _hashContraseña = Hasher.Hashear(hashContraseña);
     }
 
-        // Relación Muchos a Muchos:
-        private List<UsuarioPermiso> Permisos { get; set; } = new();
+    // Relación Muchos a Muchos:
+    private List<UsuarioPermiso> Permisos { get; set; } = new();
+
+    public int ID => _id;
+    public string? Nombre => _nombre;
+    public string? Apellido => _apellido;
+    public string? CorreoElectronico => _correoElectronico;
+    public string? HashContraseña => _hashContraseña;
+
+    public override string ToString()
+    {
+        return $"[{ID}] {Nombre} {Apellido} - Email: {CorreoElectronico} ";
+    }
+
+    public bool VerificarContraseña(string contraseña)
+    {
+        return Hasher.Verificar(contraseña, _hashContraseña!);
+    }
+
 }

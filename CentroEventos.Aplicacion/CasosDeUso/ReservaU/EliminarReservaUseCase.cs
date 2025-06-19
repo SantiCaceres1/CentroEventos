@@ -1,4 +1,5 @@
 
+using System.Threading.Tasks;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
 using CentroEventos.Aplicacion.Servicios;
@@ -16,12 +17,12 @@ public class EliminarReservaUseCase
         _autorizacion = autorizacion;
     }
 
-    public void Ejecutar(int idReserva, int idUsuario)
+    public async Task Ejecutar(int idReserva, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Entidades.Permiso.ReservaBaja))
             throw new FalloAutorizacionException("No tiene permiso para eliminar reservas");
-        if (!_repositorio.ExisteReserva(idReserva))
+        if (!await _repositorio.ExisteReserva(idReserva))
             throw new EntidadNotFoundException("La reserva no existe.");
-        _repositorio.Eliminar(idReserva);
+        await _repositorio.Eliminar(idReserva);
     }
 }

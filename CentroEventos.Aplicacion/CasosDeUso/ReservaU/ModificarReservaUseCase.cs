@@ -1,4 +1,5 @@
 
+using System.Threading.Tasks;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -17,14 +18,14 @@ public class ModificarReservaUseCase
         _autorizacion = autorizacion;
     }
 
-    public void Ejecutar(Reserva reserva, int idUsuario)
+    public async Task Ejecutar(Reserva reserva, int idUsuario)
     {
         if (!_autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion))
             throw new FalloAutorizacionException("No tiene permiso para modifcar reservas.");
             
-        if (!_repositorio.ExisteReserva(reserva.Id))
+        if (!await _repositorio.ExisteReserva(reserva.Id))
             throw new EntidadNotFoundException("La reserva no existe.");
-        _repositorio.Modificar(reserva);
+        await _repositorio.Modificar(reserva);
     }
 
 

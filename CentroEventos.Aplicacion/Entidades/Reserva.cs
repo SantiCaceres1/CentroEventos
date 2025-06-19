@@ -19,14 +19,14 @@ public class Reserva
     }
 
     //constructor con id
-    public Reserva(int id, int idPersona, int idEvento, DateTime fechaAltaReserva)
-    {
-        _id = id;
-        _idPersona = idPersona;
-        _idEventoDeportivo = idEvento;
-        _fechaAltaReserva = fechaAltaReserva;
-        _estadoAsistencia = EstadoAsistencia.Pendiente;
-    }
+    // public Reserva(int id, int idPersona, int idEvento, DateTime fechaAltaReserva)
+    // {
+    //     _id = id;
+    //     _idPersona = idPersona;
+    //     _idEventoDeportivo = idEvento;
+    //     _fechaAltaReserva = fechaAltaReserva;
+    //     _estadoAsistencia = EstadoAsistencia.Pendiente;
+    // }
     //Getters publicos
     public int Id => _id;
 
