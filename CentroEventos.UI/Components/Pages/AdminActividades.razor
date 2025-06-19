@@ -3,12 +3,10 @@
 @inject NavigationManager Navigation
 
 <h3>Panel de actividades</h3>
-@if (!Sesion.EstaLogueado() || !EsAdmin())
+
+@if (!_autorizado)
 {
     <p class="text-danger">Acceso no autorizado.</p>
-    @code {
-        protected override void OnInitialized() => Navigation.NavigateTo("/");
-    }
 }
 else
 {
@@ -23,6 +21,18 @@ else
         </ul>
     </div>
 }
+
 @code {
-    private bool EsAdmin() => Sesion.UsuarioEsAdmin();
+    private bool _autorizado = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Sesion.EstaLogueado() || !await Sesion.UsuarioEsAdmin())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+
+        _autorizado = true;
+    }
 }

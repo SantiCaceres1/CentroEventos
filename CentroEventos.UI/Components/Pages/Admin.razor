@@ -4,12 +4,24 @@
 
 <h3>Panel de Administracion</h3>
 
-@if(!Sesion.EstaLogueado() || !EsAdmin())
+@code {
+    private bool accesoAutorizado = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        accesoAutorizado = Sesion.EstaLogueado() && await EsAdmin();
+        if (!accesoAutorizado)
+        {
+            Navigation.NavigateTo("/");
+        }
+    }
+
+    private async Task<bool> EsAdmin() => await Sesion.UsuarioEsAdmin();
+}
+
+@if(!accesoAutorizado)
 {
     <p class="text-danger">Acceso no autorizado.</p>
-    @code{
-        protected override void OnInitialized() => Navigation.NavigateTo("/");
-    }
 }
 else
 {
@@ -21,7 +33,4 @@ else
             <li><NavLink href="/AdminActividades">Gestionar Actividades</NavLink></li>
         </ul>
     </div>
-}
-@code {
-    private bool EsAdmin() => Sesion.UsuarioEsAdmin();
 }

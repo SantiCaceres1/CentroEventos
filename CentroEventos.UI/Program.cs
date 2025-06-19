@@ -13,10 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivo>();
-builder.Services.AddScoped<IRepositorioReserva, RepositorioReserva>();
+builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivoEF>();
+builder.Services.AddScoped<IRepositorioReserva, RepositorioReservaEF>();
 builder.Services.AddScoped<UsuarioSesion>();
-builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
 builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
 
 var app = builder.Build();
