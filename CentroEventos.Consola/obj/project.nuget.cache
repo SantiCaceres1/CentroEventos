@@ -1,8 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "24IKBgNMxr0=",
+  "dgSpecHash": "AliMRN1wiLw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sebastian\\OneDrive\\Desktop\\APU\\CentroEventos\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Consola/CentroEventos.Consola.csproj",
+  "expectedPackageFiles": [
+    "/Users/l.galluzzi/.nuget/packages/microsoft.entityframeworkcore/9.0.6/microsoft.entityframeworkcore.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.6/microsoft.entityframeworkcore.abstractions.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.6/microsoft.entityframeworkcore.analyzers.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.6/microsoft.extensions.caching.abstractions.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.caching.memory/9.0.6/microsoft.extensions.caching.memory.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.6/microsoft.extensions.dependencyinjection.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.6/microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.logging/9.0.6/microsoft.extensions.logging.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.6/microsoft.extensions.logging.abstractions.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.options/9.0.6/microsoft.extensions.options.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.extensions.primitives/9.0.6/microsoft.extensions.primitives.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/system.diagnostics.diagnosticsource/9.0.6/system.diagnostics.diagnosticsource.9.0.6.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.15/microsoft.netcore.app.host.osx-arm64.8.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

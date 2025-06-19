@@ -20,13 +20,13 @@ public class Usuario
     }
 
     // Relación Muchos a Muchos:
-    private List<UsuarioPermiso> Permisos { get; set; } = new();
-
+    private List<UsuarioPermiso> _permisos = new();
     public int ID => _id;
     public string? Nombre => _nombre;
     public string? Apellido => _apellido;
     public string? CorreoElectronico => _correoElectronico;
     public string? HashContraseña => _hashContraseña;
+    public List<UsuarioPermiso> Permisos => _permisos;
 
     public override string ToString()
     {

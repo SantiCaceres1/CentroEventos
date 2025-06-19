@@ -9,16 +9,18 @@ public interface IRepositorioUsuario
     Task Modificar(Usuario usuario);
     Task Eliminar(Usuario usuario);
     Task<Usuario?> ObtenerPorNombre(string nombreUsuario);
-    Task<Usuario?> ObtenerPorCorreo(string correoElectronico);
+    Task<Usuario> ObtenerPorCorreoElectronico(string correoElectronico);
     Task<bool> ExisteUsuario(string nombreUsuario);
-    Task<bool> EsAdmin(string nombreUsuario);
 
-    // MI CODIGO
+
+
+    // NUEVOS REPOSITORIOS
     Task<Usuario> ObtenerPorId(int id);
-    Task<Usuario> ObtenerPorCorreoElectronico(string CorreoElectronico);
     Task<List<Usuario>> ListarTodas();
     Task<bool> ExisteID(int id);
-    Task<bool> ExisteCorreoElectronico(string CorreoElectronico);
-    Task<bool> PoseeElPermiso(int idUsuario, Permiso permiso);
+    Task<bool> ExisteCorreoElectronico(string correoElectronico);
     Task<bool> VerificarContraseña(string contraseña);
+    Task<bool> AgregarPermiso(int idUsuario, Permiso permiso);
+    Task<bool> EliminarPermiso(int idUsuario, Permiso permiso);
+    Task<bool> PoseeElPermiso(int idUsuario, Permiso permiso);
 }
