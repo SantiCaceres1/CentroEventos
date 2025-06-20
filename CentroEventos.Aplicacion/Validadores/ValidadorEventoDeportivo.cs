@@ -32,8 +32,8 @@ public class ValidadorEventoDeportivo
 
         if(evento.FechaInicio < DateTime.Now)
             throw new ValidacionException("La fecha del evento debe ser futura o actual.");
-
-        if(! _repoPersona.ExisteId(evento.IdResponsable))
+            
+        if (_repoPersona.ObtenerPorId(evento.IdResponsable)== null)
             throw new EntidadNotFoundException("No existe la persona responsable indicada.");
         
     }

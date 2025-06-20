@@ -31,7 +31,7 @@ public class ValidadorUsuario
             throw new  ValidacionException("La contraseña es obligatoria.");
         if (!CorreoElectronicoValido(usuario.CorreoElectronico))
             throw new  ValidacionException("El correo electrónico no tiene un formato válido");
-        if (_repositorio.ExisteCorreoElectronico(usuario.CorreoElectronico))
+        if (_repositorio.ExisteCorreoElectronico(usuario.CorreoElectronico) != null)
             throw new DuplicadoException("Ya existe un usuario con el mismo email.");
     }
 }

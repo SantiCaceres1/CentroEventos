@@ -40,8 +40,8 @@ else
 @code {
     List<EventoDeportivo> _eventos = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        _eventos = ListarEventosConCupoDisponibleUseCase.Ejecutar();
-}
+        _eventos = await ListarEventosConCupoDisponibleUseCase.Ejecutar();
+    }
 }

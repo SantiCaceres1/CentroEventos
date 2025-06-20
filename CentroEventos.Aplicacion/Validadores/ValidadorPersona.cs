@@ -28,10 +28,10 @@ public class ValidadorPersona
         if(string.IsNullOrWhiteSpace(persona.Email))
             throw new ValidacionException("El email no puede estar vacio.");
 
-        if(_repositorio.ExisteDni(persona.Dni))
+        if(_repositorio.ObtenerPorDni(persona.Dni) != null)
             throw new DuplicadoException("Ya existe una persona con el mismo DNI.");
 
-        if(_repositorio.ExisteEmail(persona.Email))
+        if(_repositorio.ObtenerPorEmail(persona.Email) != null)
             throw new DuplicadoException("Ya existe una persona con el mismo email.");
         
     }
