@@ -10,3 +10,15 @@ C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\C
 C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\refint\CentroEventos.Aplicacion.dll
 C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.pdb
 C:\Users\1cace\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\ref\CentroEventos.Aplicacion.dll
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\bin\Debug\net8.0\CentroEventos.Aplicacion.deps.json
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\bin\Debug\net8.0\CentroEventos.Aplicacion.dll
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\bin\Debug\net8.0\CentroEventos.Aplicacion.pdb
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.AssemblyInfo.cs
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.sourcelink.json
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.dll
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\refint\CentroEventos.Aplicacion.dll
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.pdb
+C:\Users\usuario\Desktop\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\ref\CentroEventos.Aplicacion.dll

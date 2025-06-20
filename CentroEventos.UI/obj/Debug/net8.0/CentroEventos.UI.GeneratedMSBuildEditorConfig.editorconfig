@@ -9,67 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CentroEventos.UI
 build_property.RootNamespace = CentroEventos.UI
-build_property.ProjectDir = C:\Users\1cace\Documents\GitHub\CentroEventos\CentroEventos.UI\
+build_property.ProjectDir = C:\Users\usuario\Desktop\CentroEventos\CentroEventos.UI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\1cace\Documents\GitHub\CentroEventos\CentroEventos.UI
+build_property.MSBuildProjectDirectory = C:\Users\usuario\Desktop\CentroEventos\CentroEventos.UI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/App.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Actividades.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Actividades.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Admin.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Admin.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/AdminActividades.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/AdminActividades.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkFjdGl2aWRhZGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/AdminUsuarios.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/AdminUsuarios.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblVzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Error.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/MisActividades.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/MisActividades.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNaXNBY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Register.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Routes.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/_Imports.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Layout/MainLayout.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-uopeu9fc6a
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Contact.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Contact.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-kroq4i7slt
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Home.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-gjcxcwux6z
 
-[C:/Users/1cace/Documents/GitHub/CentroEventos/CentroEventos.UI/Components/Pages/Login.razor]
+[C:/Users/usuario/Desktop/CentroEventos/CentroEventos.UI/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-2ib10wyder

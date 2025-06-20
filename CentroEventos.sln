@@ -7,15 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.Aplicacion", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.Repositorios", "CentroEventos.Repositorios\CentroEventos.Repositorios.csproj", "{8680E561-D710-4A42-85F0-81346DE46CBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.Consola", "CentroEventos.Consola\CentroEventos.Consola.csproj", "{C1DC0DF2-3825-4F32-980E-5DB86B739B4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentroEventos.UI", "CentroEventos.UI\CentroEventos.UI.csproj", "{423BEC45-5350-4B43-9BE7-871EF65DD464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E4398C21-5869-4B7E-BC3F-5BCE288BFCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,9 +23,12 @@ Global
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8680E561-D710-4A42-85F0-81346DE46CBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1DC0DF2-3825-4F32-980E-5DB86B739B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1DC0DF2-3825-4F32-980E-5DB86B739B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1DC0DF2-3825-4F32-980E-5DB86B739B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1DC0DF2-3825-4F32-980E-5DB86B739B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423BEC45-5350-4B43-9BE7-871EF65DD464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423BEC45-5350-4B43-9BE7-871EF65DD464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423BEC45-5350-4B43-9BE7-871EF65DD464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423BEC45-5350-4B43-9BE7-871EF65DD464}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj": {}
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
         "projectName": "CentroEventos.Aplicacion",
-        "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
-        "packagesPath": "C:\\Users\\1cace\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\1cace\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -62,17 +62,17 @@
         }
       }
     },
-    "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
         "projectName": "CentroEventos.Repositorios",
-        "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
-        "packagesPath": "C:\\Users\\1cace\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
+        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\1cace\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -84,8 +84,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-                "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+              "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
               }
             }
           }
@@ -104,6 +104,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -124,17 +134,17 @@
         }
       }
     },
-    "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj": {
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
         "projectName": "CentroEventos.UI",
-        "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
-        "packagesPath": "C:\\Users\\1cace\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
+        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\1cace\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -146,11 +156,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-                "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+              "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
               },
-              "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
-                "projectPath": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
+              "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+                "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
               }
             }
           }

@@ -8,7 +8,7 @@ using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 var builder = WebApplication.CreateBuilder(args);
  
  //debo agregar una linea Inicializar para crear la base de datos si no existe
-CentroEventos.Repositorios.Contexto.CentroEventosContext.Inicializar();
+// CentroEventos.Repositorios.Contexto.CentroEventosContext.Inicializar();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -55,6 +55,11 @@ namespace CentroEventos.Repositorios.Contexto
             modelBuilder.Entity<Reserva>().ToTable("Reservas");
             modelBuilder.Entity<Usuario>().ToTable("Usuarios");
 
+            modelBuilder.Entity<EventoDeportivo>().HasKey(e => e.Id); 
+            modelBuilder.Entity<Persona>().HasKey(e => e.Id); 
+            modelBuilder.Entity<Reserva>().HasKey(e => e.Id); 
+            modelBuilder.Entity<Usuario>().HasKey(e => e.ID); 
+
             modelBuilder.Entity<UsuarioPermiso>()
                 .ToTable("UsuarioPermisos")
                 .HasKey(up => new { up.UsuarioId, up.Permiso });

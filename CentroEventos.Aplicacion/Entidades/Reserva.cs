@@ -3,7 +3,7 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Reserva
 {
-    private int _id ;
+    public int _id { get; protected set; }
     private int _idPersona ;
     private int _idEventoDeportivo ;
     private DateTime _fechaAltaReserva ;
@@ -18,15 +18,8 @@ public class Reserva
         _estadoAsistencia = EstadoAsistencia.Pendiente;
     }
 
-    //constructor con id
-    // public Reserva(int id, int idPersona, int idEvento, DateTime fechaAltaReserva)
-    // {
-    //     _id = id;
-    //     _idPersona = idPersona;
-    //     _idEventoDeportivo = idEvento;
-    //     _fechaAltaReserva = fechaAltaReserva;
-    //     _estadoAsistencia = EstadoAsistencia.Pendiente;
-    // }
+    public Reserva() {}
+
     //Getters publicos
     public int Id => _id;
 
@@ -46,10 +39,10 @@ public class Reserva
     {
         _estadoAsistencia = estado;
     }
-    public void AsignarId(int id)
-    {
-        _id = id;
-    }
+    // public void AsignarId(int id)
+    // {
+    //     _id = id;
+    // }
     public override string ToString()
     {
         return $"[{_id}]  Persona: {_idPersona} - Evento: {_idEventoDeportivo} - Estado: {_estadoAsistencia}";

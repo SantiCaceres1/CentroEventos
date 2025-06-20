@@ -1,59 +1,59 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css",
       "PackagePath": "staticwebassets\\CentroEventos.UI.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\app.css",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs1.jpg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs1.jpg",
       "PackagePath": "staticwebassets\\img\\crs1.jpg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs2.jpg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs2.jpg",
       "PackagePath": "staticwebassets\\img\\crs2.jpg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs3.jpg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs3.jpg",
       "PackagePath": "staticwebassets\\img\\crs3.jpg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs4.jpg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs4.jpg",
       "PackagePath": "staticwebassets\\img\\crs4.jpg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs5.jpg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs5.jpg",
       "PackagePath": "staticwebassets\\img\\crs5.jpg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
       "PackagePath": "staticwebassets\\img\\logo1.png"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo2.svg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo2.svg",
       "PackagePath": "staticwebassets\\img\\logo2.svg"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo3.png",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo3.png",
       "PackagePath": "staticwebassets\\img\\logo3.png"
     },
     {
-      "Id": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo4.svg",
+      "Id": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo4.svg",
       "PackagePath": "staticwebassets\\img\\logo4.svg"
     },
     {

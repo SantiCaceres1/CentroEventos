@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "F9E3dY7pBvLYruRvn+4dU6mGqsjXZx6GfAdYL3kxg7g=",
+  "Hash": "v6oyd3N9LKtHDANjjUUYXcQlZPrQ8tgAvbuY74JlX9w=",
   "Source": "CentroEventos.UI",
   "BasePath": "_content/CentroEventos.UI",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CentroEventos.UI\\wwwroot",
       "Source": "CentroEventos.UI",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CentroEventos.UI.styles.css",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CentroEventos.UI.styles.css",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "CentroEventos.UI.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CentroEventos.UI.styles.css"
+      "OriginalItemSpec": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\CentroEventos.UI.styles.css"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "CentroEventos.UI.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CentroEventos.UI.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\app.css",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\favicon.png",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs1.jpg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs1.jpg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/crs1.jpg",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crs1.jpg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs2.jpg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs2.jpg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/crs2.jpg",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crs2.jpg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs3.jpg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs3.jpg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/crs3.jpg",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crs3.jpg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs4.jpg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs4.jpg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/crs4.jpg",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crs4.jpg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs5.jpg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\crs5.jpg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/crs5.jpg",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crs5.jpg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo1.png",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/logo1.png",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo1.png"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo2.svg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo2.svg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/logo2.svg",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo2.svg"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo3.png",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo3.png",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/logo3.png",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo3.png"
     },
     {
-      "Identity": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo4.svg",
+      "Identity": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\img\\logo4.svg",
       "SourceId": "CentroEventos.UI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1cace\\Documents\\GitHub\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.UI\\wwwroot\\",
       "BasePath": "_content/CentroEventos.UI",
       "RelativePath": "img/logo4.svg",
       "AssetKind": "All",

@@ -20,7 +20,7 @@
 
     private async Task LoginUsuario()
     {
-        var exito = Sesion.IniciarSesion(Email, Password);
+        var exito = await Sesion.IniciarSesion(Email, Password);
         if (exito)
         {
             Navigation.NavigateTo("/");

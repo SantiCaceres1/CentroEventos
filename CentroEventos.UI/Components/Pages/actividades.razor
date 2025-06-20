@@ -9,7 +9,7 @@
 </div>
 
 <div class="text-center">
-@if (_eventos.Count == 0)
+@if (_eventos != null & _eventos.Any() & _eventos.Count == 0)
 {
     <p>No hay eventos disponibles por el momento.</p>
 }
@@ -28,7 +28,7 @@ else
             {
                 <tr>
                     <td>@act.Nombre</td>
-                    <td>@string.Join(", ", act.FechaInicio)</td>
+                    <td>@act.FechaInicio.ToString("dd/MM/yyyy HH:mm")</td>
                     <td>@(act.CupoMaximo)</td>
                 </tr>
             }

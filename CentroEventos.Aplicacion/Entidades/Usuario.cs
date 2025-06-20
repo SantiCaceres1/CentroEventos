@@ -4,7 +4,7 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Usuario
 {
-    private int _id;
+    public int _id { get; protected set;}
     private string? _nombre;
     private string? _apellido;
     private string? _correoElectronico;
@@ -18,6 +18,8 @@ public class Usuario
         _correoElectronico = correoElectronico;
         _hashContraseña = Hasher.Hashear(hashContraseña);
     }
+
+    public Usuario() { }
 
     // Relación Muchos a Muchos:
     private List<UsuarioPermiso> _permisos = new();

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj": {}
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {}
   },
   "projects": {
-    "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj": {
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
         "projectName": "CentroEventos.Aplicacion",
-        "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj",
-        "packagesPath": "/Users/l.galluzzi/.nuget/packages/",
-        "outputPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/l.galluzzi/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -54,36 +53,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj": {
+    "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj",
+        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
         "projectName": "CentroEventos.Repositorios",
-        "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj",
-        "packagesPath": "/Users/l.galluzzi/.nuget/packages/",
-        "outputPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/",
+        "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
+        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/l.galluzzi/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -95,8 +84,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj": {
-                "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj"
+              "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
               }
             }
           }
@@ -110,14 +99,17 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.6, )"
             }
@@ -133,22 +125,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

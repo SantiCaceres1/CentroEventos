@@ -10,34 +10,34 @@
     }
 }
 
-
 <header class="navbar">
     <div class="container">
-            else if (esAdmin)
-            {
         <nav class="navbar-nav">
-                <!-- #ADMIN  -->
-                <NavLink href="/Admin" class="nav-link">Admin</NavLink>
-                <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
-                <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
+            <a class="logo" href="/"><img src="img\logo1.png" alt="CampusFit Logo" height="85"></a>
+            <NavLink href="/" class="nav-link" Match="NavLinkMatch.All">Inicio</NavLink>
+            <NavLink href="/Actividades" class="nav-link">Actividades</NavLink>
+            <NavLink href="/Contact" class="nav-link">Conocenos</NavLink>
+            @if (Sesion.EstaLogueado())
+            {
                 <NavLink href="/MisActividades" class="nav-link">Panel de Actividades</NavLink>
-                <button class="btn btn-outline" @onclick="Sesion.CerrarSesion">Cerrar Sesion</button>
-            }
-                <NavLink href="/Admin" class="nav-link">Admin</NavLink>
-                <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
-                <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
+
                 @if (esAdmin)
                 {
-                    <NavLink href="/MisActividades" class="nav-link">Panel de Actividades</NavLink>
+                    <NavLink href="/Admin" class="nav-link">Admin</NavLink>
+                    <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
+                    <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
                 }
-                <button class="btn btn-outline" @onclick="Sesion.CerrarSesion">Cerrar Sesion</button>
-            }
 
+                <button class="btn btn-outline" @onclick="Sesion.CerrarSesion">Cerrar Sesión</button>
+            }
+            else
+            {
+                <div class="auth-buttons">
+                    <NavLink href="/Registro" class="btn btn-primary">Registrarse</NavLink>
+                    <NavLink href="/Login" class="btn btn-outline">Iniciar Sesión</NavLink>
+                </div>
+            }
         </nav>
-        <div class="auth-buttons">
-            <NavLink href="/Registro" class="btn btn-primary">Registrarse</NavLink>
-            <NavLink href="/Login" class="btn btn-outline">Inciar Sesion</NavLink>
-        </div>
     </div>
 </header>
 
