@@ -26,7 +26,7 @@ public class ModificarUsuarioUseCase
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para modificar personas.");
 
-        if (!await _repositorio.ExisteID(usuario.ID))
+        if (!await _repositorio.ExisteID(usuario.Id))
             throw new EntidadNotFoundException("No existe el usuario que se quiere modificar.");
 
         _validador.Validar(usuario);

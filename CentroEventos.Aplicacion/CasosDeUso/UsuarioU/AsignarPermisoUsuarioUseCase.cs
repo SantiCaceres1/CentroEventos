@@ -23,7 +23,7 @@ public class AsignarPermisoUsuarioUseCase
         if (!esAdmin)
             throw new FalloAutorizacionException("No tiene permisos para asignar permisos a otros usuarios");
 
-        await _repositorio.AgregarPermiso(usuario.ID, permiso);
+        await _repositorio.AgregarPermiso(usuario.Id, permiso);
     }
 
 }
