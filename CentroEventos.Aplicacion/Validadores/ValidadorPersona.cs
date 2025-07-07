@@ -7,32 +7,35 @@ namespace CentroEventos.Aplicacion.Validadores;
 
 public class ValidadorPersona
 {
-     private readonly IRepositorioPersona _repositorio;
+    private readonly IRepositorioPersona _repositorio;
 
     public ValidadorPersona(IRepositorioPersona repositorio)
     {
         _repositorio = repositorio;
     }
 
-    public void Validar(Persona persona)
+    public async Task<List<string>> Validar(Persona persona)
     {
+        var errores = new List<string>();
+
         if(string.IsNullOrWhiteSpace(persona.Dni))
-            throw new ValidacionException("El DNI no puede estar vacio.");
+            errores.Add("El DNI no puede estar vacio.");
 
         if(string.IsNullOrWhiteSpace(persona.Nombre))
-            throw new ValidacionException("El nombre no puede estar vacio.");
+            errores.Add("El nombre no puede estar vacio.");
 
         if(string.IsNullOrWhiteSpace(persona.Apellido))
-            throw new ValidacionException("El apellido no puede estar vacio.");
+            errores.Add("El apellido no puede estar vacio.");
 
         if(string.IsNullOrWhiteSpace(persona.Email))
-            throw new ValidacionException("El email no puede estar vacio.");
+            errores.Add("El email no puede estar vacio.");
 
         if(_repositorio.ObtenerPorDni(persona.Dni) != null)
-            throw new DuplicadoException("Ya existe una persona con el mismo DNI.");
+            errores.Add("Ya existe una persona con el mismo DNI.");
 
         if(_repositorio.ObtenerPorEmail(persona.Email) != null)
-            throw new DuplicadoException("Ya existe una persona con el mismo email.");
-        
+            errores.Add("Ya existe una persona con el mismo email.");
+
+        return errores;
     }
 }

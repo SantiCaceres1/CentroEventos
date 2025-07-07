@@ -30,7 +30,9 @@ public class ModificarPersonaUseCase
         if (await _repositorio.ObtenerPorId(persona.Id) == null)
             throw new EntidadNotFoundException("No existe la persona que se quiere modificar.");
 
-        _validador.Validar(persona);
+        var errores = await _validador.Validar(persona);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al modificar la persona.", errores);
 
         await _repositorio.Modificar(persona);
 

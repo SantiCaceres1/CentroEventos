@@ -29,7 +29,9 @@ public class AltaReservaUseCase
         var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaAlta);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para registgar reservas.");
-        _validador.Validar(reserva);
+        var errores = await _validador.Validar(reserva);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al dar de alta la reserva.", errores);
 
         reserva.AsignarFechaDeAlta(DateTime.Now);
 

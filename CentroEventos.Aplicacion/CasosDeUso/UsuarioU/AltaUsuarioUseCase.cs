@@ -25,7 +25,9 @@ public class AltaUsuarioUseCase
         var permiso = await _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta a usuarios.");
-        _validador.Validar(usuario);
+        var errores = await _validador.Validar(usuario);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al dar de alta el usuario.", errores);
         await _repositorioUsuario.Agregar(usuario);
     }
 }

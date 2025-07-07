@@ -26,7 +26,9 @@ public class ModificarReservaUseCase
             
         if (!await _repositorio.ExisteReserva(reserva.Id))
             throw new EntidadNotFoundException("La reserva no existe.");
-        await _repositorio.Modificar(reserva);
+        var errores = await _repositorio.Modificar(reserva);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al modificar la reserva.", errores);
     }
 
 

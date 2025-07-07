@@ -29,7 +29,9 @@ public class ModificarUsuarioUseCase
         if (!await _repositorio.ExisteID(usuario.Id))
             throw new EntidadNotFoundException("No existe el usuario que se quiere modificar.");
 
-        _validador.Validar(usuario);
+        var errores = await _validador.Validar(usuario);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al modificar el usuario.", errores);
 
         await _repositorio.Modificar(usuario);
 
