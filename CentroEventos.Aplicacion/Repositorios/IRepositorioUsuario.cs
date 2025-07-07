@@ -15,7 +15,7 @@ public interface IRepositorioUsuario
     Task<List<Usuario>> ListarTodas();
     Task<bool> ExisteID(int id);
     Task<bool> ExisteCorreoElectronico(string correoElectronico);
-    Task<bool> VerificarContraseña(string contraseña);
+    //Task<bool> VerificarContraseña(string contraseña);
     Task<bool> AgregarPermiso(int idUsuario, Permiso permiso);
     Task<bool> EliminarPermiso(int idUsuario, Permiso permiso);
     Task<bool> PoseeElPermiso(int idUsuario, Permiso permiso);

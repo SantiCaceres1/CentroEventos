@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "pBE8XSB5iXI=",
+  "dgSpecHash": "60cugOysOGc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\usuario\\Desktop\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj",
+  "expectedPackageFiles": [
+    "/Users/l.galluzzi/.nuget/packages/microsoft.netcore.app.ref/8.0.15/microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "/Users/l.galluzzi/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

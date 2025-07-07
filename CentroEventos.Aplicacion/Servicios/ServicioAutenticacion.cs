@@ -2,8 +2,14 @@ namespace CentroEventos.Aplicacion.Servicios;
 
 public class ServicioAutenticacion
 {
-    public bool VerificarContraseña(string contraseña, string _hashContraseña)
+    public bool VerificarContraseña(string contraseña, string hashAComparar)
     {
-        return Hasher.Verificar(contraseña, _hashContraseña!);
+        string hash = Hasher.Hashear(contraseña);
+        if (hash == hashAComparar)
+        {
+            return true;
+        }
+        return false;
     }
+
 }
