@@ -25,10 +25,9 @@ namespace CentroEventos.Repositorios.Contexto
         {
         }
 
-        public static void Inicializar()
+        public static void Inicializar(CentroEventosContext context)
         {
             Console.WriteLine("Inicializando base de datos...");
-            using var context = new CentroEventosContext();
             if (context.Database.EnsureCreated())
             {
                 var connection = context.Database.GetDbConnection();

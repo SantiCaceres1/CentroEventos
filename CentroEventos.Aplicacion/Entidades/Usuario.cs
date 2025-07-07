@@ -35,9 +35,4 @@ public class Usuario
         return $"[{ID}] {Nombre} {Apellido} - Email: {CorreoElectronico} ";
     }
 
-    public bool VerificarContraseña(string contraseña)
-    {
-        return Hasher.Verificar(contraseña, _hashContraseña!);
-    }
-
 }

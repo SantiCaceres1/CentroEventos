@@ -21,7 +21,7 @@ namespace CentroEventos.Aplicacion.Servicios
 
             var usuario = await _repositorio.ObtenerPorCorreoElectronico(correo);
 
-            if (usuario != null && usuario.VerificarContraseña(contraseña))
+            if (usuario != null && _servicio.VerificarContraseña(contraseña, usuario.HashContraseña))
             {
                 UsuarioActual = usuario;
                 return true;
