@@ -3,7 +3,7 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class EventoDeportivo
 {
-    public int _id { get; protected set; }
+    public int Id { get; protected set; }
 
     private string? _nombre;
 
@@ -22,7 +22,7 @@ public class EventoDeportivo
     //Constructor con id
     public EventoDeportivo(int id,string nombre, string descripcion, DateTime fechaHoraInicio, double duracion, int cupoMax, int idResponsable)
     {
-        _id = id;
+        Id = id;
         _nombre = nombre;
         _descripcion = descripcion;
         _fechaInicio = fechaHoraInicio;
@@ -32,7 +32,7 @@ public class EventoDeportivo
     }
 
     //Getters publicos
-    public int Id => _id;
+  
 
     public string? Nombre => _nombre;
 
@@ -46,14 +46,10 @@ public class EventoDeportivo
 
     public int IdResponsable => _idResponsable;
 
-    // public void AsignarId(int id)
-    // {
-    //     _id = id;
-    // }
-
+  
     public override string ToString()
     {
-        return $"[{_id}] {_nombre} {_fechaInicio} - {_duracionHoras}HS - Cupo: {_cupoMaximo}";
+        return $"[{Id}] {_nombre} {_fechaInicio} - {_duracionHoras}HS - Cupo: {_cupoMaximo}";
     }
 
 }

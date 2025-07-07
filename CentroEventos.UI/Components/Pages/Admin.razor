@@ -1,4 +1,6 @@
 @page "/Admin"
+
+
 @inject UsuarioSesion Sesion
 @inject NavigationManager Navigation
 
@@ -26,7 +28,7 @@
 else
 {
     <div class="admin-panel">
-        <h4>Bienvenido, @Sesion.Usuario.Nombre</h4>
+        <h4>Bienvenido, @Sesion.UsuarioLogueado.Nombre</h4>
         <p>Selecciona una opcion del menu para administrar el sistema.</p>
         <ul>
             <li><NavLink href="/AdminUsers">Gestionar Usuarios</NavLink></li>

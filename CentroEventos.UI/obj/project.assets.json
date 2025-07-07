@@ -1299,19 +1299,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/l.galluzzi/.nuget/packages/": {}
+    "C:\\Users\\Santi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/CentroEventos.UI.csproj",
+      "projectUniqueName": "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
       "projectName": "CentroEventos.UI",
-      "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/CentroEventos.UI.csproj",
-      "packagesPath": "/Users/l.galluzzi/.nuget/packages/",
-      "outputPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/obj/",
+      "projectPath": "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.UI\\CentroEventos.UI.csproj",
+      "packagesPath": "C:\\Users\\Santi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/l.galluzzi/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Santi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1323,11 +1323,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj": {
-              "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/CentroEventos.Aplicacion.csproj"
+            "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
             },
-            "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj": {
-              "projectPath": "/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/CentroEventos.Repositorios.csproj"
+            "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+              "projectPath": "C:\\Users\\Santi\\Desktop\\ProyectoPersonal\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
             }
           }
         }
@@ -1341,8 +1341,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -1358,20 +1357,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-arm64",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1380,7 +1365,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

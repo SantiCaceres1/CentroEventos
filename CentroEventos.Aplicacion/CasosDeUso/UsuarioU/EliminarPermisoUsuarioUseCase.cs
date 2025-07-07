@@ -23,6 +23,6 @@ public class EliminarPermisoUsuarioUseCase
         if (!esAdmin)
             throw new FalloAutorizacionException("No tenés permiso para eliminar permisos de otros usuarios.");
 
-        await _repositorio.EliminarPermiso(usuario.ID, permiso); 
+        await _repositorio.EliminarPermiso(usuario.Id, permiso); 
     }
 }

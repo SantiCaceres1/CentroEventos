@@ -4,7 +4,7 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Usuario
 {
-    public int _id { get; protected set;}
+    public int Id { get; protected set;}
     private string? _nombre;
     private string? _apellido;
     private string? _correoElectronico;
@@ -18,12 +18,18 @@ public class Usuario
         _correoElectronico = correoElectronico;
         _hashContraseña = Hasher.Hashear(hashContraseña);
     }
+    public Usuario(string nombre,  string correoElectronico, string hashContraseña)
+    {
+        _nombre = nombre;
+        _correoElectronico = correoElectronico;
+        _hashContraseña = Hasher.Hashear(hashContraseña);
+    }
 
     public Usuario() { }
 
     // Relación Muchos a Muchos:
     private List<UsuarioPermiso> _permisos = new();
-    public int ID => _id;
+    
     public string? Nombre => _nombre;
     public string? Apellido => _apellido;
     public string? CorreoElectronico => _correoElectronico;
@@ -32,7 +38,7 @@ public class Usuario
 
     public override string ToString()
     {
-        return $"[{ID}] {Nombre} {Apellido} - Email: {CorreoElectronico} ";
+        return $"[{Id}] {_nombre} {_apellido} - Email: {_correoElectronico} ";
     }
 
 }

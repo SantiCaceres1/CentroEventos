@@ -6,12 +6,14 @@ namespace CentroEventos.Aplicacion.Servicios
     public class UsuarioSesion
     {
         private readonly IRepositorioUsuario _repositorio;
+        private readonly ServicioAutenticacion _autenticacion;
 
         public Usuario? UsuarioActual { get; private set; }
 
-        public UsuarioSesion(IRepositorioUsuario repositorio)
+        public UsuarioSesion(IRepositorioUsuario repositorio, ServicioAutenticacion autenticacion)
         {
             _repositorio = repositorio;
+            _autenticacion = autenticacion;
         }
 
         public async Task<bool> IniciarSesion(string correo, string contraseña)
@@ -21,7 +23,7 @@ namespace CentroEventos.Aplicacion.Servicios
 
             var usuario = await _repositorio.ObtenerPorCorreoElectronico(correo);
 
-            if (usuario != null && _servicio.VerificarContraseña(contraseña, usuario.HashContraseña))
+            if (usuario != null && _autenticacion.VerificarContraseña(contraseña, usuario.HashContraseña!))
             {
                 UsuarioActual = usuario;
                 return true;
@@ -42,28 +44,27 @@ namespace CentroEventos.Aplicacion.Servicios
             if (UsuarioActual == null)
                 return false;
 
-            bool tieneAlta = await _repositorio.PoseeElPermiso(UsuarioActual.ID, Permiso.UsuarioAlta);
-            bool tieneModificacion = await _repositorio.PoseeElPermiso(UsuarioActual.ID, Permiso.UsuarioModificacion);
-            bool tieneBaja = await _repositorio.PoseeElPermiso(UsuarioActual.ID, Permiso.UsuarioBaja);
+            var id = UsuarioActual.Id;
+            bool tieneAlta = await _repositorio.PoseeElPermiso(id, Permiso.UsuarioAlta);
+            bool tieneModificacion = await _repositorio.PoseeElPermiso(id, Permiso.UsuarioModificacion);
+            bool tieneBaja = await _repositorio.PoseeElPermiso(id, Permiso.UsuarioBaja);
 
             return tieneAlta && tieneModificacion && tieneBaja;
         }
 
-        public Usuario Usuario => UsuarioActual ?? throw new InvalidOperationException("No hay usuario logueado.");
-        
-        public bool RegistrarUsuario(string nombre, string correo, string contrasenia)
+        public Usuario UsuarioLogueado => UsuarioActual ?? throw new InvalidOperationException("No hay usuario logueado.");
+
+        public async Task<bool> RegistrarUsuario(string nombre, string correo, string contrasenia)
         {
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contrasenia))
                 return false;
 
-            // Validar que no exista un usuario con ese correo
-            var existente = _repositorio.ObtenerPorCorreoElectronico(correo);
+            var existente = await _repositorio.ObtenerPorCorreoElectronico(correo);
             if (existente != null)
                 return false;
 
-            // Crear nuevo usuario con hash
-            var nuevoUsuario = new Usuario(nombre, "", correo, contrasenia); // Apellido vacío por ahora
-            _repositorio.Agregar(nuevoUsuario);
+            var nuevoUsuario = new Usuario(nombre, "", correo, contrasenia); // Apellido vacío
+            await _repositorio.Agregar(nuevoUsuario);
 
             return true;
         }

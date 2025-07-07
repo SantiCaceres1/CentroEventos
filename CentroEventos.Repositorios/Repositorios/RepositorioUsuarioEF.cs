@@ -60,7 +60,7 @@ namespace CentroEventos.Repositorios.Repositorios
 
         public async Task<bool> ExisteID(int id)
         {
-            return await _context.Usuarios.AnyAsync(u => u.ID == id);
+            return await _context.Usuarios.AnyAsync(u => u.Id == id);
         }
 
         public async Task<bool> ExisteCorreoElectronico(string correoElectronico)
@@ -82,7 +82,7 @@ namespace CentroEventos.Repositorios.Repositorios
 
         public async Task<bool> AgregarPermiso(int usuarioId, Permiso permiso)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.ID == usuarioId);
+            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
             if (usuario == null) return false;
             if (usuario.Permisos.Any(p => p.Permiso == permiso)) return false; // Ya tiene el permiso
             usuario.Permisos.Add(new UsuarioPermiso { UsuarioId = usuarioId, Permiso = permiso });
@@ -92,7 +92,7 @@ namespace CentroEventos.Repositorios.Repositorios
 
         public async Task<bool> EliminarPermiso(int usuarioId, Permiso permiso)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.ID == usuarioId);
+            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
             if (usuario == null) return false;
 
             var permisoExistente = usuario.Permisos.FirstOrDefault(p => p.Permiso == permiso);
@@ -105,7 +105,7 @@ namespace CentroEventos.Repositorios.Repositorios
 
         public async Task<bool> PoseeElPermiso(int usuarioId, Permiso permiso)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.ID == usuarioId);
+            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
             return usuario?.Permisos?.Any(p => p.Permiso == permiso) ?? false;
         }
     }

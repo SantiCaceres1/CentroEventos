@@ -3,7 +3,7 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Persona
 {
-    public int _id { get; protected set; }
+    public int Id { get; protected set; }
     private string? _nombre;
     private string ? _apellido;
     private string ? _Dni;
@@ -23,7 +23,7 @@ public class Persona
     public Persona() { }
 
     //Getters publicos
-    public int Id => _id;
+ 
     public string? Dni => _Dni;
     public string? Nombre => _nombre;
     public string? Apellido => _apellido;
@@ -32,6 +32,6 @@ public class Persona
 
     public override string ToString()
     {
-        return $"[{_id}]{_nombre} {_apellido} - DNI: {_Dni} - Email: {_email} ";
+        return $"[{Id}]{_nombre} {_apellido} - DNI: {_Dni} - Email: {_email} ";
     }
 }
