@@ -1,11 +1,7 @@
-using System.Threading.Tasks;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
 using CentroEventos.Aplicacion.Servicios;
-using CentroEventos.Aplicacion.Validadores;
-
-namespace CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 public class AltaUsuarioUseCase
 {
@@ -13,11 +9,14 @@ public class AltaUsuarioUseCase
     private readonly IServicioAutorizacion _servicioAutorizacion;
     private readonly ValidadorUsuario _validador;
 
-    public AltaUsuarioUseCase(IRepositorioUsuario repositorioUsuario, IServicioAutorizacion servicioAutorizacion)
+    public AltaUsuarioUseCase(
+        IRepositorioUsuario repositorioUsuario,
+        IServicioAutorizacion servicioAutorizacion,
+        ValidadorUsuario validador)
     {
         _repositorioUsuario = repositorioUsuario;
         _servicioAutorizacion = servicioAutorizacion;
-        _validador = new ValidadorUsuario(repositorioUsuario);
+        _validador = validador;
     }
 
     public async Task Ejecutar(Usuario usuario, int idUsuario)
@@ -25,9 +24,11 @@ public class AltaUsuarioUseCase
         var permiso = await _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta a usuarios.");
+
         var errores = await _validador.Validar(usuario);
         if (errores.Any())
-            throw new ExcepcionValidacion("Errores de validación al dar de alta el usuario.", errores);
+            throw new ValidacionException(errores);
+
         await _repositorioUsuario.Agregar(usuario);
     }
 }

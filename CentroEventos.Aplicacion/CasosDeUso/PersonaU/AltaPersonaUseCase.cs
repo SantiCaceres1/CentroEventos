@@ -1,4 +1,3 @@
-
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
@@ -13,21 +12,26 @@ public class AltaPersonaUseCase
     private readonly IServicioAutorizacion _servicioAutorizacion;
     private readonly ValidadorPersona _validador;
 
-    public AltaPersonaUseCase(IRepositorioPersona repositorioPersona, IServicioAutorizacion servicioAutorizacion)
+    public AltaPersonaUseCase(
+        IRepositorioPersona repositorioPersona,
+        IServicioAutorizacion servicioAutorizacion,
+        ValidadorPersona validador)
     {
         _repositorioPersona = repositorioPersona;
         _servicioAutorizacion = servicioAutorizacion;
-        _validador = new ValidadorPersona(repositorioPersona);
+        _validador = validador;
     }
 
-    public async void Ejecutar(Persona persona, int idUsuario)
+    public async Task Ejecutar(Persona persona, int idUsuario)
     {
         var permiso = await _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
         if (!permiso)
-            throw new FalloAutorizacionException("El  usuario no tiene permiso para dar de alta personas.");
+            throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta personas.");
+
         var errores = await _validador.Validar(persona);
         if (errores.Any())
-            throw new ExcepcionValidacion("Errores de validación al dar de alta la persona.", errores);
+            throw new ValidacionException(errores);
+
         await _repositorioPersona.Agregar(persona);
     }
 }

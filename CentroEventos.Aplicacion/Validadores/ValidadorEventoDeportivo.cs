@@ -1,6 +1,4 @@
-
 using CentroEventos.Aplicacion.Entidades;
-using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
 
 namespace CentroEventos.Aplicacion.Validadores;
@@ -20,22 +18,23 @@ public class ValidadorEventoDeportivo
     {
         var errores = new List<string>();
 
-        if(string.IsNullOrWhiteSpace(evento.Nombre))
-            errores.Add("El nombre del evento no puede estar vacio.");
+        if (string.IsNullOrWhiteSpace(evento.Nombre))
+            errores.Add("El nombre del evento no puede estar vacío.");
 
-        if(string.IsNullOrWhiteSpace(evento.Descripcion))
-            errores.Add("La descripcion del evento no puede estar vacia.");
+        if (string.IsNullOrWhiteSpace(evento.Descripcion))
+            errores.Add("La descripción del evento no puede estar vacía.");
 
-        if(evento.CupoMaximo <=0)
-            errores.Add("El cupo maximo debe ser mayor que 0.");
+        if (evento.CupoMaximo <= 0)
+            errores.Add("El cupo máximo debe ser mayor que 0.");
 
-        if(evento.DuracionHoras<=0)
-            errores.Add("La duracion debe ser mayor que cero.");
+        if (evento.DuracionHoras <= 0)
+            errores.Add("La duración debe ser mayor que cero.");
 
-        if(evento.FechaInicio < DateTime.Now)
+        if (evento.FechaInicio < DateTime.Now)
             errores.Add("La fecha del evento debe ser futura o actual.");
 
-        if (_repoPersona.ObtenerPorId(evento.IdResponsable)== null)
+        var responsable = await _repoPersona.ObtenerPorId(evento.IdResponsable);
+        if (responsable is null)
             errores.Add("No existe la persona responsable indicada.");
 
         return errores;

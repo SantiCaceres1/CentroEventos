@@ -1,11 +1,7 @@
-
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Repositorios;
 using CentroEventos.Aplicacion.Servicios;
-using CentroEventos.Aplicacion.Validadores;
-
-namespace CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 public class ModificarUsuarioUseCase
 {
@@ -13,11 +9,14 @@ public class ModificarUsuarioUseCase
     private readonly IServicioAutorizacion _autorizacion;
     private readonly ValidadorUsuario _validador;
 
-    public ModificarUsuarioUseCase(IRepositorioUsuario repositorio, IServicioAutorizacion autorizacion)
+    public ModificarUsuarioUseCase(
+        IRepositorioUsuario repositorio,
+        IServicioAutorizacion autorizacion,
+        ValidadorUsuario validador)
     {
         _repositorio = repositorio;
         _autorizacion = autorizacion;
-        _validador = new ValidadorUsuario(repositorio);
+        _validador = validador;
     }
 
     public async Task Ejecutar(Usuario usuario, int idAdmin)
@@ -31,9 +30,8 @@ public class ModificarUsuarioUseCase
 
         var errores = await _validador.Validar(usuario);
         if (errores.Any())
-            throw new ExcepcionValidacion("Errores de validación al modificar el usuario.", errores);
+            throw new ValidacionException(errores);
 
         await _repositorio.Modificar(usuario);
-
     }
 }
