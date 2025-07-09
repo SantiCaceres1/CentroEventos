@@ -23,21 +23,27 @@ public class ValidadorReserva
     }
     
 
-    public async void Validar(Reserva reserva)
+    public async Task<List<string>> Validar(Reserva reserva)
     {
-        
-        if (_repoPersona.ObtenerPorId(reserva.IdPersona) == null)
-            throw new EntidadNotFoundException("No existe la persona indicada.");
+        var errores = new List<string>();
 
+        if (_repoPersona.ObtenerPorId(reserva.IdPersona) == null)
+            errores.Add("No existe la persona indicada.");
+
+        return errores;
         if (_repoEvento.ObtenerPorId(reserva.IdEventoDeportivo) == null)
-            throw new EntidadNotFoundException("No existe el evento indicado.");
+            errores.Add("No existe el evento indicado.");
         var duplicado = await _repoReserva.ExisteReservaDuplicada(reserva.IdPersona, reserva.IdEventoDeportivo);
         if (duplicado)
-            throw new DuplicadoException("La persona ya tiene una reserva para ese evento.");
+            errores.Add("La persona ya tiene una reserva para ese evento.");
+
+        return errores;
 
         var cupoDisponible = await _repoEvento.HayCupoDisponible(reserva.IdEventoDeportivo);
         if (!cupoDisponible)
-            throw new CupoExcedidoException("No hay cupo disponible para ese evento.");
+            errores.Add("No hay cupo disponible para ese evento.");
+
+        return errores;
     }
 
 }

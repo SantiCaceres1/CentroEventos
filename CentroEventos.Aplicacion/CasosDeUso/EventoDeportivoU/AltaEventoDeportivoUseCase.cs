@@ -27,8 +27,10 @@ public class AltaEventoDeportivoUseCase
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta eventos.");
 
-        
-        _validador.Validar(eventoDeportivo);
+        var errores = await _validador.Validar(eventoDeportivo);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al dar de alta el evento.", errores);
+
         await _repositorioEvento.Agregar(eventoDeportivo);
     }
 }

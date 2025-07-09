@@ -30,7 +30,9 @@ public class ModificarEventoDeportivoUseCase
             throw new EntidadNotFoundException("El evento a modificar no existe.");
         if (eventoExistente.FechaInicio < DateTime.Now)
             throw new OperacionInvalidaException("No se puede modificar un evento que ya ocurrio.");
-        _validador.Validar(eventoModificado);
+        var errores = await _validador.Validar(eventoModificado);
+        if (errores.Any())
+            throw new ExcepcionValidacion("Errores de validación al modificar el evento.", errores);
         await _repositorioEvento.Modificar(eventoModificado);
     }
 }

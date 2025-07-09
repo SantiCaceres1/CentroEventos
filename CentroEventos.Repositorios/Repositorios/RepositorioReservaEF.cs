@@ -9,9 +9,9 @@ namespace CentroEventos.Repositorios.Repositorios
     {
         private readonly CentroEventosContext _context;
 
-        public RepositorioReservaEF()
+        public RepositorioReservaEF(CentroEventosContext context)
         {
-            _context = new CentroEventosContext();
+            _context = context;
         }
 
         public async Task Agregar(Reserva reserva)

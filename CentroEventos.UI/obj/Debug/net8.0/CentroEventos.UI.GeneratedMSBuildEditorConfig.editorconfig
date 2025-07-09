@@ -9,67 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CentroEventos.UI
 build_property.RootNamespace = CentroEventos.UI
-build_property.ProjectDir = C:\Users\Santi\Desktop\ProyectoPersonal\CentroEventos\CentroEventos.UI\
+build_property.ProjectDir = /Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Santi\Desktop\ProyectoPersonal\CentroEventos\CentroEventos.UI
+build_property.MSBuildProjectDirectory = /Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/App.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Actividades.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY3RpdmlkYWRlcy5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/actividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9hY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Admin.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbi5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZG1pbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/AdminActividades.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkFjdGl2aWRhZGVzLnJhem9y
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/AdminActividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZG1pbkFjdGl2aWRhZGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/AdminUsuarios.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblVzdWFyaW9zLnJhem9y
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/adminUsuarios.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9hZG1pblVzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/MisActividades.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNaXNBY3RpdmlkYWRlcy5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/MisActividades.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaXNBY3RpdmlkYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9yZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Routes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/_Imports.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-uopeu9fc6a
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-1fi618u8xd
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Contact.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWN0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-kroq4i7slt
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/contact.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9jb250YWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-6a04355xxl
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-gjcxcwux6z
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ydm72fqq40
 
-[C:/Users/Santi/Desktop/ProyectoPersonal/CentroEventos/CentroEventos.UI/Components/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-2ib10wyder
+[/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.UI/Components/Pages/login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9sb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ezx5wy4qa8

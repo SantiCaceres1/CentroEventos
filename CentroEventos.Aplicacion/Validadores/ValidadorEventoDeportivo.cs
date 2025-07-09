@@ -16,25 +16,28 @@ public class ValidadorEventoDeportivo
         _repoPersona = repoPersona;
     }
 
-    public void Validar(EventoDeportivo evento)
+    public async Task<List<string>> Validar(EventoDeportivo evento)
     {
+        var errores = new List<string>();
+
         if(string.IsNullOrWhiteSpace(evento.Nombre))
-            throw new ValidacionException("El nombre del evento no puede estar vacio.");
+            errores.Add("El nombre del evento no puede estar vacio.");
 
         if(string.IsNullOrWhiteSpace(evento.Descripcion))
-            throw new ValidacionException("La descripcion del evento no puede estar vacia.");
-        
+            errores.Add("La descripcion del evento no puede estar vacia.");
+
         if(evento.CupoMaximo <=0)
-            throw new ValidacionException("El cupo maximo debe ser mayor que 0.");
+            errores.Add("El cupo maximo debe ser mayor que 0.");
 
         if(evento.DuracionHoras<=0)
-            throw new ValidacionException("La duracion debe ser mayor que cero.");
+            errores.Add("La duracion debe ser mayor que cero.");
 
         if(evento.FechaInicio < DateTime.Now)
-            throw new ValidacionException("La fecha del evento debe ser futura o actual.");
-            
+            errores.Add("La fecha del evento debe ser futura o actual.");
+
         if (_repoPersona.ObtenerPorId(evento.IdResponsable)== null)
-            throw new EntidadNotFoundException("No existe la persona responsable indicada.");
-        
+            errores.Add("No existe la persona responsable indicada.");
+
+        return errores;
     }
 }
