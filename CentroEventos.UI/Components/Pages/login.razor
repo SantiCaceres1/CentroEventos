@@ -10,7 +10,7 @@
     }
     <input class="form-control mb-2" placeholder="Email" @bind="Email" />
     <input class="form-control mb-3" placeholder="Contraseña" type="password" @bind="Password" />
-    <button class="btn btn-primary w-100" @onclick="LoginUsuario">Ingresar</button>
+    <button class="btn btn-primary w-100" @onclick="()=>LoginUsuario()">Ingresar</button>
 </div>
 
 @code {
@@ -21,6 +21,7 @@
     private async Task LoginUsuario()
     {
         var exito = await Sesion.IniciarSesion(Email, Password);
+        Console.WriteLine("Estoy adentro PA");
         if (exito)
         {
             Navigation.NavigateTo("/");
