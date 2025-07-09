@@ -7,10 +7,10 @@ namespace CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 public class EliminarUsuarioUseCase
 {
-    private readonly IRepositorioUsuario _repositorioUsuario;
-    private readonly IRepositorioEventoDeportivo _repositorioEventos;
-    private readonly IRepositorioReserva _repositorioReserva;
-    private readonly IServicioAutorizacion _autorizacion;
+    private IRepositorioUsuario _repositorioUsuario;
+    private IRepositorioEventoDeportivo _repositorioEventos;
+    private IRepositorioReserva _repositorioReserva;
+    private IServicioAutorizacion _autorizacion;
 
     public EliminarUsuarioUseCase(IRepositorioUsuario repositorioUsuario, IRepositorioEventoDeportivo repositorioEventos, IRepositorioReserva repositorioReserva, IServicioAutorizacion autorizacion)
     {
@@ -20,24 +20,20 @@ public class EliminarUsuarioUseCase
         _autorizacion = autorizacion;
     }
 
-    public async Task Ejecutar(int idUsuario, int idAdmin)
+    public void Ejecutar(int idUsuario, int idAdmin)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioBaja);
+        var permiso = _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioBaja);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar personas.");
-
-        if (!await _repositorioUsuario.ExisteID(idUsuario))
+        if (!_repositorioUsuario.ExisteID(idUsuario))
             throw new EntidadNotFoundException("El usuario no existe.");
-
-        var eventos = await _repositorioEventos.ListarTodos();
+        var eventos = _repositorioEventos.ListarTodos();
         if (eventos.Any(e => e.IdResponsable == idUsuario))
             throw new OperacionInvalidaException("No se puede eliminar el usuario porque es responsable de un evento.");
-
-        var reservas = await _repositorioReserva.ListarTodas(); 
+        var reservas = _repositorioReserva.ListarTodas();
         if (reservas.Any(r => r.IdPersona == idUsuario))
             throw new OperacionInvalidaException("No se puede eliminar el usuario porque tiene reservas asociadas.");
-
-        var usuario = await _repositorioUsuario.ObtenerPorId(idUsuario);
-        await _repositorioUsuario.Eliminar(usuario);
+        var usuario = _repositorioUsuario.ObtenerPorId(idUsuario);
+        _repositorioUsuario.Eliminar(usuario);
     }
 }

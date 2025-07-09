@@ -6,14 +6,14 @@ namespace CentroEventos.Aplicacion.CasosDeUso.ReservaU;
 
 public class ListarReservaUseCase
 {
-    private readonly IRepositorioReserva _repositorio;
+    private IRepositorioReserva _repositorio;
 
     public ListarReservaUseCase(IRepositorioReserva repositorio)
     {
         _repositorio = repositorio;
     }
 
-    public Task<List<Reserva>> Ejecutar()
+    public List<Reserva> Ejecutar()
     {
         return _repositorio.ListarTodas();
     }

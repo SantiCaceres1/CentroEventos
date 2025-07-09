@@ -6,14 +6,14 @@ namespace CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 
 public class ListarEventoDeportivoUseCase
 {
-    private readonly IRepositorioEventoDeportivo _repositorio;
+    private IRepositorioEventoDeportivo _repositorio;
 
     public ListarEventoDeportivoUseCase(IRepositorioEventoDeportivo repositorio)
     {
         _repositorio = repositorio;
     }
 
-    public Task<List<EventoDeportivo>> Ejecutar()
+    public List<EventoDeportivo> Ejecutar()
     {
         return _repositorio.ListarTodos();
     }

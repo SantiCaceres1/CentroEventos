@@ -12,8 +12,8 @@ public class ServicioAutorizacion : IServicioAutorizacion
         _repoUsuario = repoUsuario;
     }
 
-    public async Task<bool> PoseeElPermiso(int idUsuario, Permiso permiso)
+    public bool PoseeElPermiso(int idUsuario, Permiso permiso)
     {
-        return await _repoUsuario.PoseeElPermiso(idUsuario, permiso);
+        return _repoUsuario.PoseeElPermiso(idUsuario, permiso);
     }
 }

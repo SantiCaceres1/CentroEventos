@@ -4,10 +4,10 @@ namespace CentroEventos.Aplicacion.Entidades;
 public class Reserva
 {
     public int Id { get; protected set; }
-    private int _idPersona ;
-    private int _idEventoDeportivo ;
-    private DateTime _fechaAltaReserva ;
-    private EstadoAsistencia _estadoAsistencia;
+    public int _idPersona ;
+    public int _idEventoDeportivo ;
+    public DateTime _fechaAltaReserva ;
+    public EstadoAsistencia _estadoAsistencia;
 
     //constructor sin id
     public Reserva(int idPersona, int idEvento, DateTime fechaAltaReserva)
@@ -39,7 +39,6 @@ public class Reserva
     {
         _estadoAsistencia = estado;
     }
-   
     public override string ToString()
     {
         return $"[{Id}]  Persona: {_idPersona} - Evento: {_idEventoDeportivo} - Estado: {_estadoAsistencia}";

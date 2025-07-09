@@ -7,61 +7,61 @@ namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioReservaEF : IRepositorioReserva
     {
-        private readonly CentroEventosContext _context;
+        private CentroEventosContext _context;
 
         public RepositorioReservaEF(CentroEventosContext context)
         {
             _context = context;
         }
 
-        public async Task Agregar(Reserva reserva)
+        public void Agregar(Reserva reserva)
         {
-            await _context.Reservas.AddAsync(reserva);
-            await _context.SaveChangesAsync();
+            _context.Reservas.Add(reserva);
+            _context.SaveChanges();
         }
 
-        public async Task Modificar(Reserva reserva)
+        public void Modificar(Reserva reserva)
         {
-            var existe = await _context.Reservas.AnyAsync(r => r.Id == reserva.Id);
+            var existe = _context.Reservas.Any(r => r.Id == reserva.Id);
             if (!existe) return;
             _context.Reservas.Update(reserva);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task Eliminar(int id)
+        public void Eliminar(int id)
         {
-            var reserva = await _context.Reservas.FindAsync(id);
+            var reserva = _context.Reservas.Find(id);
             if (reserva is not null)
             {
                 _context.Reservas.Remove(reserva);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
         }
 
-        public async Task<Reserva?> ObtenerPorId(int id)
+        public Reserva? ObtenerPorId(int id)
         {
-            return await _context.Reservas.FindAsync(id);
+            return _context.Reservas.Find(id);
         }
 
-        public async Task<List<Reserva>> ListarTodas()
+        public List<Reserva> ListarTodas()
         {
-            return await _context.Reservas.ToListAsync();
+            return _context.Reservas.ToList();
         }
 
-        public async Task<bool> ExisteReserva(int id)
+        public bool ExisteReserva(int id)
         {
-            return await _context.Reservas.AnyAsync(r => r.Id == id);
+            return _context.Reservas.Any(r => r.Id == id);
         }
 
-        public async Task<bool> ExisteReservaDuplicada(int personaId, int eventoId)
+        public bool ExisteReservaDuplicada(int personaId, int eventoId)
         {
-            return await _context.Reservas.AnyAsync(r =>
+            return _context.Reservas.Any(r =>
                 r.IdPersona == personaId && r.IdEventoDeportivo == eventoId);
         }
 
-        public async Task<int> ContarReservaParaEvento(int eventoId)
+        public int ContarReservaParaEvento(int eventoId)
         {
-            return await _context.Reservas.CountAsync(r => r.IdEventoDeportivo == eventoId);
+            return _context.Reservas.Count(r => r.IdEventoDeportivo == eventoId);
         }
     }
 }

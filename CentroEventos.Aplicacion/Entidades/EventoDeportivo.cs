@@ -5,17 +5,17 @@ public class EventoDeportivo
 {
     public int Id { get; protected set; }
 
-    private string? _nombre;
+    public string? _nombre;
 
-    private string? _descripcion;
+    public string? _descripcion;
 
-    private DateTime _fechaInicio ;
+    public DateTime _fechaInicio ;
 
-    private double _duracionHoras ;
+    public double _duracionHoras ;
 
-    private int _cupoMaximo ;
+    public int _cupoMaximo ;
 
-    private int _idResponsable ;
+    public int _idResponsable ;
 
     public EventoDeportivo() { }
 

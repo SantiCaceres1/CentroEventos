@@ -5,9 +5,9 @@ using CentroEventos.Aplicacion.Servicios;
 
 public class ModificarReservaUseCase
 {
-    private readonly IRepositorioReserva _repositorio;
-    private readonly IServicioAutorizacion _autorizacion;
-    private readonly ValidadorReserva _validador;
+    private IRepositorioReserva _repositorio;
+    private IServicioAutorizacion _autorizacion;
+    private ValidadorReserva _validador;
 
     public ModificarReservaUseCase(
         IRepositorioReserva repositorio,
@@ -19,19 +19,16 @@ public class ModificarReservaUseCase
         _validador = validador;
     }
 
-    public async Task Ejecutar(Reserva reserva, int idUsuario)
+    public void Ejecutar(Reserva reserva, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para modificar reservas.");
-
-        if (!await _repositorio.ExisteReserva(reserva.Id))
+        if (!_repositorio.ExisteReserva(reserva.Id))
             throw new EntidadNotFoundException("La reserva no existe.");
-
-        var errores = await _validador.Validar(reserva);
+        var errores = _validador.Validar(reserva);
         if (errores.Any())
             throw new ValidacionException(errores);
-
-        await _repositorio.Modificar(reserva);
+        _repositorio.Modificar(reserva);
     }
 }

@@ -4,14 +4,14 @@ namespace CentroEventos.Aplicacion.Repositorios
 {
     public interface IRepositorioPersona
     {
-        Task Agregar(Persona persona);
-        Task Modificar(Persona persona);
-        Task Eliminar(int id);
-        Task<Persona?> ObtenerPorId(int id);
-        Task<Persona?> ObtenerPorDni(string dni);
-        Task<Persona?> ObtenerPorEmail(string email);
-        Task<List<Persona>> ListarTodas();
-        Task<bool> ExisteDni(string dni);
-        Task<bool> ExisteEmail(string email);
+        void Agregar(Persona persona);
+        void Modificar(Persona persona);
+        void Eliminar(int id);
+        Persona? ObtenerPorId(int id);
+        Persona? ObtenerPorDni(string dni);
+        Persona? ObtenerPorEmail(string email);
+        List<Persona> ListarTodas();
+        bool ExisteDni(string dni);
+        bool ExisteEmail(string email);
     }
 }

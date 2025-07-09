@@ -7,64 +7,64 @@ namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioPersonaEF : IRepositorioPersona
     {
-        private readonly CentroEventosContext _context;
+        private CentroEventosContext _context;
 
         public RepositorioPersonaEF(CentroEventosContext context)
         {
             _context = context;
         }
 
-        public async Task Agregar(Persona persona)
+        public void Agregar(Persona persona)
         {
-            await _context.Personas.AddAsync(persona);
-            await _context.SaveChangesAsync();
+            _context.Personas.Add(persona);
+            _context.SaveChanges();
         }
 
-        public async Task Modificar(Persona persona)
+        public void Modificar(Persona persona)
         {
-            var existe = await _context.Personas.AnyAsync(p => p.Id == persona.Id);
+            var existe = _context.Personas.Any(p => p.Id == persona.Id);
             if (!existe) return;
             _context.Personas.Update(persona);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task Eliminar(int id)
+        public void Eliminar(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
+            var persona = _context.Personas.Find(id);
             if (persona != null)
             {
                 _context.Personas.Remove(persona);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
         }
 
-        public async Task<Persona?> ObtenerPorId(int id)
+        public Persona? ObtenerPorId(int id)
         {
-            return await _context.Personas.FindAsync(id);
+            return _context.Personas.Find(id);
         }
 
-        public async Task<Persona?> ObtenerPorDni(string dni)
+        public Persona? ObtenerPorDni(string dni)
         {
-            return await _context.Personas.FirstOrDefaultAsync(p => p.Dni == dni);
+            return _context.Personas.FirstOrDefault(p => p.Dni == dni);
         }
 
-        public async Task<Persona?> ObtenerPorEmail(string email)
+        public Persona? ObtenerPorEmail(string email)
         {
-            return await _context.Personas.FirstOrDefaultAsync(p => p.Email == email);
+            return _context.Personas.FirstOrDefault(p => p.Email == email);
         }
 
-        public async Task<List<Persona>> ListarTodas()
+        public List<Persona> ListarTodas()
         {
-            return await _context.Personas.ToListAsync();
+            return _context.Personas.ToList();
         }
 
-        public async Task<bool> ExisteDni(string dni)
+        public bool ExisteDni(string dni)
         {
-            return await _context.Personas.AnyAsync(p => p.Dni == dni);
+            return _context.Personas.Any(p => p.Dni == dni);
         }
-        public async Task<bool> ExisteEmail(string email)
+        public bool ExisteEmail(string email)
         {
-            return await _context.Personas.AnyAsync(p => p.Email == email);
+            return _context.Personas.Any(p => p.Email == email);
         }
     }
 }

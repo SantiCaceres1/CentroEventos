@@ -5,10 +5,10 @@ namespace CentroEventos.Aplicacion.Entidades;
 public class Usuario
 {
     public int Id { get; protected set;}
-    private string? _nombre;
-    private string? _apellido;
-    private string? _correoElectronico;
-    private string? _hashContraseña;
+    public string? _nombre;
+    public string? _apellido;
+    public string? _correoElectronico;
+    public string? _hashContraseña;
 
     // Constructor
     public Usuario(string nombre, string apellido, string correoElectronico, string hashContraseña)

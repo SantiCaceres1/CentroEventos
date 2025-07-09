@@ -5,9 +5,9 @@ using CentroEventos.Aplicacion.Servicios;
 
 public class AltaReservaUseCase
 {
-    private readonly IRepositorioReserva _repositorioReserva;
-    private readonly IServicioAutorizacion _autorizacion;
-    private readonly ValidadorReserva _validador;
+    private IRepositorioReserva _repositorioReserva;
+    private IServicioAutorizacion _autorizacion;
+    private ValidadorReserva _validador;
 
     public AltaReservaUseCase(
         IRepositorioReserva repositorioReserva,
@@ -19,19 +19,16 @@ public class AltaReservaUseCase
         _validador = validador;
     }
 
-    public async Task Ejecutar(Reserva reserva, int idUsuario)
+    public void Ejecutar(Reserva reserva, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaAlta);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaAlta);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para registrar reservas.");
-
-        var errores = await _validador.Validar(reserva);
+        var errores = _validador.Validar(reserva);
         if (errores.Any())
             throw new ValidacionException(errores);
-
         reserva.AsignarFechaDeAlta(DateTime.Now);
         reserva.AsignarEstadoAsistencia(EstadoAsistencia.Pendiente);
-
-        await _repositorioReserva.Agregar(reserva);
+        _repositorioReserva.Agregar(reserva);
     }
 }

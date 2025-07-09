@@ -5,9 +5,9 @@ using CentroEventos.Aplicacion.Servicios;
 
 public class AltaUsuarioUseCase
 {
-    private readonly IRepositorioUsuario _repositorioUsuario;
-    private readonly IServicioAutorizacion _servicioAutorizacion;
-    private readonly ValidadorUsuario _validador;
+    private IRepositorioUsuario _repositorioUsuario;
+    private IServicioAutorizacion _servicioAutorizacion;
+    private ValidadorUsuario _validador;
 
     public AltaUsuarioUseCase(
         IRepositorioUsuario repositorioUsuario,
@@ -19,16 +19,14 @@ public class AltaUsuarioUseCase
         _validador = validador;
     }
 
-    public async Task Ejecutar(Usuario usuario, int idUsuario)
+    public void Ejecutar(Usuario usuario, int idUsuario)
     {
-        var permiso = await _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
+        var permiso = _servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioAlta);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta a usuarios.");
-
-        var errores = await _validador.Validar(usuario);
+        var errores = _validador.Validar(usuario);
         if (errores.Any())
             throw new ValidacionException(errores);
-
-        await _repositorioUsuario.Agregar(usuario);
+        _repositorioUsuario.Agregar(usuario);
     }
 }

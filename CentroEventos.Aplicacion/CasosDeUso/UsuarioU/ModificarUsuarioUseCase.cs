@@ -5,9 +5,9 @@ using CentroEventos.Aplicacion.Servicios;
 
 public class ModificarUsuarioUseCase
 {
-    private readonly IRepositorioUsuario _repositorio;
-    private readonly IServicioAutorizacion _autorizacion;
-    private readonly ValidadorUsuario _validador;
+    private IRepositorioUsuario _repositorio;
+    private IServicioAutorizacion _autorizacion;
+    private ValidadorUsuario _validador;
 
     public ModificarUsuarioUseCase(
         IRepositorioUsuario repositorio,
@@ -19,19 +19,16 @@ public class ModificarUsuarioUseCase
         _validador = validador;
     }
 
-    public async Task Ejecutar(Usuario usuario, int idAdmin)
+    public void Ejecutar(Usuario usuario, int idAdmin)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioModificacion);
+        var permiso = _autorizacion.PoseeElPermiso(idAdmin, Permiso.UsuarioModificacion);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para modificar personas.");
-
-        if (!await _repositorio.ExisteID(usuario.Id))
+        if (!_repositorio.ExisteID(usuario.Id))
             throw new EntidadNotFoundException("No existe el usuario que se quiere modificar.");
-
-        var errores = await _validador.Validar(usuario);
+        var errores = _validador.Validar(usuario);
         if (errores.Any())
             throw new ValidacionException(errores);
-
-        await _repositorio.Modificar(usuario);
+        _repositorio.Modificar(usuario);
     }
 }

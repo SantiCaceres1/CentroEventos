@@ -8,104 +8,90 @@ namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioUsuarioEF : IRepositorioUsuario
     {
-        private readonly CentroEventosContext _context;
+        private CentroEventosContext _context;
 
         public RepositorioUsuarioEF(CentroEventosContext context)
         {
             _context = context;
         }
 
-        public async Task Agregar(Usuario usuario)
+        public void Agregar(Usuario usuario)
         {
-            await _context.Usuarios.AddAsync(usuario);
-            await _context.SaveChangesAsync();
+            _context.Usuarios.Add(usuario);
+            _context.SaveChanges();
         }
 
-        public async Task Modificar(Usuario usuario)
+        public void Modificar(Usuario usuario)
         {
             _context.Usuarios.Update(usuario);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
-        
-        public async Task Eliminar(Usuario usuario)
+
+        public void Eliminar(Usuario usuario)
         {
             _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task<Usuario?> ObtenerPorNombre(string nombreUsuario)
+        public Usuario? ObtenerPorNombre(string nombreUsuario)
         {
-            return await _context.Usuarios.FirstOrDefaultAsync(u => u.Nombre == nombreUsuario);
+            return _context.Usuarios.FirstOrDefault(u => u.Nombre == nombreUsuario);
         }
 
-        public async Task<Usuario> ObtenerPorCorreoElectronico(string correoElectronico)
+        public Usuario? ObtenerPorCorreoElectronico(string correoElectronico)
         {
-            return await _context.Usuarios.FirstOrDefaultAsync(u => u.CorreoElectronico == correoElectronico);
+            return _context.Usuarios.FirstOrDefault(u => u.CorreoElectronico == correoElectronico);
         }
 
-        public async Task<bool> ExisteUsuario(string nombreUsuario)
+        public bool ExisteUsuario(string nombreUsuario)
         {
-            return await _context.Usuarios.AnyAsync(u => u.Nombre == nombreUsuario);
+            return _context.Usuarios.Any(u => u.Nombre == nombreUsuario);
         }
 
-        public async Task<Usuario?> ObtenerPorId(int id)
+        public Usuario? ObtenerPorId(int id)
         {
-            return await _context.Usuarios.FindAsync(id);
+            return _context.Usuarios.Find(id);
         }
 
-        public async Task<List<Usuario>> ListarTodas()
+        public List<Usuario> ListarTodas()
         {
-            return await _context.Usuarios.ToListAsync();
+            return _context.Usuarios.ToList();
         }
 
-        public async Task<bool> ExisteID(int id)
+        public bool ExisteID(int id)
         {
-            return await _context.Usuarios.AnyAsync(u => u.Id == id);
+            return _context.Usuarios.Any(u => u.Id == id);
         }
 
-        public async Task<bool> ExisteCorreoElectronico(string correoElectronico)
+        public bool ExisteCorreoElectronico(string correoElectronico)
         {
-            return await _context.Usuarios.AnyAsync(u => u.CorreoElectronico == correoElectronico);
+            return _context.Usuarios.Any(u => u.CorreoElectronico == correoElectronico);
         }
 
-        /*public async Task<bool> VerificarContraseña(string contraseña)
+        public bool AgregarPermiso(int usuarioId, Permiso permiso)
         {
-            string hash = Hasher.Hashear(contraseña);
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.HashContraseña == hash);
-            if (usuario != null)
-            {
-                return true;
-            }
-            // Si no se encuentra el usuario o la contraseña no coincide, retornar false
-            return await Task.FromResult(false);
-        }*/
-
-        public async Task<bool> AgregarPermiso(int usuarioId, Permiso permiso)
-        {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
+            var usuario = _context.Usuarios.Include(u => u.Permisos).FirstOrDefault(u => u.Id == usuarioId);
             if (usuario == null) return false;
             if (usuario.Permisos.Any(p => p.Permiso == permiso)) return false; // Ya tiene el permiso
             usuario.Permisos.Add(new UsuarioPermiso { UsuarioId = usuarioId, Permiso = permiso });
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return true;
         }
 
-        public async Task<bool> EliminarPermiso(int usuarioId, Permiso permiso)
+        public bool EliminarPermiso(int usuarioId, Permiso permiso)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
+            var usuario = _context.Usuarios.Include(u => u.Permisos).FirstOrDefault(u => u.Id == usuarioId);
             if (usuario == null) return false;
-
             var permisoExistente = usuario.Permisos.FirstOrDefault(p => p.Permiso == permiso);
             if (permisoExistente == null) return false; // No tiene el permiso
-
             usuario.Permisos.Remove(permisoExistente);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return true;
         }
 
-        public async Task<bool> PoseeElPermiso(int usuarioId, Permiso permiso)
+        public bool PoseeElPermiso(int usuarioId, Permiso permiso)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);
+            var usuario = _context.Usuarios.Include(u => u.Permisos).FirstOrDefault(u => u.Id == usuarioId);
             return usuario?.Permisos?.Any(p => p.Permiso == permiso) ?? false;
         }
     }

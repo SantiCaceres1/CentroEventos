@@ -4,12 +4,12 @@ namespace CentroEventos.Aplicacion.Repositorios
 {
     public interface IRepositorioEventoDeportivo
     {
-        Task Agregar(EventoDeportivo evento);
-        Task Modificar(EventoDeportivo evento);
-        Task Eliminar(int id);
-        Task<EventoDeportivo?> ObtenerPorId(int id);
-        Task<List<EventoDeportivo>> ListarTodos();
-        Task<bool> ExisteId(int id);
-        Task<bool> HayCupoDisponible(int id);
+        void Agregar(EventoDeportivo evento);
+        void Modificar(EventoDeportivo evento);
+        void Eliminar(int id);
+        EventoDeportivo? ObtenerPorId(int id);
+        List<EventoDeportivo> ListarTodos();
+        bool ExisteId(int id);
+        bool HayCupoDisponible(int id);
     }
 }

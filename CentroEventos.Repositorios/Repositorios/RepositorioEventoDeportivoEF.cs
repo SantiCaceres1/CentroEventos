@@ -7,60 +7,58 @@ namespace CentroEventos.Repositorios.Repositorios
 {
     public class RepositorioEventoDeportivoEF : IRepositorioEventoDeportivo
     {
-        private readonly CentroEventosContext _context;
+        private CentroEventosContext _context;
 
         public RepositorioEventoDeportivoEF(CentroEventosContext context)
         {
             _context = context;
         }
 
-        public async Task Agregar(EventoDeportivo evento)
+        public void Agregar(EventoDeportivo evento)
         {
-            await _context.Eventos.AddAsync(evento);
-            await _context.SaveChangesAsync();
+            _context.Eventos.Add(evento);
+            _context.SaveChanges();
         }
 
-        public async Task Modificar(EventoDeportivo evento)
+        public void Modificar(EventoDeportivo evento)
         {
-            var existe = await _context.Eventos.AnyAsync(e => e.Id == evento.Id);
+            var existe = _context.Eventos.Any(e => e.Id == evento.Id);
             if (!existe) return;
             _context.Eventos.Update(evento);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task Eliminar(int id)
+        public void Eliminar(int id)
         {
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = _context.Eventos.Find(id);
             if (evento is not null)
             {
                 _context.Eventos.Remove(evento);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
         }
 
-        public async Task<EventoDeportivo?> ObtenerPorId(int id)
+        public EventoDeportivo? ObtenerPorId(int id)
         {
-            return await _context.Eventos.FindAsync(id);
+            return _context.Eventos.Find(id);
         }
 
-        public async Task<List<EventoDeportivo>> ListarTodos()
+        public List<EventoDeportivo> ListarTodos()
         {
-            return await _context.Eventos.ToListAsync();
+            return _context.Eventos.ToList();
         }
 
-        public async Task<bool> ExisteId(int id)
+        public bool ExisteId(int id)
         {
-            return await _context.Eventos.AnyAsync(e => e.Id == id);
+            return _context.Eventos.Any(e => e.Id == id);
         }
 
-        public async Task<bool> HayCupoDisponible(int id)
+        public bool HayCupoDisponible(int id)
         {
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = _context.Eventos.Find(id);
             if (evento is null) return false;
-
-            int cantidadReservas = await _context.Reservas
-                .CountAsync(r => r.IdEventoDeportivo == id);
-
+            int cantidadReservas = _context.Reservas
+                .Count(r => r.IdEventoDeportivo == id);
             return cantidadReservas < evento.CupoMaximo;
         }
     }

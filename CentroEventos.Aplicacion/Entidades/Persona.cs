@@ -4,11 +4,11 @@ namespace CentroEventos.Aplicacion.Entidades;
 public class Persona
 {
     public int Id { get; protected set; }
-    private string? _nombre;
-    private string ? _apellido;
-    private string ? _Dni;
-    private string ? _email;
-    private string ?  _telefono;
+    public string? _nombre;
+    public string? _apellido;
+    public string? _Dni;
+    public string? _email;
+    public string? _telefono;
 
     //Constructor sin ID
     public Persona(string dni, string nombre, string apellido, string email, string telefono)

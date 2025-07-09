@@ -8,8 +8,8 @@ namespace CentroEventos.Aplicacion.CasosDeUso.ReservaU;
 
 public class EliminarReservaUseCase
 {
-    private readonly IRepositorioReserva _repositorio;
-    private readonly IServicioAutorizacion _autorizacion;
+    private IRepositorioReserva _repositorio;
+    private IServicioAutorizacion _autorizacion;
 
     public EliminarReservaUseCase(IRepositorioReserva repositorio, IServicioAutorizacion autorizacion)
     {
@@ -17,13 +17,13 @@ public class EliminarReservaUseCase
         _autorizacion = autorizacion;
     }
 
-    public async Task Ejecutar(int idReserva, int idUsuario)
+    public void Ejecutar(int idReserva, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Entidades.Permiso.ReservaBaja);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Entidades.Permiso.ReservaBaja);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar reservas");
-        if (!await _repositorio.ExisteReserva(idReserva))
+        if (!_repositorio.ExisteReserva(idReserva))
             throw new EntidadNotFoundException("La reserva no existe.");
-        await _repositorio.Eliminar(idReserva);
+        _repositorio.Eliminar(idReserva);
     }
 }

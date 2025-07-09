@@ -5,14 +5,14 @@ namespace CentroEventos.Aplicacion.CasosDeUso.PersonaU;
 
 public class ListarPersonasUseCase
 {
-    private readonly IRepositorioPersona _repositorio;
+    private IRepositorioPersona _repositorio;
 
     public ListarPersonasUseCase(IRepositorioPersona repositorio)
     {
         _repositorio = repositorio;
     }
 
-    public Task<List<Persona>> Ejecutar()
+    public List<Persona> Ejecutar()
     {
         return _repositorio.ListarTodas();
     }

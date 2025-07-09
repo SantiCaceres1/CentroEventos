@@ -8,9 +8,9 @@ namespace CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 
 public class EliminarEventoDeportivoUseCase
 {
-    private readonly IRepositorioEventoDeportivo _repositorioEvento;
-    private readonly IRepositorioReserva _repositorioReserva;
-    private readonly IServicioAutorizacion _autorizacion;
+    private IRepositorioEventoDeportivo _repositorioEvento;
+    private IRepositorioReserva _repositorioReserva;
+    private IServicioAutorizacion _autorizacion;
 
     public EliminarEventoDeportivoUseCase(IRepositorioEventoDeportivo repositorioEvento, IRepositorioReserva repositorioReserva, IServicioAutorizacion autorizacion)
     {
@@ -19,18 +19,18 @@ public class EliminarEventoDeportivoUseCase
         _autorizacion = autorizacion;
     }
 
-    public async Task Ejecutar(int idEvento, int idUsuario)
+    public void Ejecutar(int idEvento, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para eliminar eventos.");
-        if (!await _repositorioEvento.ExisteId(idEvento))
+        if (!_repositorioEvento.ExisteId(idEvento))
             throw new EntidadNotFoundException("El evento no existe.");
-        var reservas = await _repositorioReserva.ListarTodas();
+        var reservas = _repositorioReserva.ListarTodas();
         bool tieneReservas = reservas.Any(r => r.IdEventoDeportivo == idEvento);
         if (tieneReservas)
             throw new OperacionInvalidaException("No se puede eliminar el evento porque tiene reservas asociadas.");
-        await _repositorioEvento.Eliminar(idEvento);
+        _repositorioEvento.Eliminar(idEvento);
     }
 
 

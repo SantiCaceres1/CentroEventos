@@ -8,8 +8,8 @@ namespace CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 
 public class ListarAsistenciaAEventoUseCase
 {
-     private readonly IRepositorioEventoDeportivo _repoEventos;
-    private readonly IRepositorioReserva _repoReservas;
+    private IRepositorioEventoDeportivo _repoEventos;
+    private IRepositorioReserva _repoReservas;
 
     public ListarAsistenciaAEventoUseCase(
         IRepositorioEventoDeportivo repoEventos,
@@ -19,15 +19,13 @@ public class ListarAsistenciaAEventoUseCase
         _repoReservas = repoReservas;
     }
 
-    public async Task<List<Reserva>> Ejecutar(int idEvento)
+    public List<Reserva> Ejecutar(int idEvento)
     {
-        var evento = await _repoEventos.ObtenerPorId(idEvento) ??
+        var evento = _repoEventos.ObtenerPorId(idEvento) ??
             throw new EntidadNotFoundException("El evento no existe.");
-
         if (evento.FechaInicio > DateTime.Now)
             throw new OperacionInvalidaException("Solo se puede listar asistencia para eventos que ya ocurrieron.");
-
-        var reservas = await _repoReservas.ListarTodas();
+        var reservas = _repoReservas.ListarTodas();
         return reservas
             .Where(r => r.IdEventoDeportivo == idEvento)
             .ToList();

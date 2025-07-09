@@ -6,9 +6,9 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class AltaEventoDeportivoUseCase
 {
-    private readonly IRepositorioEventoDeportivo _repositorioEvento;
-    private readonly IServicioAutorizacion _autorizacion;
-    private readonly ValidadorEventoDeportivo _validador;
+    private IRepositorioEventoDeportivo _repositorioEvento;
+    private IServicioAutorizacion _autorizacion;
+    private ValidadorEventoDeportivo _validador;
 
     public AltaEventoDeportivoUseCase(
         IRepositorioEventoDeportivo repositorioEvento,
@@ -20,16 +20,14 @@ public class AltaEventoDeportivoUseCase
         _validador = validador;
     }
 
-    public async Task Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
+    public void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta);
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para dar de alta eventos.");
-
-        var errores = await _validador.Validar(eventoDeportivo);
+        var errores = _validador.Validar(eventoDeportivo);
         if (errores.Any())
             throw new ValidacionException(errores);
-
-        await _repositorioEvento.Agregar(eventoDeportivo);
+        _repositorioEvento.Agregar(eventoDeportivo);
     }
 }

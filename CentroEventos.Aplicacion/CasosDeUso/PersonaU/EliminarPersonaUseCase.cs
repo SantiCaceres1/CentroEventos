@@ -7,10 +7,10 @@ namespace CentroEventos.Aplicacion.CasosDeUso.PersonaU;
 
 public class EliminarPersonaUseCase
 {
-    private readonly IRepositorioPersona _repositorioPersona;
-    private readonly IRepositorioEventoDeportivo _repositorioEventos;
-    private readonly IRepositorioReserva _repositorioReserva;
-    private readonly IServicioAutorizacion _autorizacion;
+    private IRepositorioPersona _repositorioPersona;
+    private IRepositorioEventoDeportivo _repositorioEventos;
+    private IRepositorioReserva _repositorioReserva;
+    private IServicioAutorizacion _autorizacion;
 
     public EliminarPersonaUseCase(IRepositorioPersona repositorioPersona, IRepositorioEventoDeportivo repositorioEventos, IRepositorioReserva repositorioReserva, IServicioAutorizacion autorizacion)
     {
@@ -20,22 +20,18 @@ public class EliminarPersonaUseCase
         _autorizacion = autorizacion;
     }
 
-    public async void Ejecutar(int idPersona, int idUsuario)
+    public void Ejecutar(int idPersona, int idUsuario)
     {
-        var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioBaja);
+        var permiso = _autorizacion.PoseeElPermiso(idUsuario, Permiso.UsuarioBaja);
         if (!permiso)
             throw new FalloAutorizacionException("No tiene permiso para eliminar personas.");
-
         if (_repositorioPersona.ObtenerPorId(idPersona) == null)
             throw new EntidadNotFoundException("La persona no existe.");
-
-        var eventos = await _repositorioEventos.ListarTodos();
+        var eventos = _repositorioEventos.ListarTodos();
         if (eventos.Any(e => e.IdResponsable == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque es responsable de un evento.");
-
         if (eventos.Any(r => r.Id == idPersona))
             throw new OperacionInvalidaException("No se puede eliminar la persona porque tiene reservas asociadas.");
-
-        await _repositorioPersona.Eliminar(idPersona);
+        _repositorioPersona.Eliminar(idPersona);
     }
 }
