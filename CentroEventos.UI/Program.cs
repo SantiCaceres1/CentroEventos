@@ -5,7 +5,6 @@ using CentroEventos.Repositorios.Repositorios;
 using CentroEventos.UI.Components;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
-using CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 using CentroEventos.Aplicacion.CasosDeUso.ReservaU;
 using CentroEventos.Aplicacion.Validadores;
 
@@ -16,9 +15,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents(); 
 
-
-
-
 // Inyección de dependencias - Casos de Uso
 builder.Services.AddTransient<AltaEventoDeportivoUseCase>();
 builder.Services.AddTransient<ListarEventoDeportivoUseCase>();
@@ -26,6 +22,7 @@ builder.Services.AddTransient<ModificarEventoDeportivoUseCase>();
 builder.Services.AddTransient<AltaUsuarioUseCase>();
 builder.Services.AddTransient<AltaReservaUseCase>();
 builder.Services.AddTransient<ListarReservaUseCase>();
+builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
 // Inyección de dependencias - Repositorios
 builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivoEF>();
 builder.Services.AddScoped<IRepositorioReserva, RepositorioReservaEF>();

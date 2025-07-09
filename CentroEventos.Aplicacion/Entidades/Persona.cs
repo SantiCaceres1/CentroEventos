@@ -3,35 +3,27 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Persona
 {
-    public int Id { get; protected set; }
-    private string? _nombre;
-    private string ? _apellido;
-    private string ? _Dni;
-    private string ? _email;
-    private string ?  _telefono;
+    public int Id { get;  set; }
+    public string? Nombre{ get;  set; }
+    public string ? Apellido{ get;  set; }
+    public string ? Dni{ get;  set; }
+    public string ? Email{ get;  set; }
+    public string ?  Telefono{ get;  set; }
 
     //Constructor sin ID
     public Persona(string dni, string nombre, string apellido, string email, string telefono)
     {
-        _Dni = dni;
-        _nombre = nombre;
-        _apellido = apellido;
-        _email = email;
-        _telefono = telefono;
+        Dni = dni;
+        Nombre = nombre;
+        Apellido = apellido;
+        Email = email;
+        Telefono = telefono;
     }
 
     public Persona() { }
 
-    //Getters publicos
- 
-    public string? Dni => _Dni;
-    public string? Nombre => _nombre;
-    public string? Apellido => _apellido;
-    public string? Email => _email;
-    public string? Telefono => _telefono;
-
     public override string ToString()
     {
-        return $"[{Id}]{_nombre} {_apellido} - DNI: {_Dni} - Email: {_email} ";
+        return $"[{Id}]{Nombre} {Apellido} - DNI: {Dni} - Email: {Email} ";
     }
 }
