@@ -18,10 +18,12 @@
 .logo {
     font-size: 0.5rem;
 }
-
-.nav-links {
-    display: flex;
-    gap: 1rem;
+.navbar-nav {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  gap: 20px;           /* Espacio entre enlaces */
+  flex-wrap: wrap;     /* Opcional, por si se reduce el ancho */
+  
 }
 
 .nav-link {
