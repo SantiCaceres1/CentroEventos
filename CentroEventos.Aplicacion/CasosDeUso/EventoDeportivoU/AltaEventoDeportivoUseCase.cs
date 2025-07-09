@@ -4,24 +4,23 @@ using CentroEventos.Aplicacion.Repositorios;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.Validadores;
 
-namespace CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
-
 public class AltaEventoDeportivoUseCase
 {
     private readonly IRepositorioEventoDeportivo _repositorioEvento;
-    private readonly IRepositorioPersona _repositorioPersona;
     private readonly IServicioAutorizacion _autorizacion;
     private readonly ValidadorEventoDeportivo _validador;
 
-    public AltaEventoDeportivoUseCase(IRepositorioEventoDeportivo repositorioEvento, IRepositorioPersona repositorioPersona, IServicioAutorizacion autorizacion)
+    public AltaEventoDeportivoUseCase(
+        IRepositorioEventoDeportivo repositorioEvento,
+        IServicioAutorizacion autorizacion,
+        ValidadorEventoDeportivo validador)
     {
         _repositorioEvento = repositorioEvento;
-        _repositorioPersona = repositorioPersona;
         _autorizacion = autorizacion;
-        _validador = new ValidadorEventoDeportivo(repositorioEvento, repositorioPersona);
+        _validador = validador;
     }
 
-    public async void Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
+    public async Task Ejecutar(EventoDeportivo eventoDeportivo, int idUsuario)
     {
         var permiso = await _autorizacion.PoseeElPermiso(idUsuario, Permiso.EventoAlta);
         if (!permiso)
@@ -29,7 +28,7 @@ public class AltaEventoDeportivoUseCase
 
         var errores = await _validador.Validar(eventoDeportivo);
         if (errores.Any())
-            throw new ExcepcionValidacion("Errores de validación al dar de alta el evento.", errores);
+            throw new ValidacionException(errores);
 
         await _repositorioEvento.Agregar(eventoDeportivo);
     }

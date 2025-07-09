@@ -1,4 +1,3 @@
-
 using System.Threading.Tasks;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Excepciones;
@@ -14,11 +13,14 @@ public class ModificarPersonaUseCase
     private readonly IServicioAutorizacion _autorizacion;
     private readonly ValidadorPersona _validador;
 
-    public ModificarPersonaUseCase(IRepositorioPersona repositorio, IServicioAutorizacion autorizacion)
+    public ModificarPersonaUseCase(
+        IRepositorioPersona repositorio,
+        IServicioAutorizacion autorizacion,
+        ValidadorPersona validador)
     {
         _repositorio = repositorio;
         _autorizacion = autorizacion;
-        _validador = new ValidadorPersona(repositorio);
+        _validador = validador;
     }
 
     public async Task Ejecutar(Persona persona, int idUsuario)
@@ -27,14 +29,14 @@ public class ModificarPersonaUseCase
         if (!permiso)
             throw new FalloAutorizacionException("El usuario no tiene permiso para modificar personas.");
 
-        if (await _repositorio.ObtenerPorId(persona.Id) == null)
+        var personaExistente = await _repositorio.ObtenerPorId(persona.Id);
+        if (personaExistente == null)
             throw new EntidadNotFoundException("No existe la persona que se quiere modificar.");
 
         var errores = await _validador.Validar(persona);
         if (errores.Any())
-            throw new ExcepcionValidacion("Errores de validación al modificar la persona.", errores);
+            throw new ValidacionException(errores);
 
         await _repositorio.Modificar(persona);
-
     }
 }

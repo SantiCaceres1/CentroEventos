@@ -34,6 +34,10 @@ builder.Services.AddScoped<IServicioAutorizacion, ServicioAutorizacion>();
 builder.Services.AddScoped<IRepositorioPersona, RepositorioPersonaEF>();
 builder.Services.AddScoped<ServicioAutenticacion>();
 builder.Services.AddScoped<UsuarioSesion>();
+// Inyección de dependencias - Validadores
+builder.Services.AddScoped<ValidadorEventoDeportivo>();
+builder.Services.AddScoped<ValidadorReserva>();
+
 
 builder.Services.AddTransient<ValidadorUsuario>();
 

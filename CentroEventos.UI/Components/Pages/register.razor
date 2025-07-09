@@ -14,7 +14,7 @@
     <input class="form-control mb-2" placeholder="Email" @bind="Email" />
     <input class="form-control mb-2" placeholder="Contraseña" type="password" @bind="Password" />
     <input class="form-control mb-2" placeholder="Confirmar Contraseña" type="password" @bind="ConfirmPassword" />
-    <button class="btn btn-success w-100" @onclick="()=>RegistrarUsuario()" >Crear cuenta</button>
+    <button class="btn btn-success w-100" @onclick="RegistrarUsuario" >Crear cuenta</button>
 
 </div>
 
@@ -50,7 +50,7 @@
 
         try
         {
-            var usuarios = await Sesion.ListarUsuarios();
+            var usuarios = await RepositorioUsuario.ListarTodas();
             Console.WriteLine($"👥 Cantidad de usuarios en el sistema: {usuarios.Count}");
 
             if (usuarios.Count == 0)
