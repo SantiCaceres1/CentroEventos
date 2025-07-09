@@ -3,19 +3,19 @@ namespace CentroEventos.Aplicacion.Entidades;
 
 public class Reserva
 {
-    public int Id { get; protected set; }
-    private int _idPersona ;
-    private int _idEventoDeportivo ;
-    private DateTime _fechaAltaReserva ;
-    private EstadoAsistencia _estadoAsistencia;
+    public int Id { get;  set; }
+    public int IdPersona { get;  set; }
+    public int IdEventoDeportivo { get;  set; }
+    public DateTime FechaAltaReserva { get;  set; }
+    public EstadoAsistencia EstadoAsistencia{ get;  set; }
 
     //constructor sin id
     public Reserva(int idPersona, int idEvento, DateTime fechaAltaReserva)
     {
-        _idPersona = idPersona;
-        _idEventoDeportivo = idEvento;
-        _fechaAltaReserva = fechaAltaReserva;
-        _estadoAsistencia = EstadoAsistencia.Pendiente;
+        IdPersona = idPersona;
+        IdEventoDeportivo = idEvento;
+        FechaAltaReserva = fechaAltaReserva;
+        EstadoAsistencia = EstadoAsistencia.Pendiente;
     }
 
     public Reserva() {}
@@ -23,25 +23,17 @@ public class Reserva
     //Getters publicos
   
 
-    public int IdPersona => _idPersona;
-
-    public int IdEventoDeportivo => _idEventoDeportivo;
-
-    public DateTime FechaAltaReserva => _fechaAltaReserva;
-
-    public EstadoAsistencia EstadoAsistencia => _estadoAsistencia;
-
     public void AsignarFechaDeAlta(DateTime fecha)
     {
-        _fechaAltaReserva = fecha;
+        FechaAltaReserva = fecha;
     }
     public void AsignarEstadoAsistencia(EstadoAsistencia estado)
     {
-        _estadoAsistencia = estado;
+        EstadoAsistencia = estado;
     }
    
     public override string ToString()
     {
-        return $"[{Id}]  Persona: {_idPersona} - Evento: {_idEventoDeportivo} - Estado: {_estadoAsistencia}";
+        return $"[{Id}]  Persona: {IdPersona} - Evento: {IdEventoDeportivo} - Estado: {EstadoAsistencia}";
     }
 }
