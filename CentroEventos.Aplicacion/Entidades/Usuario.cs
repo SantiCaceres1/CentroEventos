@@ -18,6 +18,7 @@ public class Usuario
         _correoElectronico = correoElectronico;
         _hashContraseña = Hasher.Hashear(hashContraseña);
     }
+    
     public Usuario(string nombre,  string correoElectronico, string hashContraseña)
     {
         _nombre = nombre;
