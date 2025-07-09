@@ -1,4 +1,5 @@
 @page "/Login"
+@rendermode InteractiveServer
 @inject UsuarioSesion Sesion
 @inject NavigationManager Navigation
 
@@ -29,6 +30,7 @@
         else
         {
             Error = "Email o contraseña incorrectos.";
+            
         }
     }
 }
