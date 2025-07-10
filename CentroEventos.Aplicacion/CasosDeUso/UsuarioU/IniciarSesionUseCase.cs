@@ -6,32 +6,31 @@ namespace CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 public class IniciarSesionUseCase
 {
-    private readonly IRepositorioUsuario _repositorio;
+    
+    private readonly IRepositorioUsuario _repo;
     private readonly ServicioAutenticacion _autenticacion;
     private readonly UsuarioSesion _sesion;
 
     public IniciarSesionUseCase(
-        IRepositorioUsuario repositorio,
+        IRepositorioUsuario repo,
         ServicioAutenticacion autenticacion,
         UsuarioSesion sesion)
     {
-        _repositorio = repositorio;
+        _repo = repo;
         _autenticacion = autenticacion;
         _sesion = sesion;
     }
 
-    public async Task<bool> Ejecutar(string correo, string contraseña)
+    public async Task<bool> Ejecutar(string correo, string contrasenia)
     {
-        if (string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contraseña))
+        var usuario = await _repo.ObtenerPorCorreoElectronico(correo);
+        if (usuario is null) return false;
+
+        if (!_autenticacion.VerificarContraseña(contrasenia, usuario.HashContraseña!))
             return false;
 
-        var usuario = await _repositorio.ObtenerPorCorreoElectronico(correo);
-        if (usuario != null && _autenticacion.VerificarContraseña(contraseña, usuario.HashContraseña!))
-        {
-            _sesion.UsuarioActual = usuario;
-            return true;
-        }
-
-        return false;
+        _sesion.IniciarSesionManual(usuario); // 👈 ESTA LÍNEA ES CLAVE
+        return true;
     }
 }
+

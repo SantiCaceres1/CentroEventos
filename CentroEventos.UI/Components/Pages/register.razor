@@ -66,6 +66,12 @@
                 if (creado != null)
                 {
                     Console.WriteLine("🔑 Asignando permisos de administrador...");
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoAlta);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoBaja);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoModificacion);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaAlta);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaBaja);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaModificacion);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioAlta);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioModificacion);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioBaja);

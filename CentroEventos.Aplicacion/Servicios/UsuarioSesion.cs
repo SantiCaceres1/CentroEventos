@@ -7,7 +7,10 @@ namespace CentroEventos.Aplicacion.Servicios
     {
     public Usuario? UsuarioActual { get; set; }
     
-
+        public void IniciarSesionManual(Usuario usuario)
+        {
+            UsuarioActual = usuario;
+        }
 
         public bool EstaLogueado()
         {
@@ -22,8 +25,10 @@ namespace CentroEventos.Aplicacion.Servicios
             return false;
         }
 
-    public Usuario UsuarioLogueado => UsuarioActual 
-        ?? throw new InvalidOperationException("No hay usuario logueado.");
+
+    
+        public Usuario UsuarioLogueado => UsuarioActual
+            ?? throw new InvalidOperationException("No hay usuario logueado.");
 
     public void CerrarSesion() => UsuarioActual = null;
 
