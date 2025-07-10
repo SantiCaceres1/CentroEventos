@@ -8,18 +8,18 @@ namespace CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 public class EliminarPermisoUsuarioUseCase
 {
     private readonly IRepositorioUsuario _repositorio;
-    private readonly UsuarioSesion _usuarioSesion;
-    public EliminarPermisoUsuarioUseCase(IRepositorioUsuario repositorio, UsuarioSesion usuarioSesion)
+    private readonly UsuarioEsAdminUseCase _esAdminUseCase;
+    public EliminarPermisoUsuarioUseCase(IRepositorioUsuario repositorio, UsuarioEsAdminUseCase esAdminUseCase)
     {
         _repositorio = repositorio;
-        _usuarioSesion = usuarioSesion;
+        _esAdminUseCase = esAdminUseCase;
     }
 
     public async Task Ejecutar(int idEditor, int idUsuario, Permiso permiso)
     {
         if (await _repositorio.ObtenerPorId(idEditor) == null) throw new Exception("Usuario editor no encontrado");
         var usuario = await _repositorio.ObtenerPorId(idUsuario) ?? throw new Exception("Usuario no encontrado.");
-        var esAdmin = await _usuarioSesion.UsuarioEsAdmin();
+        var esAdmin = await _esAdminUseCase.Ejecutar();
         if (!esAdmin)
             throw new FalloAutorizacionException("No tenés permiso para eliminar permisos de otros usuarios.");
 

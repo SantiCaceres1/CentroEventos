@@ -1,0 +1,14 @@
+@rendermode InteractiveServer
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+
+
+<button class="btn btn-outline" @onclick="cerrarSesion">Cerrar Sesión</button>
+
+@code {
+    private void cerrarSesion() 
+    {
+        Navigation.NavigateTo("/");
+        Sesion.CerrarSesion();
+    }
+}

@@ -1,6 +1,8 @@
 @page "/Login"
 @rendermode InteractiveServer
+@inject IniciarSesionUseCase LoginUseCase
 @inject UsuarioSesion Sesion
+
 @inject NavigationManager Navigation
 
 <h3 class="text-center mb-4">Iniciar Sesión</h3>
@@ -21,18 +23,10 @@
 
     private async Task LoginUsuario()
     {
-        var exito = await Sesion.IniciarSesion(Email, Password);
-        
-        var admin = await Sesion.UsuarioEsAdmin();
-        Console.WriteLine("Estoy adentro PA");
-        if(exito==false){Console.WriteLine("Soy falso");}
+        var exito = await LoginUseCase.Ejecutar(Email, Password);
         if (exito)
         {
-            Console.WriteLine("Entre como caballo");
-            if(admin){
-                Console.WriteLine("Soy un toro");
                 Navigation.NavigateTo("/Admin");
-            }            
         }
         else
         {

@@ -7,6 +7,7 @@ using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 using CentroEventos.Aplicacion.CasosDeUso.ReservaU;
 using CentroEventos.Aplicacion.Validadores;
+using CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,10 @@ builder.Services.AddTransient<AltaUsuarioUseCase>();
 builder.Services.AddTransient<AltaReservaUseCase>();
 builder.Services.AddTransient<ListarReservaUseCase>();
 builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
+builder.Services.AddTransient<UsuarioEsAdminUseCase>();
+builder.Services.AddTransient<IniciarSesionUseCase>();
+builder.Services.AddTransient<RegistrarUsuarioUseCase>();
+
 // Inyección de dependencias - Repositorios
 builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivoEF>();
 builder.Services.AddScoped<IRepositorioReserva, RepositorioReservaEF>();
@@ -30,7 +35,17 @@ builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
 builder.Services.AddScoped<IServicioAutorizacion, ServicioAutorizacion>();
 builder.Services.AddScoped<IRepositorioPersona, RepositorioPersonaEF>();
 builder.Services.AddScoped<ServicioAutenticacion>();
+
 builder.Services.AddScoped<UsuarioSesion>();
+// builder.Services.AddSingleton<UsuarioSesion>();
+/*
+    El servicio UsuarioSesion se registra como Singleton porque queremos que la misma instancia viva 
+    durante toda la vida de la aplicación. Si bien esto es peligroso porque todos los usuarios comparten
+    la misma sesión, en este caso es intencional para que la sesion persista ya que estaremos inyectando
+    mal UsuarioSesion en alguna parte de nuestro codigo, haciendo asi que se rompa el ciclo de vida Scoped
+    y no manteniendo la misma instancia (persistencia de la sesion).
+ */ 
+
 // Inyección de dependencias - Validadores
 builder.Services.AddScoped<ValidadorEventoDeportivo>();
 builder.Services.AddScoped<ValidadorReserva>();

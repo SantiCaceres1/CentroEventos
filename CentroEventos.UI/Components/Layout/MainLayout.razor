@@ -1,16 +1,8 @@
-﻿
-@inherits LayoutComponentBase
-
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 @inject UsuarioSesion Sesion
-
-@code {
-    private bool esAdmin;
-
-    protected override async Task OnInitializedAsync()
-    {
-        esAdmin = Sesion.EstaLogueado() && await Sesion.UsuarioEsAdmin();
-    }
-}
+@inject UsuarioEsAdminUseCase EsAdminUseCase
+@using CentroEventos.UI.Components.Pages
 
 <header class="navbar">
     <div class="container">
@@ -20,18 +12,10 @@
             <NavLink href="/Actividades" class="nav-link">Actividades</NavLink>
             <NavLink href="/Contact" class="nav-link">Conocenos</NavLink>
             @if (Sesion.EstaLogueado())
-            {
-                Console.WriteLine("estoy en main layout");
+            {   
                 <NavLink href="/MisActividades" class="nav-link">Panel de Actividades</NavLink>
-
-                @if (esAdmin)
-                {
-                    <NavLink href="/Admin" class="nav-link">Admin</NavLink>
-                    <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
-                    <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
-                }
-
-                <button class="btn btn-outline" @onclick="Sesion.CerrarSesion">Cerrar Sesión</button>
+                <AdminNavBar />
+                <ButtonCerrarSesion />
             }
             else
             {

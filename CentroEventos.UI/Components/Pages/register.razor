@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @inject UsuarioSesion Sesion
 @inject IRepositorioUsuario RepositorioUsuario
+@inject RegistrarUsuarioUseCase RegistrarUser
 @inject NavigationManager Navigation
 
 <h3 class="text-center mb-4">Registro</h3>
@@ -15,7 +16,6 @@
     <input class="form-control mb-2" placeholder="Contraseña" type="password" @bind="Password" />
     <input class="form-control mb-2" placeholder="Confirmar Contraseña" type="password" @bind="ConfirmPassword" />
     <button class="btn btn-success w-100" @onclick="RegistrarUsuario" >Crear cuenta</button>
-
 </div>
 
 <p class="mt-3 text-center">
@@ -65,6 +65,12 @@
                 if (creado != null)
                 {
                     Console.WriteLine("🔑 Asignando permisos de administrador...");
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoAlta);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoBaja);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.EventoModificacion);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaAlta);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaBaja);
+                    await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.ReservaModificacion);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioAlta);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioModificacion);
                     await RepositorioUsuario.AgregarPermiso(creado.Id, Permiso.UsuarioBaja);
@@ -87,7 +93,7 @@
                 }
 
                 Console.WriteLine("🔒 Sesión válida, intentando registrar nuevo usuario...");
-                bool exito = await Sesion.RegistrarUsuario(Nombre, Email, Password);
+                bool exito = await RegistrarUser.Ejecutar(Nombre, Email, Password);
                 if (!exito)
                 {
                     Console.WriteLine("❌ El correo ya está registrado.");

@@ -2,41 +2,11 @@
 
 @inject UsuarioSesion Sesion
 @inject NavigationManager Navigation
+@inject UsuarioEsAdminUseCase EsAdminUseCase
 
 <h3>Panel de Administracion</h3>
 
-@code {
-    
-    private bool accesoAutorizado = false;
-    private async Task<bool> EsAdmin() => await Sesion.UsuarioEsAdmin();
-    protected override async Task OnInitializedAsync()
-    {
-        Console.WriteLine("ESTO ES ADMIN PA");
-        if(Sesion.EstaLogueado()){
-            Console.WriteLine("ESTA LOGUEADO");
-        }else{
-            Console.WriteLine("PINCHO 1");
-        }
-        if(await Sesion.UsuarioEsAdmin()){
-            Console.WriteLine("ES ADMIN ANASHE");
-        }else{
-            Console.WriteLine("PIMCHO 2");
-        }
-        accesoAutorizado = Sesion.EstaLogueado() && await EsAdmin();
-        if(accesoAutorizado){
-            Console.WriteLine("SOY ADMIN GODDDDD");
-        }
-        if (!accesoAutorizado)
-        {
-            Console.WriteLine("ME RE FUI DOMADO");
-            Navigation.NavigateTo("/");
-        }
-    }
-
-    
-}
-
-@if(!accesoAutorizado)
+@if (!accesoAutorizado)
 {
     <p class="text-danger">Acceso no autorizado.</p>
 }
@@ -51,3 +21,15 @@ else
         </ul>
     </div>
 }
+
+@code {
+    private bool accesoAutorizado = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        accesoAutorizado = await EsAdminUseCase.Ejecutar();
+        if (!accesoAutorizado) Navigation.NavigateTo("/");
+    }
+}
+
+
