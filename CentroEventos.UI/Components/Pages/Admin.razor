@@ -27,22 +27,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("ESTO ES ADMIN PA");
-
-            accesoAutorizado = await EsAdminUseCase.Ejecutar();
-            if (accesoAutorizado)
-            {
-                Console.WriteLine("SOY ADMIN GODDDDD");
-            }
-            else
-            {
-                Console.WriteLine("PIMCHO 2");
-            }
-        if (!accesoAutorizado)
-        {
-            Console.WriteLine("ME RE FUI DOMADO");
-            Navigation.NavigateTo("/");
-        }
+        accesoAutorizado = await EsAdminUseCase.Ejecutar();
+        if (!accesoAutorizado) Navigation.NavigateTo("/");
     }
 }
 

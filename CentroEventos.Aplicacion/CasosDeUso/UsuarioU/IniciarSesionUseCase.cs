@@ -29,7 +29,7 @@ public class IniciarSesionUseCase
         if (!_autenticacion.VerificarContraseña(contrasenia, usuario.HashContraseña!))
             return false;
 
-        _sesion.IniciarSesionManual(usuario); // 👈 ESTA LÍNEA ES CLAVE
+        _sesion.IniciarSesion(usuario); // 👈 ESTA LÍNEA ES CLAVE
         return true;
     }
 }

@@ -24,13 +24,9 @@
     private async Task LoginUsuario()
     {
         var exito = await LoginUseCase.Ejecutar(Email, Password);
-        Console.WriteLine("Estoy adentro PA");
-        if(exito==false){Console.WriteLine("Soy falso");}
         if (exito)
         {
-            Console.WriteLine("Entre como caballo");
                 Navigation.NavigateTo("/Admin");
-                      
         }
         else
         {

@@ -1,0 +1,18 @@
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+@inject UsuarioEsAdminUseCase EsAdminUseCase
+
+@if (Sesion.EstaLogueado() && esAdmin) {
+        <NavLink href="/Admin" class="nav-link">Admin</NavLink>
+        <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
+        <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
+}
+
+@code {
+    private bool esAdmin;
+
+    protected override async Task OnInitializedAsync()
+    {
+        esAdmin = await EsAdminUseCase.Ejecutar();
+    }
+}
