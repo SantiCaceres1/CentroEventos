@@ -22,10 +22,17 @@
     private async Task LoginUsuario()
     {
         var exito = await Sesion.IniciarSesion(Email, Password);
+        
+        var admin = await Sesion.UsuarioEsAdmin();
         Console.WriteLine("Estoy adentro PA");
+        if(exito==false){Console.WriteLine("Soy falso");}
         if (exito)
         {
-            Navigation.NavigateTo("/");
+            Console.WriteLine("Entre como caballo");
+            if(admin){
+                Console.WriteLine("Soy un toro");
+                Navigation.NavigateTo("/Admin");
+            }            
         }
         else
         {

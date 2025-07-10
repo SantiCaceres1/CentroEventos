@@ -68,18 +68,7 @@ namespace CentroEventos.Repositorios.Repositorios
             return await _context.Usuarios.AnyAsync(u => u.CorreoElectronico == correoElectronico);
         }
 
-        /*public async Task<bool> VerificarContraseña(string contraseña)
-        {
-            string hash = Hasher.Hashear(contraseña);
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.HashContraseña == hash);
-            if (usuario != null)
-            {
-                return true;
-            }
-            // Si no se encuentra el usuario o la contraseña no coincide, retornar false
-            return await Task.FromResult(false);
-        }*/
-
+        
         public async Task<bool> AgregarPermiso(int usuarioId, Permiso permiso)
         {
             var usuario = await _context.Usuarios.Include(u => u.Permisos).FirstOrDefaultAsync(u => u.Id == usuarioId);

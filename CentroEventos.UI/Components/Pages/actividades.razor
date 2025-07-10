@@ -9,7 +9,8 @@
 </div>
 
 <div class="text-center">
-@if (_eventos != null & _eventos.Any() & _eventos.Count == 0)
+@if (_eventos == null || !_eventos.Any())
+
 {
     <p>No hay eventos disponibles por el momento.</p>
 }

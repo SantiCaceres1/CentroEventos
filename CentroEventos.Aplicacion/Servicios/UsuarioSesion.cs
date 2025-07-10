@@ -8,7 +8,7 @@ namespace CentroEventos.Aplicacion.Servicios
         private readonly IRepositorioUsuario _repositorio;
         private readonly ServicioAutenticacion _autenticacion;
 
-        public Usuario? UsuarioActual { get; private set; }
+        public Usuario? UsuarioActual { get;  set; }
 
         public UsuarioSesion(IRepositorioUsuario repositorio, ServicioAutenticacion autenticacion)
         {
@@ -22,22 +22,40 @@ namespace CentroEventos.Aplicacion.Servicios
                 return false;
 
             var usuario = await _repositorio.ObtenerPorCorreoElectronico(correo);
+            if (usuario == null)
+            {
+                Console.WriteLine("Esto no se encuentra 21:24");
+            }
 
             if (usuario != null && _autenticacion.VerificarContraseña(contraseña, usuario.HashContraseña!))
             {
                 UsuarioActual = usuario;
+                Console.WriteLine("me asigne soy verdadero 21:33");
+                Console.WriteLine($"{UsuarioActual.CorreoElectronico}");
+                Console.WriteLine($"{UsuarioActual.HashContraseña}");
                 return true;
             }
 
             return false;
         }
 
-        public void CerrarSesion()
-        {
-            UsuarioActual = null;
-        }
 
-        public bool EstaLogueado() => UsuarioActual != null;
+
+        public bool EstaLogueado()
+{   
+    if (UsuarioActual == null)
+    {
+        Console.WriteLine("soy nulo");
+        return false;
+    }
+
+        string correo = UsuarioActual.CorreoElectronico;
+        Console.WriteLine($" {correo}");
+        Console.WriteLine("Hola estoy en Esta logueado");
+
+        Console.WriteLine("soy alguien");
+    return true;
+}
 
         public async Task<bool> UsuarioEsAdmin()
         {
@@ -67,6 +85,10 @@ namespace CentroEventos.Aplicacion.Servicios
             await _repositorio.Agregar(nuevoUsuario);
 
             return true;
+        }
+         public void CerrarSesion()
+        {
+            UsuarioActual = null;
         }
     }
 }
