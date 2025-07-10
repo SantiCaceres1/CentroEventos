@@ -21,6 +21,7 @@
             <NavLink href="/Contact" class="nav-link">Conocenos</NavLink>
             @if (Sesion.EstaLogueado())
             {
+                Console.WriteLine("estoy en main layout");
                 <NavLink href="/MisActividades" class="nav-link">Panel de Actividades</NavLink>
 
                 @if (esAdmin)
