@@ -1,5 +1,6 @@
 @page "/AdminActividades"
 @inject UsuarioSesion Sesion
+@inject UsuarioEsAdminUseCase EsAdminUseCase
 @inject NavigationManager Navigation
 
 <h3>Panel de actividades</h3>
@@ -27,7 +28,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        if (!Sesion.EstaLogueado() || !await Sesion.UsuarioEsAdmin())
+        if (!Sesion.EstaLogueado() || !await EsAdminUseCase.Ejecutar())
         {
             Navigation.NavigateTo("/");
             return;

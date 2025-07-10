@@ -1,5 +1,6 @@
 @page "/AdminUsers"
 @inject UsuarioSesion Sesion
+@inject UsuarioEsAdminUseCase EsAdminUseCase
 @inject NavigationManager Navigation
 
 <h3>Panel de Administracion de Usuarios</h3>
@@ -29,5 +30,5 @@ else
         }
     }
 
-    private async Task<bool> EsAdmin() => await Sesion.UsuarioEsAdmin();
+    private async Task<bool> EsAdmin() => await EsAdminUseCase.Ejecutar();
 }

@@ -1,14 +1,14 @@
-﻿
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 @inject UsuarioSesion Sesion
+@inject UsuarioEsAdminUseCase EsAdminUseCase
 
 @code {
     private bool esAdmin;
 
     protected override async Task OnInitializedAsync()
     {
-        esAdmin = Sesion.EstaLogueado() && await Sesion.UsuarioEsAdmin();
+        esAdmin = Sesion.EstaLogueado() && await EsAdminUseCase.Ejecutar();
     }
 }
 
