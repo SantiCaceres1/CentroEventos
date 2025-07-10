@@ -2,10 +2,13 @@
 @inject NavigationManager Navigation
 @inject UsuarioEsAdminUseCase EsAdminUseCase
 
-@if (Sesion.EstaLogueado() && esAdmin) {
+@if (Sesion.EstaLogueado() && esAdmin)
+{
+    <span class="nav-link-wrapper">
         <NavLink href="/Admin" class="nav-link">Admin</NavLink>
         <NavLink href="/Adminusers" class="nav-link">Agregar Usuario</NavLink>
         <NavLink href="/Adminactividades" class="nav-link">Agregar Persona</NavLink>
+    </span>
 }
 
 @code {

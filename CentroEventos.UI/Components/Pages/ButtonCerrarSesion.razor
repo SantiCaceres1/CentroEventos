@@ -2,8 +2,9 @@
 @inject UsuarioSesion Sesion
 @inject NavigationManager Navigation
 
-
-<button class="btn btn-outline" @onclick="cerrarSesion">Cerrar Sesión</button>
+<span class="nav-link-wrapper">
+    <button class="btn btn-outline" @onclick="cerrarSesion">Cerrar Sesión</button>
+</span>
 
 @code {
     private void cerrarSesion() 

@@ -20,10 +20,15 @@
 }
 .navbar-nav {
   display: flex;
+  flex-direction: row;
   align-items: center; /* Centra verticalmente */
   gap: 20px;           /* Espacio entre enlaces */
-  flex-wrap: wrap;     /* Opcional, por si se reduce el ancho */
-  
+  flex-wrap: nowrap;     /* Opcional, por si se reduce el ancho */
+}
+
+.navbar-nav > * {
+    display: flex;
+    align-items: center;
 }
 
 .nav-link {
@@ -35,6 +40,12 @@
 .nav-link.active {
     font-weight: bold;
     border-bottom: 2px solid #007bff;
+}
+
+.nav-link-wrapper {
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .auth-buttons {
