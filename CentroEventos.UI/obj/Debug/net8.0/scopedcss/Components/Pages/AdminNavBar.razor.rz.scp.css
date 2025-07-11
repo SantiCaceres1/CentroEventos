@@ -1,0 +1,16 @@
+.nav-link[b-6kt0lzpb57] {
+    color: #444;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.nav-link.active[b-6kt0lzpb57] {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
+.nav-link-wrapper[b-6kt0lzpb57] {
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+}

@@ -1,0 +1,12 @@
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/bin/Debug/net8.0/CentroEventos.Aplicacion.deps.json
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/bin/Debug/net8.0/CentroEventos.Aplicacion.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/bin/Debug/net8.0/CentroEventos.Aplicacion.pdb
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.AssemblyInfoInputs.cache
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.AssemblyInfo.cs
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.csproj.CoreCompileInputs.cache
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.sourcelink.json
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/refint/CentroEventos.Aplicacion.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/CentroEventos.Aplicacion.pdb
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Aplicacion/obj/Debug/net8.0/ref/CentroEventos.Aplicacion.dll

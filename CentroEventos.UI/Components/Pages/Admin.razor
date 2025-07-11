@@ -1,8 +1,9 @@
 @page "/Admin"
-
+@rendermode InteractiveServer
 @inject UsuarioSesion Sesion
 @inject NavigationManager Navigation
 @inject UsuarioEsAdminUseCase EsAdminUseCase
+@using CentroEventos.UI.Components.Pages.Reserva
 
 <h3>Panel de Administracion</h3>
 
@@ -18,6 +19,7 @@ else
         <ul>
             <li><NavLink href="/AdminUsers">Gestionar Usuarios</NavLink></li>
             <li><NavLink href="/AdminActividades">Gestionar Actividades</NavLink></li>
+            <li><NavLink href="/AdminReservas">Gestionar Reservas</NavLink></li>
         </ul>
     </div>
 }

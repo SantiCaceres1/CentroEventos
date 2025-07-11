@@ -1,0 +1,32 @@
+.carousel-wrapper[b-ydm72fqq40] {
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.carousel-slide[b-ydm72fqq40] {
+    display: flex;
+    width: calc(900px * 5);
+    animation: scroll-b-ydm72fqq40 40s linear infinite;
+}
+
+.carousel-slide img[b-ydm72fqq40] {
+    width: 900px;
+    height: 400px;
+    object-fit: cover;
+}
+
+@keyframes scroll-b-ydm72fqq40 {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(0); }
+    25%  { transform: translateX(-900px); }
+    45%  { transform: translateX(-900px); }
+    50%  { transform: translateX(-1800px); }
+    70%  { transform: translateX(-1800px); }
+    75%  { transform: translateX(-2700px); }
+    95%  { transform: translateX(-2700px); }
+    100% { transform: translateX(0); }
+}

@@ -6,11 +6,15 @@ using CentroEventos.UI.Components;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 using CentroEventos.Aplicacion.CasosDeUso.ReservaU;
+using CentroEventos.Aplicacion.CasosDeUso.PersonaU;
 using CentroEventos.Aplicacion.Validadores;
 using CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddServerSideBlazor()
+    .AddCircuitOptions(options => { options.DetailedErrors = true; });
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -21,12 +25,16 @@ builder.Services.AddTransient<AltaEventoDeportivoUseCase>();
 builder.Services.AddTransient<ListarEventoDeportivoUseCase>();
 builder.Services.AddTransient<ModificarEventoDeportivoUseCase>();
 builder.Services.AddTransient<AltaUsuarioUseCase>();
-builder.Services.AddTransient<AltaReservaUseCase>();
 builder.Services.AddTransient<ListarReservaUseCase>();
 builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
 builder.Services.AddTransient<UsuarioEsAdminUseCase>();
 builder.Services.AddTransient<IniciarSesionUseCase>();
 builder.Services.AddTransient<RegistrarUsuarioUseCase>();
+builder.Services.AddTransient<ListarPersonasUseCase>();
+builder.Services.AddTransient<AltaReservaUseCase>();
+builder.Services.AddTransient<ModificarReservaUseCase>();
+builder.Services.AddTransient<EliminarReservaUseCase>();
+builder.Services.AddTransient<ListarReservaUseCase>();
 
 // Inyección de dependencias - Repositorios
 builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivoEF>();

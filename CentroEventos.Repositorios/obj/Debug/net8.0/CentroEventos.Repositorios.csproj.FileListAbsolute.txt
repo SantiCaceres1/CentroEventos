@@ -1,0 +1,16 @@
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/bin/Debug/net8.0/CentroEventos.Repositorios.deps.json
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/bin/Debug/net8.0/CentroEventos.Repositorios.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/bin/Debug/net8.0/CentroEventos.Repositorios.pdb
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/bin/Debug/net8.0/CentroEventos.Aplicacion.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/bin/Debug/net8.0/CentroEventos.Aplicacion.pdb
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.csproj.AssemblyReference.cache
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.AssemblyInfoInputs.cache
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.AssemblyInfo.cs
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.csproj.CoreCompileInputs.cache
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.sourcelink.json
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEv.AF39A6CD.Up2Date
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/refint/CentroEventos.Repositorios.dll
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/CentroEventos.Repositorios.pdb
+/Users/l.galluzzi/Desktop/Facultad/DotNet/CentroEventos/CentroEventos.Repositorios/obj/Debug/net8.0/ref/CentroEventos.Repositorios.dll

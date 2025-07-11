@@ -1,0 +1,153 @@
+/* _content/CentroEventos.UI/Components/Layout/MainLayout.razor.rz.scp.css */
+.navbar[b-1fi618u8xd] {
+    background-color: rgb(233, 233, 233);
+    border-bottom: 1px solid #c1c1c1;
+    padding: 1rem 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.container[b-1fi618u8xd] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo[b-1fi618u8xd] {
+    font-size: 0.5rem;
+}
+.navbar-nav[b-1fi618u8xd] {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centra verticalmente */
+  gap: 20px;           /* Espacio entre enlaces */
+  flex-wrap: nowrap;     /* Opcional, por si se reduce el ancho */
+}
+
+.navbar-nav > *[b-1fi618u8xd] {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link[b-1fi618u8xd] {
+    color: #444;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.nav-link.active[b-1fi618u8xd] {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
+.nav-link-wrapper[b-1fi618u8xd] {
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.auth-buttons[b-1fi618u8xd] {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn[b-1fi618u8xd] {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary[b-1fi618u8xd] {
+    background-color: #007bff;
+    color: rgb(56, 56, 56);
+}
+
+.btn-outline[b-1fi618u8xd] {
+    border: 1px solid #3898ff;
+    color: #007bff;
+}
+/* _content/CentroEventos.UI/Components/Pages/AdminNavBar.razor.rz.scp.css */
+.nav-link[b-6kt0lzpb57] {
+    color: #444;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.nav-link.active[b-6kt0lzpb57] {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
+.nav-link-wrapper[b-6kt0lzpb57] {
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+}
+/* _content/CentroEventos.UI/Components/Pages/ButtonCerrarSesion.razor.rz.scp.css */
+.btn[b-s6yewcxhlq] {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-outline[b-s6yewcxhlq] {
+    border: 1px solid #3898ff;
+    color: #007bff;
+}
+/* _content/CentroEventos.UI/Components/Pages/Contact.razor.rz.scp.css */
+#map[b-6a04355xxl]{
+    border-radius: 20px;
+}
+/* _content/CentroEventos.UI/Components/Pages/Home.razor.rz.scp.css */
+.carousel-wrapper[b-ydm72fqq40] {
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.carousel-slide[b-ydm72fqq40] {
+    display: flex;
+    width: calc(900px * 5);
+    animation: scroll-b-ydm72fqq40 40s linear infinite;
+}
+
+.carousel-slide img[b-ydm72fqq40] {
+    width: 900px;
+    height: 400px;
+    object-fit: cover;
+}
+
+@keyframes scroll-b-ydm72fqq40 {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(0); }
+    25%  { transform: translateX(-900px); }
+    45%  { transform: translateX(-900px); }
+    50%  { transform: translateX(-1800px); }
+    70%  { transform: translateX(-1800px); }
+    75%  { transform: translateX(-2700px); }
+    95%  { transform: translateX(-2700px); }
+    100% { transform: translateX(0); }
+}
+/* _content/CentroEventos.UI/Components/Pages/Logger.razor.rz.scp.css */
+.login-form[b-t5328k5skt] {
+    max-width: 400px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-control[b-t5328k5skt] {
+    padding: 0.5rem;
+    font-size: 1rem;
+}

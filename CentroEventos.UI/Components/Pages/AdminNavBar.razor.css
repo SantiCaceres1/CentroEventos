@@ -1,0 +1,16 @@
+.nav-link {
+    color: #444;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
+
+.nav-link-wrapper {
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+}

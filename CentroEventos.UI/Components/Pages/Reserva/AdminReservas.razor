@@ -1,0 +1,55 @@
+@page "/AdminReservas"
+@rendermode InteractiveServer
+@inject UsuarioSesion Sesion
+@inject IServicioAutorizacion Autorizacion
+@inject NavigationManager Navigation
+@using CentroEventos.UI.Components.Pages.Reserva
+
+<h3>Panel de Reservas</h3>
+
+@if (!_autorizado)
+{
+    <p class="text-danger">Acceso no autorizado.</p>
+}
+else
+{
+    <div class="user-panel">
+        <h4>Bienvenido, @Sesion.UsuarioLogueado.Nombre</h4>
+        <p>Seleccioná una opción del menú para administrar las reservas.</p>
+        <ul>
+            @if (_puedeAlta)
+            {
+                <li><NavLink href="/reserva-alta">Agregar Reserva</NavLink></li>
+            }
+            @if (_puedeAlta || _puedeModificar || _puedeBaja)
+            {
+                <li><NavLink href="/listado-reservas">Gestionar Reservas</NavLink></li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    private bool _autorizado = false;
+    private bool _puedeAlta = false;
+    private bool _puedeModificar = false;
+    private bool _puedeBaja = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Sesion.EstaLogueado())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+        var id = Sesion.UsuarioLogueado.Id;
+        _puedeAlta = await Autorizacion.PoseeElPermiso(id, Permiso.ReservaAlta);
+        _puedeModificar = await Autorizacion.PoseeElPermiso(id, Permiso.ReservaModificacion);
+        _puedeBaja = await Autorizacion.PoseeElPermiso(id, Permiso.ReservaBaja);
+        _autorizado = _puedeAlta || _puedeModificar || _puedeBaja;
+        if (!_autorizado)
+        {
+            Navigation.NavigateTo("/");
+        }
+    }
+}
