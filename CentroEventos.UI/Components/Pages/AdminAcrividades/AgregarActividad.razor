@@ -1,0 +1,59 @@
+@rendermode InteractiveServer
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+@inject AltaEventoDeportivoUseCase AltaEventoDeportivoUseCase
+@inject ListarPersonasUseCase ListarPersonas
+@using CentroEventos.Aplicacion.CasosDeUso.PersonaU
+
+<input required type="text" class="form-control" placeholder="Nombre del Evento Deportivo" @bind="evento.Nombre" />
+
+<label for="fechaInicio">Fecha de Inicio</label>
+<input required type="datetime-local" min="2025-06-14T08:00" @bind="evento.FechaInicio" />
+
+<label for="duracion">Duración en Horas</label>
+<input required type="number" step="0.01" min="0" @bind="evento.DuracionHoras" />
+
+<label for="cupoMaximo">Cupo Máximo</label>
+<input required type="number" min="0" @bind="evento.CupoMaximo" />
+
+<textarea required class="form-control" placeholder="Descripción del Evento Deportivo" @bind="evento.Descripcion"></textarea>
+
+<select @bind="evento.IdResponsable">
+    @foreach (Persona p in lista)
+    {
+        <option value="@p.Id">@p.ToString()</option>
+    }
+</select>
+
+<button class="btn btn-primary" @onclick="AgregarEvento">Agregar Evento Deportivo</button>
+<button class="btn btn-secondary" @onclick="() => OnFormulario.InvokeAsync()">Cancelar</button> 
+
+@code {
+    private List<Persona> lista = new List<Persona>();
+    private EventoDeportivo evento = new EventoDeportivo();
+    [Parameter]
+    public EventCallback OnFormulario { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        lista = await ListarPersonas.Ejecutar();
+    }
+
+    private async Task AgregarEvento()
+    {
+        int idRespnsable = Sesion.Id ?? 0;
+        Console.WriteLine($"ID Responsable: {idRespnsable}");
+        if (evento != null)
+        {
+            try {
+                Console.WriteLine("Entre");
+                await AltaEventoDeportivoUseCase.Ejecutar(evento, idRespnsable);
+                evento = new EventoDeportivo();
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Error al agregar evento: {ex.Message}");
+            }
+        }
+        await OnFormulario.InvokeAsync();
+    }
+}
