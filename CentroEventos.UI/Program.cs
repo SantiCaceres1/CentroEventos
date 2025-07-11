@@ -8,6 +8,7 @@ using CentroEventos.Aplicacion.CasosDeUso.EventoDeportivoU;
 using CentroEventos.Aplicacion.CasosDeUso.ReservaU;
 using CentroEventos.Aplicacion.Validadores;
 using CentroEventos.Aplicacion.CasosDeUso.UsuarioU;
+using CentroEventos.Aplicacion.CasosDeUso.PersonaU;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,13 +21,27 @@ builder.Services.AddRazorComponents()
 builder.Services.AddTransient<AltaEventoDeportivoUseCase>();
 builder.Services.AddTransient<ListarEventoDeportivoUseCase>();
 builder.Services.AddTransient<ModificarEventoDeportivoUseCase>();
+builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
+
 builder.Services.AddTransient<AltaUsuarioUseCase>();
+builder.Services.AddTransient<EliminarUsuarioUseCase>();
+builder.Services.AddTransient<ListarUsuarioUseCase>();
+builder.Services.AddTransient<ModificarUsuarioUseCase>();
+builder.Services.AddTransient<AltaUsuarioUseCase>();
+
 builder.Services.AddTransient<AltaReservaUseCase>();
 builder.Services.AddTransient<ListarReservaUseCase>();
-builder.Services.AddTransient<ListarEventosConCupoDisponibleUseCase>();
-builder.Services.AddTransient<UsuarioEsAdminUseCase>();
+
 builder.Services.AddTransient<IniciarSesionUseCase>();
+builder.Services.AddTransient<UsuarioEsAdminUseCase>();
 builder.Services.AddTransient<RegistrarUsuarioUseCase>();
+
+builder.Services.AddTransient<EliminarPersonaUseCase>();
+builder.Services.AddTransient<AltaPersonaUseCase>();
+builder.Services.AddTransient<ListarPersonasUseCase>();
+builder.Services.AddTransient<ModificarPersonaUseCase>();
+builder.Services.AddTransient<ValidadorPersona>();
+
 
 // Inyección de dependencias - Repositorios
 builder.Services.AddScoped<IRepositorioEventoDeportivo, RepositorioEventoDeportivoEF>();

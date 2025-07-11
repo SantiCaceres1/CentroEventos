@@ -28,11 +28,11 @@ public class ValidadorPersona
         if (string.IsNullOrWhiteSpace(persona.Email))
             errores.Add("El email no puede estar vacío.");
 
-        if (await _repositorio.ObtenerPorDni(persona.Dni) is not null)
-            errores.Add("Ya existe una persona con el mismo DNI.");
+        //if (await _repositorio.ObtenerPorDni(persona.Dni) is not null)
+        //    errores.Add("Ya existe una persona con el mismo DNI.");
 
-        if (await _repositorio.ObtenerPorEmail(persona.Email) is not null)
-            errores.Add("Ya existe una persona con el mismo email.");
+        //if (await _repositorio.ObtenerPorEmail(persona.Email) is not null)
+        //    errores.Add("Ya existe una persona con el mismo email.");
 
         return errores;
     }
