@@ -1,0 +1,85 @@
+@page "/listado-reservas"
+@rendermode InteractiveServer
+@inject ListarReservaUseCase ListarReservasUseCase
+@inject EliminarReservaUseCase EliminarReservaUseCase
+@inject NavigationManager Navegador
+@inject UsuarioSesion Sesion
+@inject ModificarReservaUseCase ModificarReservaUseCase
+@inject IRepositorioReserva RepositorioReserva
+@using CentroEventos.UI.Components.Pages.Reserva
+<h3>Listado de Reservas</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID PERSONA</th>
+            <th>ID EVENTO DEPORTIVO</th>
+            <th>FECHA RESERVA</th>
+            <th>ESTADO ASISTENCIA</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var res in _lista)
+        {
+            <tr>
+                <td>@res.Id</td>
+                <td>@res.IdPersona</td>
+                <td>@res.IdEventoDeportivo</td>
+                <td>@res.FechaAltaReserva</td>
+                <td>@res.EstadoAsistencia</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => Editar(res.Id)">Editar</button>
+                    <button class="btn btn-danger" @onclick="() => Eliminar(res.Id)">Eliminar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (puedeEditar)
+{
+    <h3>Modificar Reserva</h3>
+    <input placeholder="ID" @bind="_reserva.Id" disabled class="form-control">
+    <input placeholder="ID Persona" @bind="_reserva.IdPersona" class="form-control">
+    <input placeholder="ID Evento Deportivo" @bind="_reserva.IdEventoDeportivo" class="form-control">
+    <select @bind="_reserva.EstadoAsistencia" class="form-control">
+        <option value="Pendiente">Pendiente</option>
+        <option value="Asistio">Asistio</option>
+        <option value="NoAsistio">No Asistio</option>
+    </select>
+    <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+}
+
+@code {
+    List<Reserva> _lista = new List<Reserva>();
+    Reserva _reserva = new Reserva();
+    bool puedeEditar = false;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Estoy en ListadoReservas");
+        _lista = await ListarReservasUseCase.Ejecutar();
+    }
+    async Task Eliminar(int id)
+    {
+        await EliminarReservaUseCase.Ejecutar(id, Sesion.UsuarioLogueado.Id);
+        _lista = await ListarReservasUseCase.Ejecutar();
+    }
+    async Task Editar(int id)
+    {
+        var reservaExistente = await RepositorioReserva.ObtenerPorId(id);
+        if (reservaExistente is not null)
+        {
+            _reserva = reservaExistente;
+            puedeEditar = true;
+        }
+    }
+    async Task Aceptar()
+    {
+        await ModificarReservaUseCase.Ejecutar(_reserva, Sesion.UsuarioLogueado.Id);
+        puedeEditar = false;
+        _reserva = new Reserva();
+        _lista = await ListarReservasUseCase.Ejecutar();
+    }
+}

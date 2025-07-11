@@ -35,12 +35,23 @@ builder.Services.AddTransient<ListarReservaUseCase>();
 builder.Services.AddTransient<IniciarSesionUseCase>();
 builder.Services.AddTransient<UsuarioEsAdminUseCase>();
 builder.Services.AddTransient<RegistrarUsuarioUseCase>();
-
+builder.Services.AddTransient<AltaEventoDeportivoUseCase>();
+builder.Services.AddTransient<ListarEventoDeportivoUseCase>();
+builder.Services.AddTransient<ModificarEventoDeportivoUseCase>();
+builder.Services.AddTransient<EliminarEventoDeportivoUseCase>();
+builder.Services.AddTransient<ObtenerUsuarioUseCase>();
+builder.Services.AddTransient<ObtenerEventoUseCase>();
+builder.Services.AddTransient<AltaEventoDeportivoUseCase>();
+builder.Services.AddTransient<ListarPersonasUseCase>();
 builder.Services.AddTransient<EliminarPersonaUseCase>();
 builder.Services.AddTransient<AltaPersonaUseCase>();
 builder.Services.AddTransient<ListarPersonasUseCase>();
 builder.Services.AddTransient<ModificarPersonaUseCase>();
 builder.Services.AddTransient<ValidadorPersona>();
+builder.Services.AddTransient<AltaReservaUseCase>();
+builder.Services.AddTransient<ModificarReservaUseCase>();
+builder.Services.AddTransient<EliminarReservaUseCase>();
+builder.Services.AddTransient<ListarReservaUseCase>();
 
 
 // Inyección de dependencias - Repositorios
@@ -51,8 +62,9 @@ builder.Services.AddScoped<IServicioAutorizacion, ServicioAutorizacion>();
 builder.Services.AddScoped<IRepositorioPersona, RepositorioPersonaEF>();
 builder.Services.AddScoped<ServicioAutenticacion>();
 
-builder.Services.AddScoped<UsuarioSesion>();
-// builder.Services.AddSingleton<UsuarioSesion>();
+
+// builder.Services.AddScoped<UsuarioSesion>();
+builder.Services.AddSingleton<UsuarioSesion>();
 /*
     El servicio UsuarioSesion se registra como Singleton porque queremos que la misma instancia viva 
     durante toda la vida de la aplicación. Si bien esto es peligroso porque todos los usuarios comparten
