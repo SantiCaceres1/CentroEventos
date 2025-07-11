@@ -35,8 +35,9 @@ public class ValidadorUsuario
         if (!CorreoElectronicoValido(usuario.CorreoElectronico))
             errores.Add("El correo electrónico no tiene un formato válido.");
 
-        if (await _repositorio.ExisteCorreoElectronico(usuario.CorreoElectronico))
-            errores.Add("Ya existe un usuario con el mismo email.");
+        //if (await _repositorio.ExisteCorreoElectronico(usuario.CorreoElectronico))
+        //    errores.Add("Ya existe un usuario con el mismo email.");
+        //Lo dejamos comentado ya que al querer modificar por partes encuentra
 
         return errores;
     }

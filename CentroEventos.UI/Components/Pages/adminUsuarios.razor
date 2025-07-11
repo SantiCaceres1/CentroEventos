@@ -3,6 +3,8 @@
 @inject UsuarioEsAdminUseCase EsAdminUseCase
 @inject NavigationManager Navigation
 
+
+
 <h3>Panel de Administracion de Usuarios</h3>
 @if (!Sesion.EstaLogueado() || EsAdmin() == null)
 {
@@ -13,7 +15,6 @@ else
     <div class="admin-panel">
         <h4>Bienvenido, @Sesion.UsuarioLogueado.Nombre</h4>
         <p>Selecciona una opcion del menu para administrar los usuarios.</p>
-
         <ul>
             <li><NavLink href="/AdminUsers/AgregarUsuario">Agregar Usuario</NavLink></li>
             <li><NavLink href="/AdminUsers/GestionarUsuarios">Gestionar Usuarios</NavLink></li>

@@ -1,0 +1,187 @@
+@page "/GestionarUsuarios"
+@rendermode InteractiveServer
+@inject ListarUsuarioUseCase ListarUsuarios
+@inject UsuarioEsAdminUseCase EsAdminUseCase
+@inject EliminarUsuarioUseCase EliminarUsuario
+@inject ModificarUsuarioUseCase ModificarUsuarioUseCase
+@inject AltaUsuarioUseCase AltaUsuarioUseCase
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+
+
+
+<h3 class="text-center mb-4">Gestión de Usuarios</h3>
+
+@if (!Sesion.EstaLogueado() || EsAdmin() == null)
+{
+    <p class="text-danger">Acceso no autorizado.</p>
+}
+else
+{
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <input class="form-control w-25" placeholder="Buscar por ID" @bind="BusquedaId" @bind:event="oninput" />
+        <button class="btn btn-success" @onclick="AbrirAltaUsuario">Agregar Usuario</button>
+    </div>
+
+    @if (MostrarModalAlta)
+    {
+        <div class="modificar-overlay" @onclick="CancelarAlta">
+            <div class="modificar-modal" @onclick:stopPropagation="true">
+                <button class="modificar-close" title="Cerrar" @onclick="CancelarAlta">&times;</button>
+                <h5>Agregar Usuario</h5>
+                <input class="form-control mb-2" @bind="NuevoNombre" placeholder="Nombre" />
+                <input class="form-control mb-2" @bind="NuevoApellido" placeholder="Apellido" />
+                <input class="form-control mb-2" @bind="NuevoCorreo" placeholder="Correo" />
+                <input class="form-control mb-2" @bind="NuevaContraseña" type="password" placeholder="Contraseña" />
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary me-2" @onclick="AgregarUsuario"
+                            disabled="@(!AltaValida)">Aceptar</button>
+                    <button class="btn btn-secondary" @onclick="CancelarAlta">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (UsuarioEnEdicion != null)
+    {
+        <div class="modificar-overlay" @onclick="CancelarModificacion">
+            <div class="modificar-modal" @onclick:stopPropagation="true">
+                <button class="modificar-close" title="Cerrar" @onclick="CancelarModificacion">&times;</button>
+                <h5>Modificar Usuario</h5>
+                <input class="form-control mb-2" @bind="NombreEditado" placeholder="Nombre" />
+                <input class="form-control mb-2" @bind="ApellidoEditado" placeholder="Apellido" />
+                <input class="form-control mb-2" @bind="CorreoEditado" placeholder="Correo" />
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary me-2" @onclick="GuardarCambios">Aceptar</button>
+                    <button class="btn btn-secondary" @onclick="CancelarModificacion">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>CORREO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in UsuariosFiltrados)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.CorreoElectronico</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-2" @onclick="@(() => IniciarModificacion(usuario))">Modificar</button>
+                        <button class="btn btn-danger btn-sm" @onclick="@(() => Eliminar(usuario.Id))">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Usuario> _lista = new();
+    private string BusquedaId = "";
+
+    // Modificar Usuario
+    private Usuario? UsuarioEnEdicion;
+    private string NombreEditado = "";
+    private string ApellidoEditado = "";
+    private string CorreoEditado = "";
+
+    // Alta Usuario
+    private bool MostrarModalAlta = false;
+    private string NuevoNombre = "";
+    private string NuevoApellido = "";
+    private string NuevoCorreo = "";
+    private string NuevaContraseña = "";
+
+    private IEnumerable<Usuario> UsuariosFiltrados =>
+        string.IsNullOrWhiteSpace(BusquedaId)
+        ? _lista
+        : _lista.Where(u => u.Id.ToString().Contains(BusquedaId));
+
+    protected override async Task OnInitializedAsync()
+    {
+        _lista = await ListarUsuarios.Ejecutar();
+    }
+
+    private async Task Eliminar(int id)
+    {
+        int idAdmin = Sesion.Id ?? 0;
+        await EliminarUsuario.Ejecutar(id, idAdmin);
+        _lista = await ListarUsuarios.Ejecutar();
+    }
+
+    // ALTA USUARIO
+    private void AbrirAltaUsuario()
+    {
+        MostrarModalAlta = true;
+        NuevoNombre = "";
+        NuevoApellido = "";
+        NuevoCorreo = "";
+        NuevaContraseña = "";
+    }
+
+    private void CancelarAlta()
+    {
+        MostrarModalAlta = false;
+        NuevaContraseña = "";
+    }
+
+    private bool AltaValida =>
+        !string.IsNullOrWhiteSpace(NuevoNombre)
+        && !string.IsNullOrWhiteSpace(NuevoApellido)
+        && !string.IsNullOrWhiteSpace(NuevoCorreo)
+        && !string.IsNullOrWhiteSpace(NuevaContraseña);
+
+    private async Task AgregarUsuario()
+    {
+        if (!AltaValida)
+            return;
+
+        var nuevoUsuario = new Usuario(NuevoNombre, NuevoApellido, NuevoCorreo, NuevaContraseña);
+        int idAdmin = Sesion.Id ?? 0;
+        await AltaUsuarioUseCase.Ejecutar(nuevoUsuario, idAdmin);
+
+        MostrarModalAlta = false;
+        NuevaContraseña = "";
+        _lista = await ListarUsuarios.Ejecutar();
+    }
+
+    // MODIFICAR USUARIO
+    private void IniciarModificacion(Usuario usuario)
+    {
+        UsuarioEnEdicion = usuario;
+        NombreEditado = usuario.Nombre ?? "";
+        ApellidoEditado = usuario.Apellido ?? "";
+        CorreoEditado = usuario.CorreoElectronico ?? "";
+    }
+
+    private async Task GuardarCambios()
+    {
+        if (UsuarioEnEdicion == null) return;
+        UsuarioEnEdicion.Nombre = string.IsNullOrWhiteSpace(NombreEditado) ? UsuarioEnEdicion.Nombre : NombreEditado;
+        UsuarioEnEdicion.Apellido = string.IsNullOrWhiteSpace(ApellidoEditado) ? UsuarioEnEdicion.Apellido : ApellidoEditado;
+        UsuarioEnEdicion.CorreoElectronico = string.IsNullOrWhiteSpace(CorreoEditado) ? UsuarioEnEdicion.CorreoElectronico : CorreoEditado;
+        int idAdmin = Sesion.Id ?? 0;
+        await ModificarUsuarioUseCase.Ejecutar(UsuarioEnEdicion, idAdmin);
+        UsuarioEnEdicion = null;
+        _lista = await ListarUsuarios.Ejecutar();
+    }
+
+    private void CancelarModificacion()
+    {
+        UsuarioEnEdicion = null;
+    }
+
+    private async Task<bool> EsAdmin() => await EsAdminUseCase.Ejecutar();
+}

@@ -1,0 +1,203 @@
+@page "/GestionarPersonas"
+@rendermode InteractiveServer
+@inject UsuarioEsAdminUseCase EsAdminUseCase
+@inject ListarPersonasUseCase ListarPersonaaUC
+@inject AltaPersonaUseCase AltaPersonaUC
+@inject EliminarPersonaUseCase EliminarPersonaUC
+@inject ModificarPersonaUseCase ModificarPersonaUC
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navigation
+
+
+<h3 class="text-center mb-4">Gestión de Personas</h3>
+
+@if (!Sesion.EstaLogueado() || EsAdmin() == null)
+{
+    <p class="text-danger">Acceso no autorizado.</p>
+}
+else
+{
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <input class="form-control w-25" placeholder="Buscar por DNI" @bind="BusquedaDni" @bind:event="oninput" />
+        <button class="btn btn-success" @onclick="AbrirAltaPersona">Agregar Persona</button>
+    </div>
+
+    @if (MostrarModalAlta)
+    {
+        <div class="modificar-overlay" @onclick="CancelarAlta">
+            <div class="modificar-modal" @onclick:stopPropagation="true">
+                <button class="modificar-close" title="Cerrar" @onclick="CancelarAlta">&times;</button>
+                <h5>Agregar Persona</h5>
+                <input class="form-control mb-2" @bind="NuevoDni" placeholder="DNI" />
+                <input class="form-control mb-2" @bind="NuevoNombre" placeholder="Nombre" />
+                <input class="form-control mb-2" @bind="NuevoApellido" placeholder="Apellido" />
+                <input class="form-control mb-2" @bind="NuevoEmail" placeholder="Email" />
+                <input class="form-control mb-2" @bind="NuevoTelefono" placeholder="Teléfono" />
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary me-2" @onclick="AgregarPersona"
+                            disabled="@(!AltaValida)">Aceptar</button>
+                    <button class="btn btn-secondary" @onclick="CancelarAlta">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    }
+
+ 
+    @if (PersonaEnEdicion != null)
+    {
+        <div class="modificar-overlay" @onclick="CancelarModificacion">
+            <div class="modificar-modal" @onclick:stopPropagation="true">
+                <button class="modificar-close" title="Cerrar" @onclick="CancelarModificacion">&times;</button>
+                <h5>Modificar Persona</h5>
+                <input class="form-control mb-2" @bind="DniEditado" placeholder="DNI" />
+                <input class="form-control mb-2" @bind="NombreEditado" placeholder="Nombre" />
+                <input class="form-control mb-2" @bind="ApellidoEditado" placeholder="Apellido" />
+                <input class="form-control mb-2" @bind="EmailEditado" placeholder="Email" />
+                <input class="form-control mb-2" @bind="TelefonoEditado" placeholder="Teléfono" />
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary me-2" @onclick="GuardarCambios">Aceptar</button>
+                    <button class="btn btn-secondary" @onclick="CancelarModificacion">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>DNI</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>EMAIL</th>
+                <th>TELÉFONO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in PersonasFiltradas)
+            {
+                <tr>
+                    <td>@persona.Id</td>
+                    <td>@persona.Dni</td>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellido</td>
+                    <td>@persona.Email</td>
+                    <td>@persona.Telefono</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-2" @onclick="@(() => IniciarModificacion(persona))">Modificar</button>
+                        <button class="btn btn-danger btn-sm" @onclick="@(() => Eliminar(persona.Id))">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Persona> _lista = new();
+    private string BusquedaDni = "";
+
+    // Modificar Persona
+    private Persona? PersonaEnEdicion;
+    private string DniEditado = "";
+    private string NombreEditado = "";
+    private string ApellidoEditado = "";
+    private string EmailEditado = "";
+    private string TelefonoEditado = "";
+
+    // Alta Persona
+    private bool MostrarModalAlta = false;
+    private string NuevoDni = "";
+    private string NuevoNombre = "";
+    private string NuevoApellido = "";
+    private string NuevoEmail = "";
+    private string NuevoTelefono = "";
+
+    private IEnumerable<Persona> PersonasFiltradas =>
+        string.IsNullOrWhiteSpace(BusquedaDni)
+        ? _lista
+        : _lista.Where(p => (p.Dni ?? "").Contains(BusquedaDni));
+
+    protected override async Task OnInitializedAsync()
+    {
+        _lista = await ListarPersonaaUC.Ejecutar();
+    }
+
+    private async Task Eliminar(int id)
+    {
+        int idAdmin = Sesion.Id ?? 0;
+        EliminarPersonaUC.Ejecutar(id, idAdmin);
+        _lista = await ListarPersonaaUC.Ejecutar();
+    }
+
+    // ALTA PERSONA
+    private void AbrirAltaPersona()
+    {
+        MostrarModalAlta = true;
+        NuevoDni = "";
+        NuevoNombre = "";
+        NuevoApellido = "";
+        NuevoEmail = "";
+        NuevoTelefono = "";
+    }
+
+    private void CancelarAlta()
+    {
+        MostrarModalAlta = false;
+    }
+
+    private bool AltaValida =>
+        !string.IsNullOrWhiteSpace(NuevoDni)
+        && !string.IsNullOrWhiteSpace(NuevoNombre)
+        && !string.IsNullOrWhiteSpace(NuevoApellido)
+        && !string.IsNullOrWhiteSpace(NuevoEmail)
+        && !string.IsNullOrWhiteSpace(NuevoTelefono);
+
+    private async Task AgregarPersona()
+    {
+        if (!AltaValida)
+            return;
+
+        var nuevaPersona = new Persona(NuevoDni, NuevoNombre, NuevoApellido, NuevoEmail, NuevoTelefono);
+        int idAdmin = Sesion.Id ?? 0;
+        await AltaPersonaUC.Ejecutar(nuevaPersona,idAdmin);
+
+        MostrarModalAlta = false;
+        _lista = await ListarPersonaaUC.Ejecutar();
+    }
+
+    // MODIFICAR PERSONA
+    private void IniciarModificacion(Persona persona)
+    {
+        PersonaEnEdicion = persona;
+        DniEditado = persona.Dni ?? "";
+        NombreEditado = persona.Nombre ?? "";
+        ApellidoEditado = persona.Apellido ?? "";
+        EmailEditado = persona.Email ?? "";
+        TelefonoEditado = persona.Telefono ?? "";
+    }
+
+    private async Task GuardarCambios()
+    {
+        if (PersonaEnEdicion == null) return;
+
+        PersonaEnEdicion.Dni = string.IsNullOrWhiteSpace(DniEditado) ? PersonaEnEdicion.Dni : DniEditado;
+        PersonaEnEdicion.Nombre = string.IsNullOrWhiteSpace(NombreEditado) ? PersonaEnEdicion.Nombre : NombreEditado;
+        PersonaEnEdicion.Apellido = string.IsNullOrWhiteSpace(ApellidoEditado) ? PersonaEnEdicion.Apellido : ApellidoEditado;
+        PersonaEnEdicion.Email = string.IsNullOrWhiteSpace(EmailEditado) ? PersonaEnEdicion.Email : EmailEditado;
+        PersonaEnEdicion.Telefono = string.IsNullOrWhiteSpace(TelefonoEditado) ? PersonaEnEdicion.Telefono : TelefonoEditado;
+        int idAdmin = Sesion.Id ?? 0;
+        await ModificarPersonaUC.Ejecutar(PersonaEnEdicion,idAdmin);
+
+        PersonaEnEdicion = null;
+        _lista = await ListarPersonaaUC.Ejecutar();
+    }
+
+    private void CancelarModificacion()
+    {
+        PersonaEnEdicion = null;
+    }
+
+    private async Task<bool> EsAdmin() => await EsAdminUseCase.Ejecutar();
+}
