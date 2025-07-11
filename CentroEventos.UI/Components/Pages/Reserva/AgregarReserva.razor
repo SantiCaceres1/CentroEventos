@@ -1,0 +1,23 @@
+@page "/reserva-alta"
+@rendermode InteractiveServer
+@inject UsuarioSesion Sesion
+@inject NavigationManager Navegador
+@inject AltaReservaUseCase AltaReservaUseCase
+@using CentroEventos.UI.Components.Pages.Reserva
+
+<h3>Registrar Reserva</h3>
+<input type="number" @bind-value="_reserva.IdPersona" @bind-value:event="oninput" class="form-control" placeholder="ID Persona" />
+<input type="number" @bind-value="_reserva.IdEventoDeportivo" @bind-value:event="oninput" class="form-control" placeholder="ID Evento Deportivo" />
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@code {
+    Reserva _reserva = new Reserva();
+
+    async Task Aceptar()
+    {
+        Console.WriteLine($"Enviando reserva con IdPersona={_reserva.IdPersona}, IdEvento={_reserva.IdEventoDeportivo}");
+        await AltaReservaUseCase.Ejecutar(_reserva, Sesion.UsuarioLogueado.Id);
+        _reserva = new Reserva();
+        Navegador.NavigateTo("/listado-reservas");
+    }
+}
